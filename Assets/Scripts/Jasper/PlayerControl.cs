@@ -64,8 +64,8 @@ public class PlayerControl : MonoBehaviour
         playerCamera.enabled = false;
         playerMovement.enabled = false;
         focusCamera.SetActive(true);
-        focusCamera.transform.position = focusTransform.localPosition;
-        focusCamera.transform.rotation = focusTransform.localRotation;
+        focusCamera.transform.position = focusTransform.position;
+        focusCamera.transform.rotation = focusTransform.rotation;
 
         SetHandIcon(false);
         CrossHair.SetActive(false);
