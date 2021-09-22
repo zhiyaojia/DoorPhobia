@@ -40,7 +40,7 @@ public class Interactable : MonoBehaviour
         {
             if (focusOnView)
             {
-                StopFocuOnView();
+                StopInteracting();
                 alreadyInteracted = false;
             }
         }
@@ -107,7 +107,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public void StopFocuOnView()
+    public virtual void StopInteracting()
     {
         PlayerControl.Instance.StopFocusOnObject();
     }

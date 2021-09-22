@@ -18,4 +18,10 @@ public class PianoInteract : Interactable
         print("Interact with Piano");
         myPianoControl.enabled = true;
     }
+
+    public override void StopInteracting()
+    {
+        base.StopInteracting();
+        myPianoControl.enabled = false;
+    }
 }

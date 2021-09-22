@@ -45,7 +45,6 @@ public class PianoControl : MonoBehaviour
     IEnumerator FinishLyric()
     {
         yield return new WaitForSeconds(1);
-        pianoInteract.StopFocuOnView();
-        enabled = false;
+        pianoInteract.StopInteracting();
     }
 }
