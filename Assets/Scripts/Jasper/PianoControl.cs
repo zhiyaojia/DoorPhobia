@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class LyricControl : MonoBehaviour
+public class PianoControl : MonoBehaviour
 {
     public List<int> LyricSequence;
     public List<KeyCode> KeycodeSequence;
@@ -11,10 +11,12 @@ public class LyricControl : MonoBehaviour
     public Text text; // temporal debug
 
     private int CurrentIndex;
+    private PianoInteract pianoInteract;
 
     void Start()
     {
         CurrentIndex = 0;
+        pianoInteract = GetComponent<PianoInteract>();
     }
 
     void Update()
@@ -43,6 +45,7 @@ public class LyricControl : MonoBehaviour
     IEnumerator FinishLyric()
     {
         yield return new WaitForSeconds(1);
-        text.enabled = true;
+        pianoInteract.StopFocuOnView();
+        enabled = false;
     }
 }
