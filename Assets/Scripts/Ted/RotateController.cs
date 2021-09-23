@@ -5,6 +5,7 @@ using UnityEngine;
 public class RotateController : MonoBehaviour
 {
     float RotateDegree;
+    bool InteractWithGlobe = false;
     bool RotateHalfComplete = false;
 
     // Update is called once per frame
@@ -16,24 +17,28 @@ public class RotateController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q)) 
         {
             // RotateHalf(0.1f);
-            while (RotateDegree < 180) 
-            {
-                transform.Rotate(0, 0.1f, 0);
-                RotateDegree += 0.1f;
-            }
+            // while (RotateDegree < 180) 
+            // {
+            //     transform.Rotate(0, 0.1f, 0);
+            //     RotateDegree += 0.1f;
+            // }
+            InteractWithGlobe = true;
+        }
+        if (InteractWithGlobe == true)
+        {
+            StartCoroutine("RotateH");
         }
         
     }
-    void RotateHalf(float RotateSpeed)
-    {
-        if (RotateDegree < 180) 
+    IEnumerator RotateH()
+    {   
+        float RotateSpeed = 0.001f;
+        while (RotateDegree < 180) 
         {
             transform.Rotate(0, RotateSpeed, 0);
             RotateDegree += RotateSpeed;
+            yield return null;
         }
-        else
-        {
-            RotateHalfComplete = true;
-        }
+        
     }
 }
