@@ -13,7 +13,6 @@ public class ChangeObj : MonoBehaviour
     void Update()
     {
         changeObj();
-        
     }
 
     private void changeObj()
