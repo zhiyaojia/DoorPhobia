@@ -6,7 +6,7 @@ public class HoverObj : MonoBehaviour
 {
     public GameObject Inspection;
     public InspectionObj inspectionObj;
-    public int index;
+    //public int index;
     private bool BagState;
 
     // Update is called once per frame
@@ -35,8 +35,8 @@ public class HoverObj : MonoBehaviour
         //}
         //GetComponent<MeshRenderer>().material.color = color;
 
-            
-        
+
+
     }
 
     private void openMyBag()
@@ -48,12 +48,18 @@ public class HoverObj : MonoBehaviour
             Inspection.SetActive(BagState);
             if (BagState)
             {
-                inspectionObj.TurnOnInspection(0);
+
+                inspectionObj.TurnOnInspection();
+                
+                
             }
             else
             {
                 inspectionObj.TurnOffInspection();
             }
+
         }
+        
     }
 }
+
