@@ -350,6 +350,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3356787578493028220, guid: 757ecf3ac2b60f7478f18343fcba46fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bcb24ce712f43ef4187a4110820a06e0, type: 2}
+    - target: {fileID: 3356787579002533546, guid: 757ecf3ac2b60f7478f18343fcba46fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bcb24ce712f43ef4187a4110820a06e0, type: 2}
+    - target: {fileID: 3356787579417407486, guid: 757ecf3ac2b60f7478f18343fcba46fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bcb24ce712f43ef4187a4110820a06e0, type: 2}
+    - target: {fileID: 3356787579665969836, guid: 757ecf3ac2b60f7478f18343fcba46fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bcb24ce712f43ef4187a4110820a06e0, type: 2}
+    - target: {fileID: 3356787579791291714, guid: 757ecf3ac2b60f7478f18343fcba46fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bcb24ce712f43ef4187a4110820a06e0, type: 2}
+    - target: {fileID: 3356787579845849545, guid: 757ecf3ac2b60f7478f18343fcba46fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bcb24ce712f43ef4187a4110820a06e0, type: 2}
+    - target: {fileID: 3356787579975014389, guid: 757ecf3ac2b60f7478f18343fcba46fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bcb24ce712f43ef4187a4110820a06e0, type: 2}
+    - target: {fileID: 3356787580213096419, guid: 757ecf3ac2b60f7478f18343fcba46fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bcb24ce712f43ef4187a4110820a06e0, type: 2}
+    - target: {fileID: 3356787580466116506, guid: 757ecf3ac2b60f7478f18343fcba46fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bcb24ce712f43ef4187a4110820a06e0, type: 2}
+    - target: {fileID: 3356787580498308768, guid: 757ecf3ac2b60f7478f18343fcba46fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bcb24ce712f43ef4187a4110820a06e0, type: 2}
+    - target: {fileID: 3356787580509438751, guid: 757ecf3ac2b60f7478f18343fcba46fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bcb24ce712f43ef4187a4110820a06e0, type: 2}
     - target: {fileID: 3552415664545376930, guid: 757ecf3ac2b60f7478f18343fcba46fe, type: 3}
       propertyPath: m_Name
       value: keypad
