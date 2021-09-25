@@ -7,6 +7,8 @@ public class RotateController : MonoBehaviour
     float RotateDegree;
     bool InteractWithGlobe = false;
     bool RotateHalfComplete = false;
+    bool ManShockAudioPlayed = false;
+    public AudioSource ManShockAudio;
 
     // Update is called once per frame
     void Update()
@@ -34,10 +36,15 @@ public class RotateController : MonoBehaviour
     {   
         float RotateSpeed = 0.001f;
         while (RotateDegree < 180) 
-        {
+        {   
             transform.Rotate(0, RotateSpeed, 0);
             RotateDegree += RotateSpeed;
             yield return null;
+        }
+        if (!ManShockAudioPlayed)
+        {
+            ManShockAudio.Play();
+            ManShockAudioPlayed = true;
         }
         
     }

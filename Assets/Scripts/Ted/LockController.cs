@@ -17,9 +17,19 @@ public class LockController : MonoBehaviour
     int Wheel3Num = 0;
     float RotateDegree = 0;
     float TranslateDistance = 0;
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+        Wheel1.GetComponent<cakeslice.Outline>().OnDisable();
+        Wheel2.GetComponent<cakeslice.Outline>().OnDisable();
+        Wheel3.GetComponent<cakeslice.Outline>().OnDisable();
+    }
     // Update is called once per frame
     void Update()
-    {        
+    {    
         if (Input.GetKeyDown(KeyCode.W))
         {
             CurrentChosenWheel--;
@@ -35,16 +45,19 @@ public class LockController : MonoBehaviour
             switch (CurrentChosenWheel)
             {
                 case 0:
+                    Wheel1.GetComponent<cakeslice.Outline>().OnEnable();
                     LockRotate(Wheel1, true);
                     Wheel1Num--;
                     if (Wheel1Num < 0) Wheel1Num = 9;
                     break;
                 case 1:
+                    Wheel2.GetComponent<cakeslice.Outline>().OnEnable();
                     LockRotate(Wheel2, true);
                     Wheel2Num--;
                     if (Wheel2Num < 0) Wheel2Num = 9;
                     break;
                 case 2:
+                    Wheel3.GetComponent<cakeslice.Outline>().OnEnable();
                     LockRotate(Wheel3, true);
                     Wheel3Num--;
                     if (Wheel3Num < 0) Wheel3Num = 9;
