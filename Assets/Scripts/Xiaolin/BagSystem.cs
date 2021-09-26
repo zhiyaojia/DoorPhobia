@@ -1,28 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
 
 public class BagSystem : MonoBehaviour
 {
     public GameObject Inspection;
     public List<GameObject> objList = new List<GameObject>();//All the objects in the game
     public List<int> currList = new List<int>();//the objects in the current bag
+    private HashSet<int> currSet = new HashSet<int>();
     public bool BagState;
     public int currIndex;
-    public PostProcessResources postProcessResources;
-    
-    void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
-        PostProcessLayer postProcessLayer = Camera.main.gameObject.GetComponent<PostProcessLayer>();
-        postProcessLayer.Init(postProcessResources);
         currIndex = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("test");
+
         addObject();
         openBag();
         changeObj();
@@ -31,24 +28,37 @@ public class BagSystem : MonoBehaviour
 
     private void addObject()
     {
-        //Debug.Log("test-addObject");
-        if(Input.GetKeyDown(KeyCode.Z))
+
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            currList.Add(0);
+            if (!currSet.Contains(0))
+            {
+                currList.Add(0);
+                currSet.Add(0);
+            }
+
         }
-        else if(Input.GetKeyDown(KeyCode.X))
+        else if (Input.GetKeyDown(KeyCode.X))
         {
-            currList.Add(1);
+            if (!currSet.Contains(1))
+            {
+                currList.Add(1);
+                currSet.Add(1);
+            }
         }
-        else if(Input.GetKeyDown(KeyCode.C))
+        else if (Input.GetKeyDown(KeyCode.C))
         {
-            currList.Add(2);
+            if (!currSet.Contains(2))
+            {
+                currList.Add(2);
+                currSet.Add(2);
+            }
         }
     }
 
     private void openBag()
     {
-        //Debug.Log("test-openBag");
+
         BagState = Inspection.activeSelf;
         if (Input.GetKeyDown(KeyCode.B))
         {
@@ -67,19 +77,19 @@ public class BagSystem : MonoBehaviour
     }
     private void changeObj()
     {
-        //Debug.Log("test-changeObj");
+
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if(currIndex != 0)
+            if (currIndex != 0)
             {
                 objList[currList[currIndex]].SetActive(false);
                 currIndex--;
                 objList[currList[currIndex]].SetActive(true);
             }
         }
-        else if(Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if(currIndex != currList.Count - 1)
+            if (currIndex != currList.Count - 1)
             {
                 objList[currList[currIndex]].SetActive(false);
                 currIndex++;
