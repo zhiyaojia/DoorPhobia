@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class BagSystem : MonoBehaviour
 {
@@ -9,16 +10,19 @@ public class BagSystem : MonoBehaviour
     public List<int> currList = new List<int>();//the objects in the current bag
     public bool BagState;
     public int currIndex;
-    // Start is called before the first frame update
-    void Start()
+    public PostProcessResources postProcessResources;
+    
+    void Awake()
     {
+        PostProcessLayer postProcessLayer = Camera.main.gameObject.GetComponent<PostProcessLayer>();
+        postProcessLayer.Init(postProcessResources);
         currIndex = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("test");
+        //Debug.Log("test");
         addObject();
         openBag();
         changeObj();
@@ -27,7 +31,7 @@ public class BagSystem : MonoBehaviour
 
     private void addObject()
     {
-        Debug.Log("test-addObject");
+        //Debug.Log("test-addObject");
         if(Input.GetKeyDown(KeyCode.Z))
         {
             currList.Add(0);
@@ -44,7 +48,7 @@ public class BagSystem : MonoBehaviour
 
     private void openBag()
     {
-        Debug.Log("test-openBag");
+        //Debug.Log("test-openBag");
         BagState = Inspection.activeSelf;
         if (Input.GetKeyDown(KeyCode.B))
         {
@@ -63,7 +67,7 @@ public class BagSystem : MonoBehaviour
     }
     private void changeObj()
     {
-        Debug.Log("test-changeObj");
+        //Debug.Log("test-changeObj");
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             if(currIndex != 0)
