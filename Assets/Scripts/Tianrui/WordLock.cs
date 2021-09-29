@@ -30,6 +30,7 @@ public class WordLock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        OutlineCurrentWheel();
         if (Input.GetKeyDown(KeyCode.A))
         {
             CurrentChosenWheel--;
@@ -122,5 +123,29 @@ public class WordLock : MonoBehaviour
             RotateDegree += RotateSpeed;
             yield return null;
         }
+    }
+    void OutlineCurrentWheel()
+    {
+        switch (CurrentChosenWheel)
+        {
+            case 0:
+                TurnOffOutline();
+                Wheel1.GetComponent<cakeslice.Outline>().OnEnable();
+                break;
+            case 1:
+                TurnOffOutline();
+                Wheel2.GetComponent<cakeslice.Outline>().OnEnable();
+                break;
+            case 2:
+                TurnOffOutline();
+                Wheel3.GetComponent<cakeslice.Outline>().OnEnable();
+                break;
+        }
+    }
+    void TurnOffOutline()
+    {
+        Wheel1.GetComponent<cakeslice.Outline>().OnDisable();
+        Wheel2.GetComponent<cakeslice.Outline>().OnDisable();
+        Wheel3.GetComponent<cakeslice.Outline>().OnDisable();
     }
 }
