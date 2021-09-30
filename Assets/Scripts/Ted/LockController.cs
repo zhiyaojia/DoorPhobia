@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LockController : MonoBehaviour
-{       
+{   
+    // 控制密码锁的开关，outline轮廓
+    // outline使用：在Assets > Resource > Ted > OutlineEffect > OutlneEffect中，
+    // 将OutlineEffect拖至Main Camera下，Outline拖至想要展示轮廓的物体下就可以使用。
+    // 在脚本中控制Outline显示可以使用GameObject.GetComponent<cakeslice.Outline>().OnEnable()/OnDisable();
+
     int CurrentChosenWheel = 0;
+    // 三个密码盘的游戏对象
     public GameObject Wheel1;
     public GameObject Wheel2;
     public GameObject Wheel3;
     public GameObject MetalPiece;
+    // 三个密码
     public int PasswordDigit1;
     public int PasswordDigit2;
     public int PasswordDigit3;
@@ -23,12 +30,15 @@ public class LockController : MonoBehaviour
     /// </summary>
     void Start()
     {
+        // 开始时关闭Outline
         TurnOffOutline();
     }
     // Update is called once per frame
     void Update()
     {    
+        // 将当前选中的密码盘显示Outline
         OutlineCurrentWheel();
+        // WS键控制上下选择密码盘
         if (Input.GetKeyDown(KeyCode.W))
         {
             CurrentChosenWheel--;
@@ -38,13 +48,15 @@ public class LockController : MonoBehaviour
         {
             CurrentChosenWheel++;
             if (CurrentChosenWheel > 2) CurrentChosenWheel = 0;
-        }        
+        }     
+        // AD控制左右   
         if (Input.GetKeyDown(KeyCode.A))
         {
             switch (CurrentChosenWheel)
             {
                 case 0:
                     // Wheel1.GetComponent<cakeslice.Outline>().OnEnable();
+                    // 旋转密码盘
                     LockRotate(Wheel1, true);
                     Wheel1Num--;
                     if (Wheel1Num < 0) Wheel1Num = 9;
@@ -84,11 +96,13 @@ public class LockController : MonoBehaviour
                     break; 
             }
         }
+        // 如果当前密码有效，开锁
         if (ValidatePassword() == true) 
         {
             Unlock();
         }
     }
+    // 将密码盘每次旋转36度
     void LockRotate(GameObject Wheel, bool Direction)
     {
         if (Direction == false) 
@@ -100,6 +114,7 @@ public class LockController : MonoBehaviour
             Wheel.transform.Rotate(0, -36, 0);            
         }
     }
+    // 验证密码
     bool ValidatePassword()
     {
         if (Wheel1Num == PasswordDigit1 && Wheel2Num == PasswordDigit2 && Wheel3Num == PasswordDigit3) 
@@ -114,6 +129,7 @@ public class LockController : MonoBehaviour
     {
         StartCoroutine("TranslateAndRotateMetal");
     }
+    // 控制开锁动画，将metalpiece上移并旋转
     IEnumerator TranslateAndRotateMetal()
     {   
         while (TranslateDistance < 0.01f) {
@@ -130,6 +146,7 @@ public class LockController : MonoBehaviour
             yield return null;
         }
     }
+    // 控制显示当前选中密码盘的outline
     void OutlineCurrentWheel()
     {
         switch (CurrentChosenWheel)
@@ -148,6 +165,7 @@ public class LockController : MonoBehaviour
                     break; 
             }
     }
+    // 关闭所有outline
     void TurnOffOutline() 
     {
         Wheel1.GetComponent<cakeslice.Outline>().OnDisable();

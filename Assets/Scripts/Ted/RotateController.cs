@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RotateController : MonoBehaviour
 {
+    // 控制地球仪旋转
     float RotateDegree;
     bool InteractWithGlobe = false;
     bool RotateHalfComplete = false;
@@ -16,6 +17,7 @@ public class RotateController : MonoBehaviour
         // Vector3 axis = new Vector3(0, 1, 0);
         // transform.Rotate(axis, 180);
         // transform.Rotate(0, 3.14f, 0);
+        // 检测按下Q键开始旋转地球仪
         if (Input.GetKeyDown(KeyCode.Q)) 
         {
             // RotateHalf(0.1f);
@@ -29,18 +31,22 @@ public class RotateController : MonoBehaviour
         if (InteractWithGlobe == true)
         {
             StartCoroutine("RotateH");
+            // 使用coroutine控制地球仪一直旋转
         }
         
     }
     IEnumerator RotateH()
     {   
+        // 旋转速度
         float RotateSpeed = 0.001f;
+        // 旋转180度
         while (RotateDegree < 180) 
         {   
             transform.Rotate(0, RotateSpeed, 0);
             RotateDegree += RotateSpeed;
             yield return null;
         }
+        // 控制惊吓音效
         if (!ManShockAudioPlayed)
         {
             ManShockAudio.Play();
