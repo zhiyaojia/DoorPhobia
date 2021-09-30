@@ -523,7 +523,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4948856891762374446, guid: 4656480aaa8a0564dbcd42dc830492b6, type: 3}
       propertyPath: m_Name
-      value: GameObject
+      value: Map
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948856891762374446, guid: 4656480aaa8a0564dbcd42dc830492b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5374121858459889308, guid: 4656480aaa8a0564dbcd42dc830492b6, type: 3}
       propertyPath: m_RootOrder
