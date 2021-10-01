@@ -19,9 +19,6 @@ public class MovementControl : MonoBehaviour
 		Cursor.visible = false;
 
 		characterController = GetComponent<CharacterController>();
-		Vector3 rotation = transform.rotation.eulerAngles;
-		xRotation = rotation.x;
-		yRotation = rotation.y;
 	}
 
 	void Update()

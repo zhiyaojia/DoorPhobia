@@ -7,15 +7,10 @@ public class Interactable : MonoBehaviour
     [Tooltip("Check this box if you want this object to be directly interacted without any condition")]
     public bool noConditionNeed = false;
 
-    [Tooltip("Max distance that player can interact with this object")]
-    public float maxInteractableDistance = 3.5f;
-
     [Tooltip("Check this box if you want to change the view when interacting with this object")]
     public bool focusOnView = false;
     [ConditionalHide("focusOnView", true)]
     public Transform focusPointTransform;
-    [ConditionalHide("Nothing but freeze player's movement", true)]
-    public bool canRotateView = false;
 
     protected Collider myCollider;
     protected bool alreadyInteracted = false;
@@ -37,7 +32,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public void Update()
+    public virtual void Update()
     {
         UpdateCondition();
 
@@ -51,10 +46,10 @@ public class Interactable : MonoBehaviour
         }
 
         float distanceWithPlayer = Vector3.Distance(PlayerControl.Instance.transform.position, transform.position);
-        if (distanceWithPlayer < maxInteractableDistance)
+        if (distanceWithPlayer < PlayerControl.Instance.maxInteractableDistance)
         {
             RaycastHit hit;
-            if (myCollider.Raycast(PlayerControl.Instance.rayFromScreenCenter, out hit, maxInteractableDistance))
+            if (myCollider.Raycast(PlayerControl.Instance.rayFromScreenCenter, out hit, PlayerControl.Instance.maxInteractableDistance))
             {
                 if (alreadyHovered == false)
                 {
@@ -108,12 +103,12 @@ public class Interactable : MonoBehaviour
     {
         if (focusOnView)
         {
-            PlayerControl.Instance.FocusOnObject(focusPointTransform, canRotateView);
+            PlayerControl.Instance.FocusOnObject(focusPointTransform);
         }
     }
 
     public virtual void StopInteracting()
     {
-        PlayerControl.Instance.StopFocusOnObject(canRotateView);
+        PlayerControl.Instance.StopFocusOnObject();
     }
 }
