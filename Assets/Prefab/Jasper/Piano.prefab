@@ -2472,7 +2472,7 @@ Transform:
   m_GameObject: {fileID: 8377913653774573058}
   m_LocalRotation: {x: 0, y: -0.9999556, z: 0, w: 0.009424705}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 616152003800493057}
   - {fileID: 616152003871741837}
@@ -2675,8 +2675,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noConditionNeed: 0
+  maxInteractableDistance: 5
   focusOnView: 1
   focusPointTransform: {fileID: 452144988}
+  canRotateView: 0
 --- !u!1 &8377913653774573060
 GameObject:
   m_ObjectHideFlags: 0

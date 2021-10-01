@@ -763,10 +763,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 904696648, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
-      propertyPath: maxInteractableDistance
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8377913653774573057, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
       propertyPath: text
       value: 
@@ -775,25 +771,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Piano
       objectReference: {fileID: 0}
-    - target: {fileID: 8377913653774573058, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8377913653774994146, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8377913653774994146, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8377913653774994146, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8377913653774994146, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8377913653774994146, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
       propertyPath: m_LocalPosition.x
@@ -837,28 +817,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
---- !u!1 &1591524467557172303 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6941307387274077565, guid: 5598ff5dfc2ea0845aeb4b952121d0ff, type: 3}
-  m_PrefabInstance: {fileID: 8521445295099388210}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1591524467557172305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591524467557172303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3e2ee5a0e625724fab15aeb7cd8d6e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 0
-  focusOnView: 0
-  focusPointTransform: {fileID: 0}
-  canRotateView: 0
 --- !u!1001 &3329392077491462825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -913,10 +871,6 @@ PrefabInstance:
     - target: {fileID: 7681381106969094010, guid: 87c9c4791928c2547aa927c2e9f90ff8, type: 3}
       propertyPath: m_Name
       value: Map
-      objectReference: {fileID: 0}
-    - target: {fileID: 7681381106969094010, guid: 87c9c4791928c2547aa927c2e9f90ff8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87c9c4791928c2547aa927c2e9f90ff8, type: 3}
@@ -1035,10 +989,6 @@ PrefabInstance:
     - target: {fileID: 2150945643142012324, guid: 5598ff5dfc2ea0845aeb4b952121d0ff, type: 3}
       propertyPath: m_Name
       value: Door
-      objectReference: {fileID: 0}
-    - target: {fileID: 2150945643142012324, guid: 5598ff5dfc2ea0845aeb4b952121d0ff, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5598ff5dfc2ea0845aeb4b952121d0ff, type: 3}
