@@ -23,7 +23,7 @@ public class MapControl : MonoBehaviour
     private int currHoverIndex = 0;
     private bool isHovering = false;
 
-    void Start()
+    private void Awake()
     {
         ColliderList = new List<MeshCollider>();
         stateStatus = new List<bool>();
@@ -31,7 +31,7 @@ public class MapControl : MonoBehaviour
 
         myCollider = GetComponentInParent<BoxCollider>();
 
-        foreach(string name in stateCandidateName)
+        foreach (string name in stateCandidateName)
         {
             stateCandidateNameSet.Add(name);
         }
@@ -48,7 +48,18 @@ public class MapControl : MonoBehaviour
                 correctCandidateNumber = correctCandidateNumber ^ stateNum;
             }
         }
+    }
+
+    void Start()
+    {
         StartCoroutine("Hover");
+    }
+
+    public void Stop()
+    {
+        enabled = false;
+        StateList[currHoverIndex].GetComponent<cakeslice.Outline>().OnDisable();
+        StopCoroutine("Hover");
     }
 
     void Update()
@@ -73,8 +84,8 @@ public class MapControl : MonoBehaviour
                     print("correct states");
                 }
 
-                StateList[currHoverIndex].GetComponent<MeshRenderer>().material = 
-                    stateStatus[currHoverIndex] ?selectedMaterial:notSelectedMaterial;
+                StateList[currHoverIndex].GetComponent<MeshRenderer>().material =
+                    stateStatus[currHoverIndex] ? selectedMaterial : notSelectedMaterial;
             }
         }
     }
