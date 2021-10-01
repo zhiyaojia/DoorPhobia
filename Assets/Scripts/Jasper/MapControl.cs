@@ -4,33 +4,62 @@ using UnityEngine;
 
 public class MapControl : MonoBehaviour
 {
+    [Tooltip("The max distance between the state position and raycast hit point that will trigger mesh collider ray cast")]
     public float validStateDistance;
 
-    public Material redMaterial, blueMaterial;
+    public Material notSelectedMaterial, selectedMaterial;
 
+    [Tooltip("States that want to be selected")]
+    public List<string> stateCandidateName;
     public List<GameObject> StateList;
     private List<MeshCollider> ColliderList;
-    private List<bool> stateColor;
+    private List<bool> stateStatus; // false indicates not selected
+    private HashSet<string> stateCandidateNameSet;
 
     private BoxCollider myCollider;
 
+    private long correctCandidateNumber = 0;
+    private long currentCandidateNumber = 0;
     private int currHoverIndex = 0;
     private bool isHovering = false;
 
-    void Start()
+    private void Awake()
     {
         ColliderList = new List<MeshCollider>();
-        stateColor = new List<bool>();
+        stateStatus = new List<bool>();
+        stateCandidateNameSet = new HashSet<string>();
 
         myCollider = GetComponentInParent<BoxCollider>();
+
+        foreach (string name in stateCandidateName)
+        {
+            stateCandidateNameSet.Add(name);
+        }
+
         for (int i = 0; i < StateList.Count; i++)
         {
             StateList[i].GetComponent<cakeslice.Outline>().OnDisable();
             ColliderList.Add(StateList[i].GetComponent<MeshCollider>());
-            stateColor.Add(false);
-        }
+            stateStatus.Add(false);
 
+            if (stateCandidateNameSet.Contains(StateList[i].name))
+            {
+                long stateNum = 1 << i;
+                correctCandidateNumber = correctCandidateNumber ^ stateNum;
+            }
+        }
+    }
+
+    void Start()
+    {
         StartCoroutine("Hover");
+    }
+
+    public void Stop()
+    {
+        enabled = false;
+        StateList[currHoverIndex].GetComponent<cakeslice.Outline>().OnDisable();
+        StopCoroutine("Hover");
     }
 
     void Update()
@@ -39,8 +68,24 @@ public class MapControl : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                stateColor[currHoverIndex] = !stateColor[currHoverIndex];
-                StateList[currHoverIndex].GetComponent<MeshRenderer>().material = stateColor[currHoverIndex] ?blueMaterial:redMaterial;
+                stateStatus[currHoverIndex] = !stateStatus[currHoverIndex];
+                if (stateStatus[currHoverIndex] == true)
+                {
+                    int stateNum = 1 << currHoverIndex;
+                    currentCandidateNumber = currentCandidateNumber ^ stateNum;
+                }
+                else
+                {
+                    int stateNum = ~(1 << currHoverIndex);
+                    currentCandidateNumber = currentCandidateNumber & stateNum;
+                }
+                if (currentCandidateNumber == correctCandidateNumber)
+                {
+                    print("correct states");
+                }
+
+                StateList[currHoverIndex].GetComponent<MeshRenderer>().material =
+                    stateStatus[currHoverIndex] ? selectedMaterial : notSelectedMaterial;
             }
         }
     }
