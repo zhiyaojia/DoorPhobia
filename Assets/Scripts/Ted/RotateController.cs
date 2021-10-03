@@ -6,10 +6,13 @@ public class RotateController : MonoBehaviour
 {
     // 控制地球仪旋转
     float RotateDegree;
+    float ERotateDegree;
     bool InteractWithGlobe = false;
     bool RotateHalfComplete = false;
     bool ManShockAudioPlayed = false;
     public AudioSource ManShockAudio;
+    public GameObject eyeBallLeft;
+    public GameObject eyeBallRight;
 
     // Update is called once per frame
     void Update()
@@ -32,6 +35,10 @@ public class RotateController : MonoBehaviour
         {
             StartCoroutine("RotateH");
             // 使用coroutine控制地球仪一直旋转
+            if (ManShockAudioPlayed)
+            {
+                StartCoroutine("RotateEyeBalls");
+            }
         }
         
     }
@@ -48,10 +55,24 @@ public class RotateController : MonoBehaviour
         }
         // 控制惊吓音效
         if (!ManShockAudioPlayed)
-        {
+        {   
+            StartCoroutine("RotateEyeBalls");
             ManShockAudio.Play();
             ManShockAudioPlayed = true;
         }
         
+    }
+    IEnumerator RotateEyeBalls()
+    {
+        // 旋转速度
+        float RotateSpeed = 0.0005f;
+        // 旋转180度
+        while (ERotateDegree < 180) 
+        {   
+            eyeBallLeft.transform.Rotate(RotateSpeed,0,  0);
+            eyeBallRight.transform.Rotate(RotateSpeed,0,  0);
+            RotateDegree += RotateSpeed;
+            yield return null;
+        }
     }
 }
