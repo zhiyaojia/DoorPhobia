@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CubeInteract : Interactable
 {
-    public PianoInteract piano;
+    public PianoInteractable piano;
 
     public override void Interact()
     {
