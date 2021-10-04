@@ -1016,7 +1016,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ERROR
+  m_Text: 1234
 --- !u!222 &2045654321
 CanvasRenderer:
   m_ObjectHideFlags: 0
