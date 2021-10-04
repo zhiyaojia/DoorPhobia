@@ -5,12 +5,14 @@ using UnityEngine;
 public class DoorControl : MonoBehaviour
 {
     private new Animation animation;
+    private DoorInteractable doorInteractable;
     private bool isOpen = false;
     private bool isRight = false;
 
     void Start()
     {
         animation = GetComponent<Animation>();
+        doorInteractable = GetComponentInChildren<DoorInteractable>();
     }
 
     public void PlayerAnimation()
@@ -43,5 +45,10 @@ public class DoorControl : MonoBehaviour
             }
         }
         isOpen = !isOpen;
+    }
+
+    public void StopAnimation()
+    {
+        doorInteractable.StopInteracting();
     }
 }

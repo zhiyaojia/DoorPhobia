@@ -23,11 +23,17 @@ public class MapControl : MonoBehaviour
     private int currHoverIndex = 0;
     private bool isHovering = false;
 
+    private MapInteractable mapInteractable;
+
+    public AnimationControl movableShelf;
+
     private void Awake()
     {
         ColliderList = new List<MeshCollider>();
         stateStatus = new List<bool>();
         stateCandidateNameSet = new HashSet<string>();
+
+        mapInteractable = GetComponentInParent<MapInteractable>();
 
         myCollider = GetComponentInParent<BoxCollider>();
 
@@ -56,7 +62,7 @@ public class MapControl : MonoBehaviour
 
     private void OnDisable()
     {
-        StateList[currHoverIndex].GetComponent<cakeslice.Outline>().OnDisable();
+        StateList[currHoverIndex].GetComponent<cakeslice.Outline>().enabled = false;
         StopCoroutine("Hover");
     }
 
@@ -79,7 +85,8 @@ public class MapControl : MonoBehaviour
                 }
                 if (currentCandidateNumber == correctCandidateNumber)
                 {
-                    print("correct states");
+                    movableShelf.PlayAnimation();
+                    mapInteractable.StopInteracting();
                 }
 
                 StateList[currHoverIndex].GetComponent<MeshRenderer>().material =
@@ -107,8 +114,8 @@ public class MapControl : MonoBehaviour
                             isHovering = true;
                             if (i != currHoverIndex)
                             {
-                                StateList[currHoverIndex].GetComponent<cakeslice.Outline>().OnDisable();
-                                StateList[i].GetComponent<cakeslice.Outline>().OnEnable();
+                                StateList[currHoverIndex].GetComponent<cakeslice.Outline>().enabled = false;
+                                StateList[i].GetComponent<cakeslice.Outline>().enabled = true;
                                 currHoverIndex = i;
                             }
                             break;

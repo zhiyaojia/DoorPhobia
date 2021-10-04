@@ -2185,7 +2185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noConditionNeed: 1
-  maxInteractableDistance: 10
+  maxInteractableDistance: 40
   focusOnView: 1
   focusPointTransform: {fileID: 2699098108240011950}
   canRotateView: 1
@@ -2613,7 +2613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16aef8437525bd643b4fda7c4077fbab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  validStateDistance: 1
+  validStateDistance: 3
   notSelectedMaterial: {fileID: 2100000, guid: 86de5e3f2fa5b2c448dfa392e91e7416, type: 2}
   selectedMaterial: {fileID: 2100000, guid: fe7361157d93c1b4e8c8a6044a311e40, type: 2}
   stateCandidateName:

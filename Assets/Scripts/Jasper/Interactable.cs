@@ -23,8 +23,6 @@ public class Interactable : MonoBehaviour
     protected bool meetInteractCondition = false;
     protected Transform playerCameraTransform;
 
-    protected bool IsIntereacting = false;
-
     public virtual void Start()
     {
         myCollider = GetComponent<Collider>();
@@ -41,14 +39,11 @@ public class Interactable : MonoBehaviour
 
     public void Update()
     {
-        UpdateCondition();
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (focusOnView)
             {
                 StopInteracting();
-                alreadyInteracted = false;
             }
         }
 
@@ -72,7 +67,6 @@ public class Interactable : MonoBehaviour
                 }
                 if (Input.GetMouseButtonDown(0) && alreadyInteracted == false && meetInteractCondition)
                 {
-                    alreadyInteracted = true;
                     Interact();
                 }
             }
@@ -81,7 +75,6 @@ public class Interactable : MonoBehaviour
                 if (alreadyHovered == true)
                 {
                     alreadyHovered = false;
-                    alreadyInteracted = false;
                     PlayerControl.Instance.SetHandIcon(false);
                     PlayerControl.Instance.SetLockIcon(false);
                 }
@@ -91,7 +84,6 @@ public class Interactable : MonoBehaviour
         {
             if (alreadyHovered == true)
             {
-                alreadyInteracted = false;
                 alreadyHovered = false;
                 PlayerControl.Instance.SetHandIcon(false);
                 PlayerControl.Instance.SetLockIcon(false);
@@ -104,20 +96,21 @@ public class Interactable : MonoBehaviour
         meetInteractCondition = true;
     }
 
-    public virtual void UpdateCondition() { }
-
     public virtual void Interact()
     {
         if (focusOnView)
         {
             PlayerControl.Instance.FocusOnObject(focusPointTransform, canRotateView);
         }
-        IsIntereacting = true;
+        alreadyInteracted = true;
     }
 
     public virtual void StopInteracting()
     {
-        PlayerControl.Instance.StopFocusOnObject(canRotateView);
-        IsIntereacting = false;
+        if (focusOnView)
+        {
+            PlayerControl.Instance.StopFocusOnObject(canRotateView);
+        }
+        alreadyInteracted = false;
     }
 }

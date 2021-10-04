@@ -15,7 +15,6 @@ public class MapInteractable : Interactable
     public override void Interact()
     {
         base.Interact();
-        print("interact map");
         mapControl.enabled = true;
     }
 

@@ -8,6 +8,8 @@ public class openNotebookAnimation : MonoBehaviour
     public GameObject rightBookPaper;
     public GameObject leftBookCover;
     public GameObject rightBookCover;
+    public float RotateSpeedCover = 1.1f;
+    public float RotateSpeedPaper = 1f;
     float RotateDegreePaper = 0;
     float RotateDegreeCover = 0;
     float TranslateDistance = 0;
@@ -23,9 +25,6 @@ public class openNotebookAnimation : MonoBehaviour
     }
     IEnumerator openBook()
     {   
-        // 旋转速度
-        float RotateSpeedCover = 1.1f;
-        float RotateSpeedPaper = 1f;
         // 旋转180度
         while (RotateDegreePaper < 85 || RotateDegreeCover < 90) 
         {   

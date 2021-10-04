@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SafeBoxController : MonoBehaviour
+public class AnimationControl : MonoBehaviour
 {
     private Animation anim;
 

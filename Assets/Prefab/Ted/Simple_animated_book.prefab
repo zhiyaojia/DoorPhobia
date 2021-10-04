@@ -353,6 +353,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5640474256247706712}
   - component: {fileID: 4976237730136047134}
+  - component: {fileID: 1567215783}
+  - component: {fileID: 1567215782}
   m_Layer: 0
   m_Name: Simple_animated_book
   m_TagString: Untagged
@@ -391,6 +393,38 @@ MonoBehaviour:
   rightBookPaper: {fileID: 7666873137424470067}
   leftBookCover: {fileID: 5799488343358016743}
   rightBookCover: {fileID: 8486185572572634502}
+  RotateSpeedCover: 0.3
+  RotateSpeedPaper: 0.2
+--- !u!65 &1567215783
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3225342512243699969}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 2.13, z: 2.76}
+  m_Center: {x: 2.64, y: 2.62, z: 0.87}
+--- !u!114 &1567215782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3225342512243699969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fdc895a4dc391e42908289e6466279a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noConditionNeed: 1
+  maxInteractableDistance: 3.5
+  focusOnView: 0
+  focusPointTransform: {fileID: 0}
+  canRotateView: 0
 --- !u!1 &3559737108003469378
 GameObject:
   m_ObjectHideFlags: 0

@@ -81,7 +81,6 @@ public class PlayerControl : MonoBehaviour
 
     public void StopFocusOnObject(bool canRotateView)
     {
-        print("stop");
         if (canRotateView)
         {
             playerMovement.MovementSpeed = playerSpeed;

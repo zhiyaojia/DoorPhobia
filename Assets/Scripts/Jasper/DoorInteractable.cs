@@ -14,6 +14,7 @@ public class DoorInteractable : Interactable
 
     public override void Interact()
     {
+        base.Interact();
         doorControl.PlayerAnimation();
     }
 }
