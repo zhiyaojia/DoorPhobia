@@ -11,12 +11,12 @@ public class PianoControl : MonoBehaviour
     public Text text; // temporal debug
 
     private int CurrentIndex;
-    private PianoInteract pianoInteract;
+    private PianoInteractable pianoInteract;
 
     void Start()
     {
         CurrentIndex = 0;
-        pianoInteract = GetComponent<PianoInteract>();
+        pianoInteract = GetComponent<PianoInteractable>();
     }
 
     void Update()

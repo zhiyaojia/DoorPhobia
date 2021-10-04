@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PianoInteract : Interactable
+public class PianoInteractable : Interactable
 {
     private PianoControl myPianoControl;
 
