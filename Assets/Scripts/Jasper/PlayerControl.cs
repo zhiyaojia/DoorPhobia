@@ -46,7 +46,7 @@ public class PlayerControl : MonoBehaviour
     private void UpdateRay()
     {
         rayFromScreenCenter.origin = playerCamera.ScreenToWorldPoint(new Vector3(0.0f, 0.0f, playerCamera.nearClipPlane));
-        rayFromScreenCenter.direction = transform.forward;
+        rayFromScreenCenter.direction = playerCamera.gameObject.transform.forward;
     }
 
     public void SetHandIcon(bool active)

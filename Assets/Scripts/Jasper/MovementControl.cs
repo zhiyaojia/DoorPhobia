@@ -5,41 +5,39 @@ using UnityEngine;
 public class MovementControl : MonoBehaviour
 {
 	public float MovementSpeed = 1;
-	public float horizontalSpeed = 1f;
-	public float verticalSpeed = 1f;
+	public GameObject camera;
 
 	private CharacterController characterController;
-
-	private float xRotation = 0.0f;
-	private float yRotation = 0.0f;
+	private float currentSpeed;
 
 	void Start()
 	{
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
-
 		characterController = GetComponent<CharacterController>();
-		Vector3 rotation = transform.rotation.eulerAngles;
-		xRotation = rotation.x;
-		yRotation = rotation.y;
+		currentSpeed = MovementSpeed;
 	}
 
 	void Update()
 	{
-		float horizontal = Input.GetAxis("Horizontal") * MovementSpeed;
-		float vertical = Input.GetAxis("Vertical") * MovementSpeed;
-		Vector3 forward = transform.forward;
+		float horizontal = Input.GetAxis("Horizontal") * currentSpeed;
+		float vertical = Input.GetAxis("Vertical") * currentSpeed;
+		Vector3 forward = camera.transform.forward;
 		forward.y = 0.0f;
-		Vector3 right = transform.right;
+		Vector3 right = camera.transform.right;
 		right.y = 0.0f;
 		characterController.Move((right * horizontal + forward * vertical) * Time.deltaTime);
+	}
 
-		float mouseX = Input.GetAxis("Mouse X") * horizontalSpeed;
-		float mouseY = Input.GetAxis("Mouse Y") * verticalSpeed;
+    public void StopMove()
+    {
+		currentSpeed = 0.0f;
+		camera.GetComponent<CameraRotate>().enabled = false;
+    }
 
-		yRotation += mouseX;
-		xRotation -= mouseY;
-		xRotation = Mathf.Clamp(xRotation, -90, 90);
-		transform.eulerAngles = new Vector3(xRotation, yRotation, 0.0f);
+	public void StartMove()
+	{
+		currentSpeed = MovementSpeed;
+		camera.GetComponent<CameraRotate>().enabled = true;
 	}
 }

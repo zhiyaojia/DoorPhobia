@@ -15,12 +15,14 @@ public class MapInteractable : Interactable
     public override void Interact()
     {
         base.Interact();
+        PlayerControl.Instance.FocusOnObject(focusPointTransform, canRotateView);
         mapControl.enabled = true;
     }
 
     public override void StopInteracting()
     {
         base.StopInteracting();
+        PlayerControl.Instance.StopFocusOnObject(canRotateView);
         mapControl.enabled = false;
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WordLock : MonoBehaviour
 {
+    public LockedDoorIntearctable doorInteract;
+
     public GameObject Wheel1;
     public GameObject Wheel2;
     public GameObject Wheel3;
@@ -21,11 +23,6 @@ public class WordLock : MonoBehaviour
     public GameObject Lock;
     string[] PasswordDic = { "A", "B", "C", "D", "E", "F" };
     float RotateDegree = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -86,9 +83,9 @@ public class WordLock : MonoBehaviour
         if (ValidatePassword() == true)
         {
             Unlock();
-            Debug.Log("password correct!");
         }
     }
+
     void LockRotate(GameObject Wheel, bool Direction)
     {
         if (Direction == false)
@@ -100,6 +97,7 @@ public class WordLock : MonoBehaviour
             Wheel.transform.Rotate(60, 0, 0);
         }
     }
+
     bool ValidatePassword()
     {
         if (PasswordDic[Wheel1Num] == PasswordWord1 && PasswordDic[Wheel2Num] == PasswordWord2 && PasswordDic[Wheel3Num] == PasswordWord3)
@@ -110,10 +108,12 @@ public class WordLock : MonoBehaviour
         }
         return false;
     }
+
     void Unlock()
     {
         StartCoroutine("TranslateAndRotateMetal");
     }
+
     IEnumerator TranslateAndRotateMetal()
     {
         float RotateSpeed = -0.001f;
@@ -123,7 +123,9 @@ public class WordLock : MonoBehaviour
             RotateDegree += RotateSpeed;
             yield return null;
         }
+        doorInteract.StopInteracting();
     }
+
     void OutlineCurrentWheel()
     {
         switch (CurrentChosenWheel)
@@ -142,6 +144,7 @@ public class WordLock : MonoBehaviour
                 break;
         }
     }
+
     void TurnOffOutline()
     {
         Wheel1.GetComponent<cakeslice.Outline>().OnDisable();

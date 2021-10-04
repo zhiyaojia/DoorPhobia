@@ -25,6 +25,9 @@ public class LockController : MonoBehaviour
     float RotateDegree = 0;
     float TranslateDistance = 0;
     private LockInteract lockInteract;
+
+    public BookInteract DiaryInteract;
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -147,6 +150,8 @@ public class LockController : MonoBehaviour
             RotateDegree += RotateSpeed;
             yield return null;
         }
+
+        DiaryInteract.StopInteracting();
     }
     // 控制显示当前选中密码盘的outline
     void OutlineCurrentWheel()

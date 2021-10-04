@@ -13,16 +13,12 @@ public class openNotebookAnimation : MonoBehaviour
     float RotateDegreePaper = 0;
     float RotateDegreeCover = 0;
     float TranslateDistance = 0;
-    
-    // Update is called once per frame
-    void Update()
+
+    public void OpenBook()
     {
-        if (Input.GetKeyDown(KeyCode.F)) 
-        {
-            StartCoroutine("openBook");
-        }
-        
+        StartCoroutine("openBook");
     }
+
     IEnumerator openBook()
     {   
         // 旋转180度

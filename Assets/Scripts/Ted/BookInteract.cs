@@ -4,33 +4,48 @@ using UnityEngine;
 
 public class BookInteract : Interactable
 {
-    //粘的LockInteract的，还没搞明白怎么用
-    // public LockInteract padLock;
-    private LockController myLockController;
+    public GameObject ColorLock;
+    public int InspectDiaryBookIndex;
+
+    public Collider closeBookCollider;
+    public Collider openBookCollider;
+
+    private openNotebookAnimation diaryControl;
+    private bool solveLock = false;
 
     private void Start()
     {
         base.Start();
-        myLockController = GetComponent<LockController>();
-        // myLockController.enabled = false;
-        // lockCamera.enabled = false;
+        myCollider = closeBookCollider;
+        diaryControl = GetComponent<openNotebookAnimation>();
     }
 
     public override void Interact()
     {
-        // mainCamera.enabled = false;
-        // lockCamera.enabled = true;
-        myLockController.enabled = true;
         base.Interact();
-        print("Interact with Lock");        
-        
+        if (solveLock == false)
+        {
+            InspectionSystem.Instance.TurnOn();
+            ColorLock.SetActive(true);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+            BagSystemControl.Instance.AddObject(InspectDiaryBookIndex);
+            PlayerControl.Instance.SetHandIcon(false);
+        }
     }
 
     public override void StopInteracting()
     {
         base.StopInteracting();
-        myLockController.enabled = false;
-        // mainCamera.enabled = true;
-        // lockCamera.enabled = false;
+        if (solveLock == false)
+        {
+            InspectionSystem.Instance.TurnOff();
+            ColorLock.SetActive(false);
+            solveLock = true;
+            diaryControl.OpenBook();
+            myCollider = openBookCollider;
+        }
     }
 }

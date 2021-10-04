@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: InspectionVolume Profile
   m_EditorClassIdentifier: 
   settings:
-  - {fileID: 8605801909853621121}
---- !u!114 &8605801909853621121
+  - {fileID: 5924320210749308531}
+--- !u!114 &5924320210749308531
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32,13 +32,13 @@ MonoBehaviour:
     value: 1
   focusDistance:
     overrideState: 1
-    value: 0.1
+    value: 4.4
   aperture:
     overrideState: 1
-    value: 5.2
+    value: 5
   focalLength:
     overrideState: 1
-    value: 50
+    value: 300
   kernelSize:
     overrideState: 1
-    value: 1
+    value: 3

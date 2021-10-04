@@ -20,6 +20,9 @@ public class NewKeyPadController : MonoBehaviour
     public int passwordLimit;
     public string correctPassword;
     public GameObject display;
+
+    public LockedDoorIntearctable doorIntearctable;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +72,7 @@ public class NewKeyPadController : MonoBehaviour
                 {
                     Debug.Log("√‹¬Î’˝»∑£°");
                     display.GetComponent<Text>().color = Color.green;
+                    StartCoroutine(UnlockDoor());
                 }
                 else
                 {
@@ -97,5 +101,11 @@ public class NewKeyPadController : MonoBehaviour
         passwordText = "";
         display.GetComponent<Text>().text = passwordText;
         display.GetComponent<Text>().color = Color.white;
+    }
+
+    IEnumerator UnlockDoor()
+    {
+        yield return new WaitForSeconds(1);
+        doorIntearctable.StopInteracting();
     }
 }

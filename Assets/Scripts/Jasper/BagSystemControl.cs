@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BagSystemControl : MonoBehaviour
 {
-    public GameObject Inspection;
     [Tooltip("Contains all objects player can store in the bag")]
     public List<GameObject> AllObjectsList = new List<GameObject>();
     [Tooltip("Contains current objects index in the bag")]
@@ -25,11 +24,6 @@ public class BagSystemControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    void Start()
-    {
-        
     }
 
     void Update()
@@ -54,26 +48,26 @@ public class BagSystemControl : MonoBehaviour
 
     private void openBag()
     {
+        InspectionSystem.Instance.TurnOn();
+
         bagIsOpening = true;
-        Inspection.SetActive(true);
         if (CurrentObjectIndexList.Count > 0)
         {
             AllObjectsList[CurrentObjectIndexList[0]].SetActive(true);
             currentInspectionObjectIndex = 0;
         }
-        PlayerControl.Instance.playerMovement.enabled = false;
     }
 
     private void closeBag()
     {
+        InspectionSystem.Instance.TurnOff();
+
         bagIsOpening = false;
-        Inspection.SetActive(false);
         if (currentInspectionObjectIndex >= 0)
         {
-            AllObjectsList[currentInspectionObjectIndex].SetActive(false);
+            AllObjectsList[CurrentObjectIndexList[currentInspectionObjectIndex]].SetActive(false);
             currentInspectionObjectIndex = -1;
         }
-        PlayerControl.Instance.playerMovement.enabled = true;
     }
 
     private void changeObj()
