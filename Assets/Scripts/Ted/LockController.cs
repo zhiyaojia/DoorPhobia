@@ -24,12 +24,14 @@ public class LockController : MonoBehaviour
     int Wheel3Num = 0;
     float RotateDegree = 0;
     float TranslateDistance = 0;
+    private LockInteract lockInteract;
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
     /// </summary>
     void Start()
     {
+        lockInteract = GetComponent<LockInteract>();
         // 开始时关闭Outline
         TurnOffOutline();
     }

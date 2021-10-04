@@ -67,11 +67,11 @@ public class RotateController : MonoBehaviour
         // 旋转速度
         float RotateSpeed = 0.0005f;
         // 旋转180度
-        while (ERotateDegree < 180) 
+        while (ERotateDegree < 360) 
         {   
             eyeBallLeft.transform.Rotate(RotateSpeed,0,  0);
             eyeBallRight.transform.Rotate(RotateSpeed,0,  0);
-            RotateDegree += RotateSpeed;
+            ERotateDegree += RotateSpeed;
             yield return null;
         }
     }
