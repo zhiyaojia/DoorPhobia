@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LockInteract : Interactable
+public class BookInteract : Interactable
 {
-    
+    //粘的LockInteract的，还没搞明白怎么用
+    // public LockInteract padLock;
     private LockController myLockController;
-    // public Camera mainCamera;
-    // public Camera lockCamera;
 
     private void Start()
     {

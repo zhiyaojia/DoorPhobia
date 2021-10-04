@@ -75,7 +75,7 @@ namespace cakeslice
 		public Camera sourceCamera;
 		public bool autoEnableOutlines = false;
 
-		[HideInInspector]
+		// [HideInInspector]
 		public Camera outlineCamera;
 		Material outline1Material;
 		Material outline2Material;
