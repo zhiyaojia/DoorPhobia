@@ -41,10 +41,6 @@ public class Interactable : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //if (focusOnView)
-            //{
-            //    StopInteracting();
-            //}
             StopInteracting();
         }
 
@@ -99,19 +95,11 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact()
     {
-        //if (focusOnView)
-        //{
-        //    PlayerControl.Instance.FocusOnObject(focusPointTransform, canRotateView);
-        //}
         alreadyInteracted = true;
     }
 
     public virtual void StopInteracting()
     {
-        //if (focusOnView)
-        //{
-        //    PlayerControl.Instance.StopFocusOnObject(canRotateView);
-        //}
         alreadyInteracted = false;
         alreadyHovered = false;
     }

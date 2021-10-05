@@ -49,6 +49,7 @@ public class BagSystemControl : MonoBehaviour
     private void openBag()
     {
         InspectionSystem.Instance.TurnOn();
+        PlayerControl.Instance.SetCrossHair(false);
 
         bagIsOpening = true;
         if (CurrentObjectIndexList.Count > 0)
@@ -61,6 +62,7 @@ public class BagSystemControl : MonoBehaviour
     private void closeBag()
     {
         InspectionSystem.Instance.TurnOff();
+        PlayerControl.Instance.SetCrossHair(true);
 
         bagIsOpening = false;
         if (currentInspectionObjectIndex >= 0)

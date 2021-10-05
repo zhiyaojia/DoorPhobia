@@ -11,10 +11,14 @@ public class PlayerControl : MonoBehaviour
     public GameObject CrossHair;
     public GameObject HandIcon;
     public GameObject LockIcon;
+    public GameObject Dialogue;
+    public Text DialogueText;
     [HideInInspector] public Camera playerCamera;
     [HideInInspector] public Ray rayFromScreenCenter;
     [HideInInspector] public MovementControl playerMovement;
+
     private float playerSpeed;
+    private IEnumerator showDialogueCouroutine = null;
 
     public static PlayerControl Instance { get; set; }
 
@@ -45,8 +49,9 @@ public class PlayerControl : MonoBehaviour
 
     private void UpdateRay()
     {
-        rayFromScreenCenter.origin = playerCamera.ScreenToWorldPoint(new Vector3(0.0f, 0.0f, playerCamera.nearClipPlane));
-        rayFromScreenCenter.direction = playerCamera.gameObject.transform.forward;
+        rayFromScreenCenter.origin = playerCamera.transform.position;
+        rayFromScreenCenter.direction = playerCamera.transform.forward;
+        Debug.DrawRay(rayFromScreenCenter.origin, rayFromScreenCenter.direction * 10.0f, Color.red);
     }
 
     public void SetHandIcon(bool active)
@@ -59,6 +64,31 @@ public class PlayerControl : MonoBehaviour
         LockIcon.SetActive(active);
     }
 
+    public void SetCrossHair(bool active)
+    {
+        CrossHair.SetActive(active);
+    }
+
+    public void ShowDialogue(string mes)
+    {
+        if (showDialogueCouroutine != null)
+        {
+            StopCoroutine(showDialogueCouroutine);
+        }
+        showDialogueCouroutine = TurnOnDialogue(mes);
+        StartCoroutine(showDialogueCouroutine);
+    }
+
+    IEnumerator TurnOnDialogue(string mes)
+    {
+        DialogueText.text = mes;
+        Dialogue.SetActive(true);
+
+        yield return new WaitForSeconds(3);
+
+        Dialogue.SetActive(false);
+    }
+
     // This function can make camera focus on the interacting object
     public void FocusOnObject(Transform focusTransform, bool canRotateView)
     {
@@ -69,7 +99,6 @@ public class PlayerControl : MonoBehaviour
         else
         {
             playerCamera.enabled = false;
-            //playerMovement.enabled = false;
             focusCamera.SetActive(true);
             focusCamera.transform.position = focusTransform.position;
             focusCamera.transform.rotation = focusTransform.rotation;
