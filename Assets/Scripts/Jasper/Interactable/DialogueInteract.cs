@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DialogueInteract : Interactable
 {
-    [TextArea] public string message;
-
     public override void Interact()
     {
         base.Interact();

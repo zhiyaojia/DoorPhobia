@@ -96,8 +96,9 @@ public class BagSystemControl : MonoBehaviour
         }
     }
 
-    public void AddObject(int index)
+    public void AddObject(int index, bool dialoguePadding = false)
     {
         CurrentObjectIndexList.Add(index);
+        PlayerControl.Instance.ShowBagInfo(AllObjectsList[index].name, dialoguePadding);
     }
 }

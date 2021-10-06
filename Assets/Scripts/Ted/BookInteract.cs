@@ -11,7 +11,6 @@ public class BookInteract : Interactable
     public Collider openBookCollider;
 
     private openNotebookAnimation diaryControl;
-    private bool solveLock = false;
 
     private void Start()
     {
@@ -23,7 +22,7 @@ public class BookInteract : Interactable
     public override void Interact()
     {
         base.Interact();
-        if (solveLock == false)
+        if (solvedPreLock == false)
         {
             InspectionSystem.Instance.TurnOn();
             ColorLock.SetActive(true);
@@ -39,11 +38,11 @@ public class BookInteract : Interactable
     public override void StopInteracting()
     {
         base.StopInteracting();
-        if (solveLock == false)
+        if (solvedPreLock == false)
         {
             InspectionSystem.Instance.TurnOff();
             ColorLock.SetActive(false);
-            solveLock = true;
+            solvedPreLock = true;
             diaryControl.OpenBook();
             myCollider = openBookCollider;
         }

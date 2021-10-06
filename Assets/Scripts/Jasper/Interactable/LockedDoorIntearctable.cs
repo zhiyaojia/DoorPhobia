@@ -7,7 +7,6 @@ public class LockedDoorIntearctable : Interactable
     public GameObject DoorLock;
 
     private DoorControl doorControl;
-    private bool solveLock = false;
 
     private void Start()
     {
@@ -18,7 +17,7 @@ public class LockedDoorIntearctable : Interactable
     public override void Interact()
     {
         base.Interact();
-        if (solveLock == false)
+        if (solvedPreLock == false)
         {
             InspectionSystem.Instance.TurnOn();
             DoorLock.SetActive(true);
@@ -32,11 +31,11 @@ public class LockedDoorIntearctable : Interactable
     public override void StopInteracting()
     {
         base.StopInteracting();
-        if (solveLock == false)
+        if (solvedPreLock == false)
         {
             InspectionSystem.Instance.TurnOff();
             DoorLock.SetActive(false);
-            solveLock = true;
+            solvedPreLock = true;
         }
     }
 }

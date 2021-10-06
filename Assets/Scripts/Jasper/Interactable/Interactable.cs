@@ -6,9 +6,17 @@ public class Interactable : MonoBehaviour
 {
     [Tooltip("Check this box if you want this object to be directly interacted without any condition")]
     public bool noConditionNeed = false;
+    //[Tooltip("Uncheck this box if this object needs to be unlocked before real interaction")]
+    protected bool solvedPreLock = false;
 
     [Tooltip("Max distance that player can interact with this object")]
     public float maxInteractableDistance = 3.5f;
+
+    public bool needDialogue = false;
+    [ConditionalHide("needDialogue", true)] [TextArea]
+    public string message;
+    [ConditionalHide("needDialogue", true)]
+    public bool onlyShowWhenLocked = false;
 
     protected Collider myCollider;
     protected bool alreadyInteracted = false;
@@ -57,7 +65,17 @@ public class Interactable : MonoBehaviour
                 }
                 if (Input.GetMouseButtonDown(0) && alreadyInteracted == false && meetInteractCondition)
                 {
-                    Interact();
+                    if (alreadyInteracted == false && meetInteractCondition)
+                    {
+                        Interact();
+                    }
+                    if (needDialogue)
+                    {
+                        if ((onlyShowWhenLocked && meetInteractCondition == false) || onlyShowWhenLocked == false && solvedPreLock == false)
+                        {
+                            PlayerControl.Instance.ShowDialogue(message);
+                        }
+                    }
                 }
             }
             else

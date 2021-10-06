@@ -277,12 +277,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7294760794503042815}
-  - component: {fileID: 7294760794503042813}
-  - component: {fileID: 7294760794503042810}
   - component: {fileID: 1507364068131929765}
   - component: {fileID: 4111752888350705346}
-  - component: {fileID: 1936500755}
   - component: {fileID: 950281994}
+  - component: {fileID: 7294760794503042813}
+  - component: {fileID: 7294760794503042810}
+  - component: {fileID: 2547082257108010766}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -306,38 +306,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7294760794503042813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7294760794503042801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2854e159e85c8344ae2b33510778d87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MovementSpeed: 30
-  camera: {fileID: 7294760794340078697}
---- !u!114 &7294760794503042810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7294760794503042801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2370b248fb18aa6489dba1323c557509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  focusCamera: {fileID: 0}
-  CrossHair: {fileID: 7294760794251474471}
-  HandIcon: {fileID: 7294760794825452178}
-  LockIcon: {fileID: 7294760795405638910}
-  playerCamera: {fileID: 0}
-  playerMovement: {fileID: 0}
 --- !u!33 &1507364068131929765
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -387,22 +355,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &1936500755
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7294760794503042801}
-  serializedVersion: 2
-  m_Mass: 100
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!143 &950281994
 CharacterController:
   m_ObjectHideFlags: 0
@@ -421,6 +373,58 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7294760794503042813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7294760794503042801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2854e159e85c8344ae2b33510778d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementSpeed: 30
+  camera: {fileID: 7294760794340078697}
+--- !u!114 &7294760794503042810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7294760794503042801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2370b248fb18aa6489dba1323c557509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  focusCamera: {fileID: 0}
+  CrossHair: {fileID: 7294760794251474471}
+  HandIcon: {fileID: 7294760794825452178}
+  LockIcon: {fileID: 7294760795405638910}
+  playerCamera: {fileID: 0}
+  playerMovement: {fileID: 0}
+--- !u!114 &2547082257108010766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7294760794503042801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fad7b671e0e8164cabde48c8136425a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialogue: {fileID: 0}
+  DialogueBox: {fileID: 0}
+  DialogueText: {fileID: 0}
+  DialogueMessageLifeTime: 0
+  BagInfo: {fileID: 0}
+  BagInfoBox: {fileID: 0}
+  BagInfoText: {fileID: 0}
+  BagInfoMessageLifeTime: 0
 --- !u!1 &7294760794825452178
 GameObject:
   m_ObjectHideFlags: 0

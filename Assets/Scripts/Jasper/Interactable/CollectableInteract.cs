@@ -9,7 +9,7 @@ public class CollectableInteract : Interactable
     public override void Interact()
     {
         gameObject.SetActive(false);
-        BagSystemControl.Instance.AddObject(BagIndex);
+        BagSystemControl.Instance.AddObject(BagIndex, needDialogue);
         PlayerControl.Instance.SetHandIcon(false);
     }
 }

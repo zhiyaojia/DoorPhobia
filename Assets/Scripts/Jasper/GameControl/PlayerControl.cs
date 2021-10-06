@@ -7,18 +7,19 @@ public class PlayerControl : MonoBehaviour
 {
     [Header("Interactable Setting")]
     public GameObject focusCamera;
-    [Header("Interactable UI")]
+
+    [Header("Interactable Icon")]
     public GameObject CrossHair;
     public GameObject HandIcon;
     public GameObject LockIcon;
-    public GameObject Dialogue;
-    public Text DialogueText;
+
     [HideInInspector] public Camera playerCamera;
     [HideInInspector] public Ray rayFromScreenCenter;
     [HideInInspector] public MovementControl playerMovement;
 
     private float playerSpeed;
-    private IEnumerator showDialogueCouroutine = null;
+
+    private PlayerUIControl UIControl;
 
     public static PlayerControl Instance { get; set; }
 
@@ -40,6 +41,7 @@ public class PlayerControl : MonoBehaviour
         rayFromScreenCenter = new Ray(Vector3.zero, Vector3.up);
         playerCamera = GetComponentInChildren<Camera>();
         playerSpeed = playerMovement.MovementSpeed;
+        UIControl = GetComponent<PlayerUIControl>();
     }
 
     void Update()
@@ -71,22 +73,12 @@ public class PlayerControl : MonoBehaviour
 
     public void ShowDialogue(string mes)
     {
-        if (showDialogueCouroutine != null)
-        {
-            StopCoroutine(showDialogueCouroutine);
-        }
-        showDialogueCouroutine = TurnOnDialogue(mes);
-        StartCoroutine(showDialogueCouroutine);
+        UIControl.ShowDialogue(mes);
     }
 
-    IEnumerator TurnOnDialogue(string mes)
+    public void ShowBagInfo(string mes, bool afterDialogue)
     {
-        DialogueText.text = mes;
-        Dialogue.SetActive(true);
-
-        yield return new WaitForSeconds(3);
-
-        Dialogue.SetActive(false);
+        UIControl.ShowBagInfo(mes, afterDialogue? UIControl.DialogueMessageLifeTime:0.0f);
     }
 
     // This function can make camera focus on the interacting object
