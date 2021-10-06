@@ -25,6 +25,7 @@ namespace BigBlit.Keypads
         [SerializeField] NumPad _numPad;
         [SerializeField] NumpadText _numPadText;
 
+        private NumPadLockControl padControl;
 
         private float _blinkAge;
         private bool _isPrompt;
@@ -41,6 +42,12 @@ namespace BigBlit.Keypads
                     _numPad.RegisterValueChangedListener(onNumPadValueChanged);
             }
         }
+
+        public void UpdatePassword(string text)
+        {
+            _numPadText.Text = text;
+        }
+
         #endregion
 
         #region UNITY EVENTS
@@ -62,6 +69,7 @@ namespace BigBlit.Keypads
             if (_numPadText == null)
                 _numPadText = GetComponent<NumpadText>();
 
+            padControl = GetComponent<NumPadLockControl>();
         }
 
         protected override void OnEnable() {
@@ -98,20 +106,22 @@ namespace BigBlit.Keypads
             if (_numPad == null || _numPadText == null)
                 return;
 
-            _numPadText.CellsNum = _numPad.MaxLength;
+            _numPadText.CellsNum = padControl.passwordLimit;
+            _numPadText.Text = padControl.passwordText;
 
-            if (_showPassword) {
-                _numPadText.Text = _numPad.Value;
-            }
-            else {
-                if (string.IsNullOrEmpty(_maskChar)) {
-                    _maskChar = "*";
-                }
-                _numPadText.Text = new string(_maskChar[0], _numPad.Value.Length);
-            }
+            //if (_showPassword) {
+            //    _numPadText.Text = _numPad.Value;
+            //}
+            //else {
+            //    if (string.IsNullOrEmpty(_maskChar)) {
+            //        _maskChar = "*";
+            //    }
+            //    _numPadText.Text = new string(_maskChar[0], _numPad.Value.Length);
+            //}
 
 
-            if (_isPrompt && _showPrompt && _numPadText.CellsNum > _numPadText.Text.Length) {
+            if (_isPrompt && _showPrompt && 4 > _numPadText.Text.Length) 
+            {
                 _numPadText.Text += _promptChar;
             }
         }

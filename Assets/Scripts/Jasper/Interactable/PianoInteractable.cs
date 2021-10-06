@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PianoInteractable : Interactable
 {
+    public Transform focusPointTransform;
     private PianoControl myPianoControl;
 
     private void Start()
@@ -15,13 +16,14 @@ public class PianoInteractable : Interactable
     public override void Interact()
     {
         base.Interact();
-        print("Interact with Piano");
+        PlayerControl.Instance.FocusOnObject(focusPointTransform, false);
         myPianoControl.enabled = true;
     }
 
     public override void StopInteracting()
     {
         base.StopInteracting();
+        PlayerControl.Instance.StopFocusOnObject(false);
         myPianoControl.enabled = false;
     }
 }

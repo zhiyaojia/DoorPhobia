@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class MapInteractable : Interactable
 {
+    [ConditionalHide("focusOnView", true)]
+    public Transform focusPointTransform;
+    [ConditionalHide("Nothing but freeze player's movement", true)]
+    public bool canRotateView = false;
+
     private MapControl mapControl;
 
     void Start()

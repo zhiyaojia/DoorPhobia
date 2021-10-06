@@ -41,7 +41,7 @@ namespace cakeslice
 				  }
 		#endif */
 
-		public static OutlineEffect Instance { get; private set; }
+		//public static OutlineEffect Instance { get; private set; }
 
 		private readonly LinkedSet<Outline> outlines = new LinkedSet<Outline>();
 
@@ -120,13 +120,13 @@ namespace cakeslice
 
 		private void Awake()
 		{
-			if (Instance != null)
-			{
-				Destroy(this);
-				throw new System.Exception("you can only have one outline camera in the scene");
-			}
+			//if (Instance != null)
+			//{
+			//	Destroy(this);
+			//	throw new System.Exception("you can only have one outline camera in the scene");
+			//}
 
-			Instance = this;
+			//Instance = this;
 		}
 
 		void Start()

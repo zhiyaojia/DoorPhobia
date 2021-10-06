@@ -10,13 +10,6 @@ public class Interactable : MonoBehaviour
     [Tooltip("Max distance that player can interact with this object")]
     public float maxInteractableDistance = 3.5f;
 
-    [Tooltip("Check this box if you want to change the view when interacting with this object")]
-    public bool focusOnView = false;
-    [ConditionalHide("focusOnView", true)]
-    public Transform focusPointTransform;
-    [ConditionalHide("Nothing but freeze player's movement", true)]
-    public bool canRotateView = false;
-
     protected Collider myCollider;
     protected bool alreadyInteracted = false;
     protected bool alreadyHovered = false;
@@ -48,7 +41,7 @@ public class Interactable : MonoBehaviour
         if (distanceWithPlayer < maxInteractableDistance)
         {
             RaycastHit hit;
-            if (myCollider.Raycast(PlayerControl.Instance.rayFromScreenCenter, out hit, maxInteractableDistance))
+            if (myCollider.Raycast(PlayerControl.Instance.rayFromScreenCenter, out hit, maxInteractableDistance * 3.0f))
             {
                 if (alreadyHovered == false)
                 {
