@@ -83,6 +83,7 @@ public class NumPadLockControl : MonoBehaviour
 
     IEnumerator Pass()
     {
+        releaseKey(correctPassword[correctPassword.Length - 1] - 48);
         yield return new WaitForSeconds(0.75f);
         passwordText = "PASS";
         textController.UpdatePassword(passwordText);
