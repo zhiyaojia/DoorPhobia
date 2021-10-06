@@ -35,9 +35,9 @@ public class BookInteract : Interactable
         }
     }
 
-    public override void StopInteracting()
+    public override void FinishInteracting()
     {
-        base.StopInteracting();
+        base.FinishInteracting();
         if (solvedPreLock == false)
         {
             InspectionSystem.Instance.TurnOff();
@@ -45,6 +45,16 @@ public class BookInteract : Interactable
             solvedPreLock = true;
             diaryControl.OpenBook();
             myCollider = openBookCollider;
+        }
+    }
+
+    public override void QuitInteracting()
+    {
+        base.QuitInteracting();
+        if (solvedPreLock == false)
+        {
+            InspectionSystem.Instance.TurnOff();
+            ColorLock.SetActive(false);
         }
     }
 }

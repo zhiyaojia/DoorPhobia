@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class NunPaintingControl : MonoBehaviour
 {
-    private AnimationControl anim;
+    private Animation anim;
     private Collider myCollider;
 
     void Start()
     {
-        anim = GetComponent<AnimationControl>();
+        anim = GetComponent<Animation>();
         myCollider = GetComponent<Collider>();
     }
 
@@ -18,7 +18,7 @@ public class NunPaintingControl : MonoBehaviour
         if (other.gameObject.name == "Player")
         {
             myCollider.enabled = false;
-            anim.PlayAnimation();
+            anim.Play();
         }
     }
 }

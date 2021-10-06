@@ -9,6 +9,8 @@ public class Drag : MonoBehaviour
     [ConditionalHide("fixPivot", true)]
     public Transform pivotTransform;
 
+    public float LightIntensity = 1.0f;
+
     private Vector3 lastPos, currPos;
     private float rotationSpeed = -0.2f;
     private Vector3 pivotPosition;
@@ -28,6 +30,12 @@ public class Drag : MonoBehaviour
             transform.RotateAround(pivotPosition, Vector3.up, offset.x * rotationSpeed);
             transform.RotateAround(pivotPosition, Vector3.forward, offset.y * -rotationSpeed);
         }
+        lastPos = Input.mousePosition;
+    }
+
+    private void OnEnable()
+    {
+        InspectionSystem.Instance.light.GetComponent<Light>().intensity = LightIntensity;
         lastPos = Input.mousePosition;
     }
 }

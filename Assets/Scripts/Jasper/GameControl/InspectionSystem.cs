@@ -10,6 +10,7 @@ public class InspectionSystem : MonoBehaviour
     public GameObject light;
 
     public static InspectionSystem Instance { get; set; }
+    private bool handIconActive = false;
 
     void Awake()
     {
@@ -31,6 +32,7 @@ public class InspectionSystem : MonoBehaviour
         camera.SetActive(true);
         volume.SetActive(true);
         light.SetActive(true);
+        handIconActive = PlayerControl.Instance.IsHandIconActive();
         PlayerControl.Instance.SetHandIcon(false);
     }
 
@@ -42,5 +44,6 @@ public class InspectionSystem : MonoBehaviour
         camera.SetActive(false);
         volume.SetActive(false);
         light.SetActive(false);
+        PlayerControl.Instance.SetHandIcon(handIconActive);
     }
 }

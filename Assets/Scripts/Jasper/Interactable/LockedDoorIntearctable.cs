@@ -28,14 +28,24 @@ public class LockedDoorIntearctable : Interactable
         }
     }
 
-    public override void StopInteracting()
+    public override void FinishInteracting()
     {
-        base.StopInteracting();
+        base.FinishInteracting();
         if (solvedPreLock == false)
         {
             InspectionSystem.Instance.TurnOff();
             DoorLock.SetActive(false);
             solvedPreLock = true;
+        }
+    }
+
+    public override void QuitInteracting()
+    {
+        base.QuitInteracting();
+        if (solvedPreLock == false)
+        {
+            InspectionSystem.Instance.TurnOff();
+            DoorLock.SetActive(false);
         }
     }
 }

@@ -20,10 +20,10 @@ public class PianoInteractable : Interactable
         myPianoControl.enabled = true;
     }
 
-    public override void StopInteracting()
+    public override void FinishInteracting()
     {
-        base.StopInteracting();
-        PlayerControl.Instance.StopFocusOnObject(false);
+        base.FinishInteracting();
+        PlayerControl.Instance.StopFocusOnObject();
         myPianoControl.enabled = false;
     }
 }

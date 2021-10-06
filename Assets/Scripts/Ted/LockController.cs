@@ -28,6 +28,9 @@ public class LockController : MonoBehaviour
 
     public BookInteract DiaryInteract;
 
+    private bool solved = false;
+    private Animation anim;
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -35,76 +38,80 @@ public class LockController : MonoBehaviour
     void Start()
     {
         lockInteract = GetComponent<LockInteract>();
+        anim = GetComponent<Animation>();
         // 开始时关闭Outline
         TurnOffOutline();
     }
     // Update is called once per frame
     void Update()
-    {    
-        // 将当前选中的密码盘显示Outline
-        OutlineCurrentWheel();
-        // WS键控制上下选择密码盘
-        if (Input.GetKeyDown(KeyCode.W))
+    {
+        if (solved == false)
         {
-            CurrentChosenWheel--;
-            if (CurrentChosenWheel < 0) CurrentChosenWheel = 2;
-        }        
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            CurrentChosenWheel++;
-            if (CurrentChosenWheel > 2) CurrentChosenWheel = 0;
-        }     
-        // AD控制左右   
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            switch (CurrentChosenWheel)
+            // 将当前选中的密码盘显示Outline
+            OutlineCurrentWheel();
+            // WS键控制上下选择密码盘
+            if (Input.GetKeyDown(KeyCode.W))
             {
-                case 0:
-                    // Wheel1.GetComponent<cakeslice.Outline>().OnEnable();
-                    // 旋转密码盘
-                    LockRotate(Wheel1, true);
-                    Wheel1Num--;
-                    if (Wheel1Num < 0) Wheel1Num = 9;
-                    break;
-                case 1:
-                    // Wheel2.GetComponent<cakeslice.Outline>().OnEnable();
-                    LockRotate(Wheel2, true);
-                    Wheel2Num--;
-                    if (Wheel2Num < 0) Wheel2Num = 9;
-                    break;
-                case 2:
-                    // Wheel3.GetComponent<cakeslice.Outline>().OnEnable();
-                    LockRotate(Wheel3, true);
-                    Wheel3Num--;
-                    if (Wheel3Num < 0) Wheel3Num = 9;
-                    break; 
+                CurrentChosenWheel--;
+                if (CurrentChosenWheel < 0) CurrentChosenWheel = 2;
             }
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            switch (CurrentChosenWheel)
+            if (Input.GetKeyDown(KeyCode.S))
             {
-                case 0:
-                    LockRotate(Wheel1, false);
-                    Wheel1Num++;
-                    if (Wheel1Num > 9) Wheel1Num = 0;
-                    break;
-                case 1:
-                    LockRotate(Wheel2, false);
-                    Wheel2Num++;
-                    if (Wheel2Num > 9) Wheel2Num = 0;
-                    break;
-                case 2:
-                    LockRotate(Wheel3, false);
-                    Wheel3Num++;
-                    if (Wheel3Num > 9) Wheel3Num = 0;
-                    break; 
+                CurrentChosenWheel++;
+                if (CurrentChosenWheel > 2) CurrentChosenWheel = 0;
             }
-        }
-        // 如果当前密码有效，开锁
-        if (ValidatePassword() == true) 
-        {
-            Unlock();
+            // AD控制左右   
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                switch (CurrentChosenWheel)
+                {
+                    case 0:
+                        // Wheel1.GetComponent<cakeslice.Outline>().OnEnable();
+                        // 旋转密码盘
+                        LockRotate(Wheel1, true);
+                        Wheel1Num--;
+                        if (Wheel1Num < 0) Wheel1Num = 9;
+                        break;
+                    case 1:
+                        // Wheel2.GetComponent<cakeslice.Outline>().OnEnable();
+                        LockRotate(Wheel2, true);
+                        Wheel2Num--;
+                        if (Wheel2Num < 0) Wheel2Num = 9;
+                        break;
+                    case 2:
+                        // Wheel3.GetComponent<cakeslice.Outline>().OnEnable();
+                        LockRotate(Wheel3, true);
+                        Wheel3Num--;
+                        if (Wheel3Num < 0) Wheel3Num = 9;
+                        break;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                switch (CurrentChosenWheel)
+                {
+                    case 0:
+                        LockRotate(Wheel1, false);
+                        Wheel1Num++;
+                        if (Wheel1Num > 9) Wheel1Num = 0;
+                        break;
+                    case 1:
+                        LockRotate(Wheel2, false);
+                        Wheel2Num++;
+                        if (Wheel2Num > 9) Wheel2Num = 0;
+                        break;
+                    case 2:
+                        LockRotate(Wheel3, false);
+                        Wheel3Num++;
+                        if (Wheel3Num > 9) Wheel3Num = 0;
+                        break;
+                }
+            }
+            // 如果当前密码有效，开锁
+            if (ValidatePassword() == true)
+            {
+                Unlock();
+            }
         }
     }
     // 将密码盘每次旋转36度
@@ -125,33 +132,27 @@ public class LockController : MonoBehaviour
         if (Wheel1Num == PasswordDigit1 && Wheel2Num == PasswordDigit2 && Wheel3Num == PasswordDigit3) 
         {
             return true;
-            // Debug.Log("CurrentChosenWheel:" + CurrentChosenWheel);
-            // Debug.Log("Correct");
         }
         return false;
     }
+
     void Unlock()
     {
+        solved = true;
+        TurnOffOutline();
         StartCoroutine("TranslateAndRotateMetal");
     }
+
     // 控制开锁动画，将metalpiece上移并旋转
     IEnumerator TranslateAndRotateMetal()
-    {   
-        while (TranslateDistance < 0.01f) {
-            MetalPiece.transform.Translate(0, 0.0001f, 0);
-            TranslateDistance += 0.0001f;
-            yield return null;
-        }
-        
-        float RotateSpeed = 0.001f;        
-        while (RotateDegree < 180) 
-        {
-            MetalPiece.transform.Rotate(0, RotateSpeed, 0);
-            RotateDegree += RotateSpeed;
-            yield return null;
-        }
+    {
+        anim.Play();
+        DiaryInteract.canQuit = false;
 
-        DiaryInteract.StopInteracting();
+        yield return new WaitForSeconds(anim.GetClip("unlock").length + 0.5f);
+
+        DiaryInteract.canQuit = true;
+        DiaryInteract.FinishInteracting();
     }
     // 控制显示当前选中密码盘的outline
     void OutlineCurrentWheel()

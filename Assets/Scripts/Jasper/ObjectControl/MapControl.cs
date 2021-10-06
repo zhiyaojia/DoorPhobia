@@ -25,7 +25,7 @@ public class MapControl : MonoBehaviour
 
     private MapInteractable mapInteractable;
 
-    public AnimationControl movableShelf;
+    public Animation movableShelf;
 
     private void Awake()
     {
@@ -85,8 +85,8 @@ public class MapControl : MonoBehaviour
                 }
                 if (currentCandidateNumber == correctCandidateNumber)
                 {
-                    movableShelf.PlayAnimation();
-                    mapInteractable.StopInteracting();
+                    movableShelf.Play();
+                    mapInteractable.FinishInteracting();
                 }
 
                 StateList[currHoverIndex].GetComponent<MeshRenderer>().material =

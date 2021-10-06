@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class MapInteractable : Interactable
 {
-    [ConditionalHide("focusOnView", true)]
     public Transform focusPointTransform;
-    [ConditionalHide("Nothing but freeze player's movement", true)]
-    public bool canRotateView = false;
 
     private MapControl mapControl;
 
@@ -20,14 +17,21 @@ public class MapInteractable : Interactable
     public override void Interact()
     {
         base.Interact();
-        PlayerControl.Instance.FocusOnObject(focusPointTransform, canRotateView);
+        PlayerControl.Instance.FocusOnObject(focusPointTransform, true);
         mapControl.enabled = true;
     }
 
-    public override void StopInteracting()
+    public override void FinishInteracting()
     {
-        base.StopInteracting();
-        PlayerControl.Instance.StopFocusOnObject(canRotateView);
+        base.FinishInteracting();
+        PlayerControl.Instance.StopFocusOnObject();
+        mapControl.enabled = false;
+    }
+
+    public override void QuitInteracting()
+    {
+        base.QuitInteracting();
+        PlayerControl.Instance.StopFocusOnObject();
         mapControl.enabled = false;
     }
 }

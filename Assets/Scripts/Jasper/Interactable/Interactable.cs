@@ -24,6 +24,8 @@ public class Interactable : MonoBehaviour
     protected bool meetInteractCondition = false;
     protected Transform playerCameraTransform;
 
+    [HideInInspector]public bool canQuit = true;
+
     public virtual void Start()
     {
         myCollider = GetComponent<Collider>();
@@ -40,11 +42,6 @@ public class Interactable : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StopInteracting();
-        }
-
         float distanceWithPlayer = Vector3.Distance(PlayerControl.Instance.transform.position, transform.position);
         if (distanceWithPlayer < maxInteractableDistance)
         {
@@ -63,9 +60,9 @@ public class Interactable : MonoBehaviour
                         PlayerControl.Instance.SetLockIcon(true);
                     }
                 }
-                if (Input.GetMouseButtonDown(0) && alreadyInteracted == false && meetInteractCondition)
+                if (Input.GetMouseButtonDown(0) && alreadyInteracted == false && InspectionSystem.Instance.light.activeInHierarchy == false)
                 {
-                    if (alreadyInteracted == false && meetInteractCondition)
+                    if (meetInteractCondition)
                     {
                         Interact();
                     }
@@ -86,6 +83,11 @@ public class Interactable : MonoBehaviour
                     PlayerControl.Instance.SetHandIcon(false);
                     PlayerControl.Instance.SetLockIcon(false);
                 }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && alreadyInteracted == true && canQuit == true)
+            {
+                QuitInteracting();
             }
         }
         else
@@ -109,7 +111,13 @@ public class Interactable : MonoBehaviour
         alreadyInteracted = true;
     }
 
-    public virtual void StopInteracting()
+    public virtual void FinishInteracting() // This is called when finish puzzle
+    {
+        alreadyInteracted = false;
+        alreadyHovered = false;
+    }
+
+    public virtual void QuitInteracting() // This is called when press space
     {
         alreadyInteracted = false;
         alreadyHovered = false;

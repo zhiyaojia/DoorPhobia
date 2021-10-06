@@ -106,6 +106,6 @@ public class NewKeyPadController : MonoBehaviour
     IEnumerator UnlockDoor()
     {
         yield return new WaitForSeconds(1);
-        doorIntearctable.StopInteracting();
+        doorIntearctable.FinishInteracting();
     }
 }

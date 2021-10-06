@@ -49,6 +49,6 @@ public class DoorControl : MonoBehaviour
 
     public void StopAnimation()
     {
-        doorInteractable.StopInteracting();
+        doorInteractable.FinishInteracting();
     }
 }

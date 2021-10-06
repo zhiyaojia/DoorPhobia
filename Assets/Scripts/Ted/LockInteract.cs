@@ -27,9 +27,9 @@ public class LockInteract : Interactable
         
     }
 
-    public override void StopInteracting()
+    public override void FinishInteracting()
     {
-        base.StopInteracting();
+        base.FinishInteracting();
         myLockController.enabled = false;
         // mainCamera.enabled = true;
         // lockCamera.enabled = false;

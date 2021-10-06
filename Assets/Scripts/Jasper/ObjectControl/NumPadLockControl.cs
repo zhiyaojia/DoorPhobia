@@ -86,8 +86,8 @@ public class NumPadLockControl : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
         passwordText = "PASS";
         textController.UpdatePassword(passwordText);
-        yield return new WaitForSeconds(2);
-        doorIntearctable.StopInteracting();
+        yield return new WaitForSeconds(1);
+        doorIntearctable.FinishInteracting();
     }
 
     IEnumerator Fail()
@@ -95,7 +95,7 @@ public class NumPadLockControl : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
         passwordText = "FAIL";
         textController.UpdatePassword(passwordText);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         Clear();
     }
 }
