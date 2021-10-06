@@ -55,6 +55,7 @@ public class NumPadLockControl : MonoBehaviour
 
             if (passwordText.Length == 4)
             {
+                releaseKey(passwordText[3] - 48);
                 pauseKeyDown = true;
                 if (passwordText == correctPassword)
                 {
@@ -83,7 +84,6 @@ public class NumPadLockControl : MonoBehaviour
 
     IEnumerator Pass()
     {
-        releaseKey(correctPassword[correctPassword.Length - 1] - 48);
         yield return new WaitForSeconds(0.75f);
         passwordText = "PASS";
         textController.UpdatePassword(passwordText);
