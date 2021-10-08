@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 4976237730136047134}
   - component: {fileID: 1567215783}
   - component: {fileID: 1567215782}
+  - component: {fileID: 2245171788980713505}
   m_Layer: 0
   m_Name: Simple_animated_book
   m_TagString: Untagged
@@ -369,14 +370,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3225342512243699969}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.82, y: -2.45, z: 0.39}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -4.899504, y: -2.5299995, z: 0.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6037675526075367626}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!114 &4976237730136047134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,12 +390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0cb8acd5bfb394e97bfd72b3fb295e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftBookPaper: {fileID: 1151805514685541950}
-  rightBookPaper: {fileID: 7666873137424470067}
-  leftBookCover: {fileID: 5799488343358016743}
-  rightBookCover: {fileID: 8486185572572634502}
-  RotateSpeedCover: 0.3
-  RotateSpeedPaper: 0.2
 --- !u!65 &1567215783
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -422,9 +417,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noConditionNeed: 1
   maxInteractableDistance: 3.5
-  focusOnView: 0
-  focusPointTransform: {fileID: 0}
-  canRotateView: 0
+  needDialogue: 0
+  message: 
+  onlyShowWhenLocked: 0
+  canQuit: 1
+  ColorLock: {fileID: 0}
+  InspectDiaryBookIndex: 0
+  closeBookCollider: {fileID: 0}
+  openBookCollider: {fileID: 0}
+--- !u!111 &2245171788980713505
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3225342512243699969}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 7f79fab1892aa704f8a46d7a703a7129, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 7f79fab1892aa704f8a46d7a703a7129, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &3559737108003469378
 GameObject:
   m_ObjectHideFlags: 0

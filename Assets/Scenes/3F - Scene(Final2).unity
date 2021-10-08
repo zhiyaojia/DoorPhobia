@@ -3296,6 +3296,10 @@ PrefabInstance:
       propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1678523425167060376, guid: 0da264de6e8f50d4797bab9a7185e1d4, type: 3}
+      propertyPath: m_PlayAutomatically
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1750127565393684412, guid: 0da264de6e8f50d4797bab9a7185e1d4, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
