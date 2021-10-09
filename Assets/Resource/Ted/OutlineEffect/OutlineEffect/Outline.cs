@@ -37,6 +37,7 @@ namespace cakeslice
 		public SkinnedMeshRenderer SkinnedMeshRenderer { get; private set; }
 		public MeshFilter MeshFilter { get; private set; }
 
+		public OutlineEffect myOutlineEffect;
 		public int color;
 		public bool eraseRenderer;
 
@@ -50,12 +51,12 @@ namespace cakeslice
 
 		public void OnEnable()
 		{
-			OutlineEffect.Instance?.AddOutline(this);
+			myOutlineEffect.AddOutline(this);
 		}
 
 		public void OnDisable()
 		{
-			OutlineEffect.Instance?.RemoveOutline(this);
+			myOutlineEffect.RemoveOutline(this);
 		}
 
 		private Material[] _SharedMaterials;

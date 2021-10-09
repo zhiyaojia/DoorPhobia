@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/JasperTestScene.unity
+    guid: 6c199557134ff85479afa3205c235d97
+  - enabled: 1
+    path: Assets/Scenes/3F - Scene(Final2).unity
+    guid: 466e361cc1e33694c91c29f903c54dd1
   m_configObjects: {}
