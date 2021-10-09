@@ -16,8 +16,9 @@ public class RotateController : MonoBehaviour
     private Animation anim;
     private Interactable bookInteract;
 
-    private void Start() {
-        anim = GetComponent<Animation>();
+    private void Start()
+    {
+        anim = GetComponentInParent<Animation>();
         bookInteract = GetComponent<Interactable>();
     }
     public void rotateGlobe()
@@ -25,9 +26,9 @@ public class RotateController : MonoBehaviour
         StartCoroutine("RotateH");
     }
     IEnumerator RotateH()
-    {   
+    {
         anim.Play();
-        yield return null;   
+        yield return null;
     }
     // IEnumerator RotateEyeBalls()
     // {
