@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noConditionNeed: 0
-  maxInteractableDistance: 3.5
+  maxInteractableDistance: 3
   needDialogue: 0
   message: 
   onlyShowWhenLocked: 0

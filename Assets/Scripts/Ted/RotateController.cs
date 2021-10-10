@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Analytics;
 
 public class RotateController : MonoBehaviour
 {
@@ -23,17 +22,12 @@ public class RotateController : MonoBehaviour
     public void rotateGlobe()
     {
         StartCoroutine("RotateH");
-        ReportRotateGlobe();
     }
     IEnumerator RotateH()
     {
         anim.Play();
         yield return null;
     }
-    public void ReportRotateGlobe(){
-    AnalyticsEvent.Custom("rotate_globe", new Dictionary<string, object>
-    {
-        { "time_elapsed", Time.timeSinceLevelLoad }
-    });
-}
+  
+    
 }
