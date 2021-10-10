@@ -20,5 +20,6 @@ public class GlobeInteract : Interactable
         base.Interact();
         //rotateControl.rotateGlobe();
         anim.Play();
+        base.QuitInteracting();
     }
 }

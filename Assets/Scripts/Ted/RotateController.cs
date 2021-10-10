@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class RotateController : MonoBehaviour
 {
     // 控制地球仪旋转
     // float RotateDegree;
     // float ERotateDegree;
-    bool InteractWithGlobe = false;
-    bool RotateHalfComplete = false;
-    bool ManShockAudioPlayed = false;
+    bool InteractingWithGlobe = false;
     public AudioSource ManShockAudio;
     public GameObject eyeBallLeft;
     public GameObject eyeBallRight;
@@ -24,23 +23,17 @@ public class RotateController : MonoBehaviour
     public void rotateGlobe()
     {
         StartCoroutine("RotateH");
+        ReportRotateGlobe();
     }
     IEnumerator RotateH()
     {
         anim.Play();
         yield return null;
     }
-    // IEnumerator RotateEyeBalls()
-    // {
-    //     // 旋转速度
-    //     float RotateSpeed = 0.0005f;
-    //     // 旋转180度
-    //     while (ERotateDegree < 360) 
-    //     {   
-    //         eyeBallLeft.transform.Rotate(RotateSpeed,0,  0);
-    //         eyeBallRight.transform.Rotate(RotateSpeed,0,  0);
-    //         ERotateDegree += RotateSpeed;
-    //         yield return null;
-    //     }
-    // }
+    public void ReportRotateGlobe(){
+    AnalyticsEvent.Custom("rotate_globe", new Dictionary<string, object>
+    {
+        { "time_elapsed", Time.timeSinceLevelLoad }
+    });
+}
 }
