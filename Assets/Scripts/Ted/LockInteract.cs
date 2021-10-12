@@ -23,7 +23,7 @@ public class LockInteract : Interactable
         // lockCamera.enabled = true;
         myLockController.enabled = true;
         base.Interact();
-        print("Interact with Lock");        
+        // print("Interact with Lock");        
         
     }
 

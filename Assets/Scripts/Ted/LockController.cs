@@ -30,6 +30,7 @@ public class LockController : MonoBehaviour
 
     private bool solved = false;
     private Animation anim;
+    public float secondsElapsed = 0;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -45,6 +46,7 @@ public class LockController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        secondsElapsed += Time.deltaTime;
         if (solved == false)
         {
             // 将当前选中的密码盘显示Outline

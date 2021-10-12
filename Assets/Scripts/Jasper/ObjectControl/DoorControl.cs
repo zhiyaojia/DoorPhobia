@@ -8,11 +8,17 @@ public class DoorControl : MonoBehaviour
     private Interactable doorInteractable;
     private bool isOpen = false;
     private bool isRight = false;
+    public float secondsElapsed = 0;
 
     void Start()
     {
         animation = GetComponent<Animation>();
         doorInteractable = GetComponentInChildren<Interactable>();
+    }
+
+    private void Update()
+    {
+        secondsElapsed += Time.deltaTime;
     }
 
     public void PlayerAnimation()
