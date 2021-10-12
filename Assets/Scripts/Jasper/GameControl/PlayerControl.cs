@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Analytics;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class PlayerControl : MonoBehaviour
     private PlayerUIControl UIControl;
 
     public static PlayerControl Instance { get; set; }
+    public float secondsElapsed = 0;
+    AnalyticsResult ar;
 
     void Awake()
     {
@@ -42,7 +45,18 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
+        secondsElapsed += Time.deltaTime;        
         UpdateRay();
+        // If user press Esc the game is ended.
+        if (Input.GetKey("escape"))
+        {
+            Dictionary<string, object> customParams = new Dictionary<string, object>();
+            customParams.Add("seconds_played", secondsElapsed);
+            AnalyticsEvent.LevelQuit("Quit_Game", customParams);
+            ar = AnalyticsEvent.LevelQuit("Quit_Game");
+            Debug.Log("Quit_Result = " + ar.ToString() + "Quit_time = " + secondsElapsed);
+            Application.Quit();
+        }
     }
 
     private void UpdateRay()

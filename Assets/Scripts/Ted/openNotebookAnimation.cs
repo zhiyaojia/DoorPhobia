@@ -11,9 +11,9 @@ public class openNotebookAnimation : MonoBehaviour
         anim = GetComponent<Animation>();
     }
 
-    // private void Update() {
-    //     secondsElapsed += Time.deltaTime;
-    // }
+    private void Update() {
+        secondsElapsed += Time.deltaTime;
+    }
 
     public void OpenBook()
     {

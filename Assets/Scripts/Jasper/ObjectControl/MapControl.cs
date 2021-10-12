@@ -26,6 +26,7 @@ public class MapControl : MonoBehaviour
     private MapInteractable mapInteractable;
 
     public Animation movableShelf;
+    public float secondsElapsed = 0;
 
     private void Awake()
     {
@@ -68,6 +69,7 @@ public class MapControl : MonoBehaviour
 
     void Update()
     {
+        secondsElapsed += Time.deltaTime;
         if (isHovering == true)
         {
             if (Input.GetMouseButtonDown(0))

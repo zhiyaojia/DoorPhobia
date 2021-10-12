@@ -35,7 +35,7 @@ public class BookInteract : Interactable
         {
             startTime = diaryControl.secondsElapsed;
         }   
-        Debug.Log("LCStart = " + ar.ToString() + startTime.ToString());
+        Debug.Log("LCStartTime = " + startTime.ToString());
 
         if (solvedPreLock == false)
         {
