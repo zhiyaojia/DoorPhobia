@@ -5,6 +5,7 @@ using UnityEngine.Analytics;
 
 public class LockedDoorIntearctable : Interactable
 {
+    //selectable doorlock
     public GameObject DoorLock;
 
     private DoorControl doorControl;
@@ -23,14 +24,15 @@ public class LockedDoorIntearctable : Interactable
     {
         base.Interact();
         //send analytic event
-        AnalyticsEvent.LevelStart("3L_Letter_lock");
-        ar = AnalyticsEvent.LevelStart("3L_Letter_lock");
+        // AnalyticsEvent.LevelStart("3L_Letter_lock");
+        // ar = AnalyticsEvent.LevelStart("3L_Letter_lock");
         // set start time as the time when player interact with item thefirst time 
         if (startTime == 0) 
         {
+            // 先在门上计时 然后根据doorlock的类型设定计时器
             startTime = doorControl.secondsElapsed;
         } 
-        Debug.Log("LetCStart = " + ar.ToString() + startTime.ToString());
+        Debug.Log(startTime.ToString());
 
         if (solvedPreLock == false)
         {
@@ -48,8 +50,8 @@ public class LockedDoorIntearctable : Interactable
         base.FinishInteracting();
         // add custom params in analytical events: seconds played
         solveTime = doorControl.secondsElapsed - startTime;
-        Dictionary<string, object> customParams = new Dictionary<string, object>();
-        customParams.Add("seconds_played", solveTime.ToString());
+        // Dictionary<string, object> customParams = new Dictionary<string, object>();
+        // customParams.Add("seconds_played", solveTime.ToString());
 
         if (solvedPreLock == false)
         {
@@ -57,11 +59,23 @@ public class LockedDoorIntearctable : Interactable
             DoorLock.SetActive(false);
             solvedPreLock = true;
             // report event
-            AnalyticsEvent.LevelComplete("3L_Letter_lock", customParams);
-            ar = AnalyticsEvent.LevelComplete("3L_Letter_lock");
-            Debug.Log("LetCFinish = " + ar.ToString() + doorControl.secondsElapsed.ToString() + "SolveTime=" + solveTime.ToString());
+            // AnalyticsEvent.LevelComplete("3L_Letter_lock", customParams);
+            // ar = AnalyticsEvent.LevelComplete("3L_Letter_lock");
+            // Debug.Log("LetCFinish = " + ar.ToString() + doorControl.secondsElapsed.ToString() + "SolveTime=" + solveTime.ToString());
             // report custom event
-            ReportSolve3LLetLock(solveTime);
+            if (DoorLock.name == "BoyLivingRoomLock") 
+            {
+                ReportSolve3LLetLock(solveTime);
+                ar = Analytics.CustomEvent("solve_3L_Letter_lock");
+                Debug.Log("solve_3L_letter_Result = " + ar.ToString() + "solved_time=" + solveTime);
+            }
+            if (DoorLock.name == "NumPadLock") 
+            {
+                ReportSolve3LNumpadLock(solveTime);
+                ar = Analytics.CustomEvent("solve_3L_Numpad_lock");
+                Debug.Log("solve_3L_Numpad_lock = " + ar.ToString() + "solved_time=" + solveTime);
+            }
+            
         }
     }
 
@@ -69,23 +83,31 @@ public class LockedDoorIntearctable : Interactable
     {
         base.QuitInteracting();
         // add custom params
-        Dictionary<string, object> customParams = new Dictionary<string, object>();
-        customParams.Add("seconds_played", doorControl.secondsElapsed);
+        // Dictionary<string, object> customParams = new Dictionary<string, object>();
+        // customParams.Add("seconds_played", doorControl.secondsElapsed);
         if (solvedPreLock == false)
         {
             InspectionSystem.Instance.TurnOff();
             DoorLock.SetActive(false);
-            AnalyticsEvent.LevelQuit("3L_Letter_lock", customParams);
-            ar = AnalyticsEvent.LevelQuit("3L_Letter_lock");
-            Debug.Log("LetQResult = " + ar.ToString() + doorControl.secondsElapsed.ToString());
+            // AnalyticsEvent.LevelQuit("3L_Letter_lock", customParams);
+            // ar = AnalyticsEvent.LevelQuit("3L_Letter_lock");
+            // Debug.Log("LetQResult = " + ar.ToString() + doorControl.secondsElapsed.ToString());
         }
     }
 
     public void ReportSolve3LLetLock(float sTime){
         // custom event, report the time used to solve the lock
-        AnalyticsEvent.Custom("3L_Letter_lock", new Dictionary<string, object>
+        AnalyticsEvent.Custom("solve_3L_Letter_lock", new Dictionary<string, object>
         {
-            { "time_elapsed", sTime }
+            { "solve_time", sTime }
+        });
+    }
+
+    public void ReportSolve3LNumpadLock(float sTime){
+        // custom event, report the time used to solve the lock
+        AnalyticsEvent.Custom("solve_3L_Numpad_lock", new Dictionary<string, object>
+        {
+            { "solve_time", sTime }
         });
     }
 }

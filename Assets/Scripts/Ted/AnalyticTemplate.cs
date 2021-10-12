@@ -3,6 +3,7 @@
 // using UnityEngine.Analytics;
 // //**************************************************************************************************
 // // IMPORTANT: FOR BETTER VIEW EFFECT, CANCEL ALL THE COMMENTS USING CTRL + /
+// // 使用前请注释掉所有内容
 // //**************************************************************************************************
 // public class AnalyticTemplate : MonoBehaviour
 // {
@@ -51,16 +52,17 @@
 //             ReportSolve3LDiaryLock(solveTime);
 
 //             // Quit event
-//             AnalyticsEvent.LevelQuit("diary_lock", customParams);
-//             ar = AnalyticsEvent.LevelQuit("diary_lock");
-//             Debug.Log("LQResult = " + ar.ToString() + diaryControl.secondsElapsed.ToString());
+//             // AnalyticsEvent.LevelQuit("diary_lock", customParams);
+//             // ar = AnalyticsEvent.LevelQuit("diary_lock");
+//             // Debug.Log("LQResult = " + ar.ToString() + diaryControl.secondsElapsed.ToString());
 
 
 //         // Debug for standard events
-//         ar = AnalyticsEvent.LevelComplete("diary_lock");
-//         Debug.Log("LCFinish = " + ar.ToString() + diaryControl.secondsElapsed.ToString());
+//         // ar = AnalyticsEvent.LevelComplete("diary_lock");
+//         // Debug.Log("LCFinish = " + ar.ToString() + diaryControl.secondsElapsed.ToString());
 //         // Debug for custom events
 //         ReportRotateGlobe();
+//         ar = Analytics.CustomEvent("rotate_globe");
 //         Debug.Log("rotate_globe_Result = " + ar.ToString());
 //     }   
 

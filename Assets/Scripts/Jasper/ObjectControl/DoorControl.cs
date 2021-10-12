@@ -8,7 +8,7 @@ public class DoorControl : MonoBehaviour
     private Interactable doorInteractable;
     private bool isOpen = false;
     private bool isRight = false;
-    public float secondsElapsed;
+    public float secondsElapsed = 0;
 
     void Start()
     {
