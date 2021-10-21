@@ -1,8 +1,10 @@
+#define DEBUG
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
+
 
 public class PlayerControl : MonoBehaviour
 {
@@ -23,6 +25,9 @@ public class PlayerControl : MonoBehaviour
     public static PlayerControl Instance { get; set; }
     public float secondsElapsed = 0;
     AnalyticsResult ar;
+    public int checkBagTimes = 0;
+    public int solvePuzzles = 0;
+    public int interactTimes = 0;
 
     void Awake()
     {
@@ -41,6 +46,7 @@ public class PlayerControl : MonoBehaviour
         playerMovement = GetComponent<MovementControl>();
         rayFromScreenCenter = new Ray(Vector3.zero, Vector3.up);
         UIControl = GetComponent<PlayerUIControl>();
+        // Debug.Log(AnalyticsSessionInfo.userId);
     }
 
     void Update()
@@ -50,11 +56,33 @@ public class PlayerControl : MonoBehaviour
         // If user press Esc the game is ended.
         if (Input.GetKey("escape"))
         {
-            Dictionary<string, object> customParams = new Dictionary<string, object>();
+            // report check bag times
+            ReportCheckBagTimes(checkBagTimes);
+            #if DEBUG
+                ar = Analytics.CustomEvent("check_bag_times");
+                Debug.Log("check_bag_times = " + ar.ToString());
+            #endif
+            //report total solved puzzles
+            ReportSolvePuzzles(solvePuzzles);
+            #if DEBUG
+                ar = Analytics.CustomEvent("solve_puzzle_num");
+                Debug.Log("solve_puzzle_num = " + ar.ToString());
+            #endif
+            //report total interact times
+            ReportInteractableTimes(interactTimes);
+            #if DEBUG
+                ar = Analytics.CustomEvent("interactable_times");
+                Debug.Log("interactable_times = " + ar.ToString());
+            #endif
+            //report game time
+            Dictionary<string, object> customParams = new Dictionary<string, object>(); 
+            customParams.Add("user_id", AnalyticsSessionInfo.userId);
             customParams.Add("seconds_played", secondsElapsed);
-            AnalyticsEvent.LevelQuit("Quit_Game", customParams);
-            ar = AnalyticsEvent.LevelQuit("Quit_Game");
-            Debug.Log("Quit_Result = " + ar.ToString() + "Quit_time = " + secondsElapsed);
+            AnalyticsEvent.LevelQuit("Quit_Game", customParams); 
+            #if DEBUG
+                ar = AnalyticsEvent.LevelQuit("Quit_Game");
+                 Debug.Log("Quit_Result = " + ar.ToString() + "Quit_time = " + secondsElapsed);
+            #endif  
             Application.Quit();
         }
     }
@@ -125,5 +153,29 @@ public class PlayerControl : MonoBehaviour
         focusCamera.SetActive(false);
         CrossHair.SetActive(true);
         HandIcon.SetActive(true);
+    }
+
+    public void ReportCheckBagTimes(int checkTimes){
+        // custom event, report the time used to solve the lock
+        AnalyticsEvent.Custom("check_bag_times", new Dictionary<string, object>
+        {
+            { "check_times", checkTimes }
+        });
+    }
+
+    public void ReportSolvePuzzles(int solveTimes){
+        // custom event, report the time used to solve the lock
+        AnalyticsEvent.Custom("solve_puzzle_num", new Dictionary<string, object>
+        {
+            { "solve_num", solveTimes }
+        });
+    }
+
+    public void ReportInteractableTimes(int interactTimes){
+        // custom event, report the time used to solve the lock
+        AnalyticsEvent.Custom("interactable_times", new Dictionary<string, object>
+        {
+            { "interact_times", interactTimes }
+        });
     }
 }

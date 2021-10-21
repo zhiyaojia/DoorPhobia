@@ -15,6 +15,7 @@ public class NumPadLockControl : MonoBehaviour
     public string correctPassword;
 
     private NumpadTextController textController;
+    public int triedTimes = 0;
 
     void Start()
     {
@@ -30,6 +31,7 @@ public class NumPadLockControl : MonoBehaviour
             {
                 if (Input.GetKeyDown((KeyCode)(48 + i)))
                 {
+                    triedTimes += 1;
                     pressKey(i);
                 }
             }

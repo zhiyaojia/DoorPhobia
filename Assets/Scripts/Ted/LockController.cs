@@ -31,6 +31,7 @@ public class LockController : MonoBehaviour
     private bool solved = false;
     private Animation anim;
     public float secondsElapsed = 0;
+    public int triedTimes = 0;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -65,6 +66,7 @@ public class LockController : MonoBehaviour
             // AD控制左右   
             if (Input.GetKeyDown(KeyCode.A))
             {
+                triedTimes += 1;
                 switch (CurrentChosenWheel)
                 {
                     case 0:
@@ -90,6 +92,7 @@ public class LockController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
+                triedTimes += 1;
                 switch (CurrentChosenWheel)
                 {
                     case 0:

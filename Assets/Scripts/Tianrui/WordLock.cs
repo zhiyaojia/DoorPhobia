@@ -23,6 +23,7 @@ public class WordLock : MonoBehaviour
     public GameObject Lock;
     string[] PasswordDic = { "A", "B", "C", "D", "E", "F" };
     float RotateDegree = 0;
+    public int triedTimes = 0;
 
     private Animation anim;
     private bool solved = false;
@@ -40,11 +41,13 @@ public class WordLock : MonoBehaviour
             OutlineCurrentWheel();
             if (Input.GetKeyDown(KeyCode.A))
             {
+                triedTimes += 1;
                 CurrentChosenWheel--;
                 if (CurrentChosenWheel < 0) CurrentChosenWheel = 2;
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
+                triedTimes += 1;
                 CurrentChosenWheel++;
                 if (CurrentChosenWheel > 2) CurrentChosenWheel = 0;
             }

@@ -27,6 +27,7 @@ public class MapControl : MonoBehaviour
 
     public Animation movableShelf;
     public float secondsElapsed = 0;
+    public int triedTimes = 0;
 
     private void Awake()
     {
@@ -58,6 +59,7 @@ public class MapControl : MonoBehaviour
 
     private void OnEnable()
     {
+
         StartCoroutine("Hover");
     }
 
@@ -74,6 +76,7 @@ public class MapControl : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                triedTimes += 1;
                 stateStatus[currHoverIndex] = !stateStatus[currHoverIndex];
                 if (stateStatus[currHoverIndex] == true)
                 {

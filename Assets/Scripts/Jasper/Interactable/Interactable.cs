@@ -64,6 +64,7 @@ public class Interactable : MonoBehaviour
                 {
                     if (meetInteractCondition)
                     {
+                        PlayerControl.Instance.interactTimes += 1;
                         Interact();
                     }
                     if (needDialogue)
