@@ -32,7 +32,6 @@ public class LockedDoorIntearctable : Interactable
             // 先在门上计时 然后根据doorlock的类型设定计时器
             startTime = doorControl.secondsElapsed;
         } 
-        Debug.Log(startTime.ToString());
 
         if (solvedPreLock == false)
         {
