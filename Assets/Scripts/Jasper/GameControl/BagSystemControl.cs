@@ -34,7 +34,7 @@ public class BagSystemControl : MonoBehaviour
             if (bagIsOpening == false)
             {
                 PlayerControl.Instance.checkBagTimes += 1;
-                Debug.Log(PlayerControl.Instance.checkBagTimes);
+                // Debug.Log(PlayerControl.Instance.checkBagTimes);
                 openBag();
             }
             else
