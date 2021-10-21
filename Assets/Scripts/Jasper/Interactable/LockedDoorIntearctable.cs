@@ -32,7 +32,6 @@ public class LockedDoorIntearctable : Interactable
             // 先在门上计时 然后根据doorlock的类型设定计时器
             startTime = doorControl.secondsElapsed;
         } 
-        Debug.Log(startTime.ToString());
 
         if (solvedPreLock == false)
         {
@@ -65,15 +64,17 @@ public class LockedDoorIntearctable : Interactable
             // report custom event
             if (DoorLock.name == "BoyLivingRoomLock") 
             {
-                ReportSolve3LLetLock(solveTime);
+                PlayerControl.Instance.solvePuzzles += 1;
+                ReportSolve3LLetLock(solveTime, DoorLock.GetComponent<WordLock>().triedTimes);
                 ar = Analytics.CustomEvent("solve_3L_Letter_lock");
-                Debug.Log("solve_3L_letter_Result = " + ar.ToString() + "solved_time=" + solveTime);
+                Debug.Log("solve_3L_letter_Result = " + ar.ToString() + "solved_time=" + solveTime + "tried_time=" + DoorLock.GetComponent<WordLock>().triedTimes);
             }
             if (DoorLock.name == "NumPadLock") 
             {
-                ReportSolve3LNumpadLock(solveTime);
+                PlayerControl.Instance.solvePuzzles += 1;
+                ReportSolve3LNumpadLock(solveTime, DoorLock.GetComponent<WordLock>().triedTimes);
                 ar = Analytics.CustomEvent("solve_3L_Numpad_lock");
-                Debug.Log("solve_3L_Numpad_lock = " + ar.ToString() + "solved_time=" + solveTime);
+                Debug.Log("solve_3L_Numpad_lock = " + ar.ToString() + "solved_time=" + solveTime + "tried_time=" + DoorLock.GetComponent<NumPadLockControl>().triedTimes);
             }
             
         }
@@ -95,19 +96,21 @@ public class LockedDoorIntearctable : Interactable
         }
     }
 
-    public void ReportSolve3LLetLock(float sTime){
+    public void ReportSolve3LLetLock(float sTime, int triedTime){
         // custom event, report the time used to solve the lock
         AnalyticsEvent.Custom("solve_3L_Letter_lock", new Dictionary<string, object>
         {
-            { "solve_time", sTime }
+            { "solve_time", sTime },
+            { "tried_time", triedTime}
         });
     }
 
-    public void ReportSolve3LNumpadLock(float sTime){
+    public void ReportSolve3LNumpadLock(float sTime, int triedTime){
         // custom event, report the time used to solve the lock
         AnalyticsEvent.Custom("solve_3L_Numpad_lock", new Dictionary<string, object>
         {
-            { "solve_time", sTime }
+            { "solve_time", sTime },
+            { "tried_time", triedTime}
         });
     }
 }

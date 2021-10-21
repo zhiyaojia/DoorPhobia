@@ -13,6 +13,7 @@ public class BagSystemControl : MonoBehaviour
     private int currentInspectionObjectIndex = -1;
 
     public static BagSystemControl Instance { get; set; }
+    // private int checkBagTimes = 0;
 
     void Awake()
     {
@@ -32,6 +33,8 @@ public class BagSystemControl : MonoBehaviour
         {
             if (bagIsOpening == false)
             {
+                PlayerControl.Instance.checkBagTimes += 1;
+                Debug.Log(PlayerControl.Instance.checkBagTimes);
                 openBag();
             }
             else

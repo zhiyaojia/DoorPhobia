@@ -25,7 +25,6 @@ public class MapInteractable : Interactable
         {
             startTime = mapControl.secondsElapsed;
         } 
-        Debug.Log("MapStartTime = " + startTime.ToString());
         PlayerControl.Instance.FocusOnObject(focusPointTransform, true);
         mapControl.enabled = true;
     }
@@ -35,10 +34,11 @@ public class MapInteractable : Interactable
         base.FinishInteracting();
         // report custom event
         solveTime = mapControl.secondsElapsed - startTime;
-        ReportSolve3LMap(solveTime);
+        PlayerControl.Instance.solvePuzzles += 1;
+        ReportSolve3LMap(solveTime, mapControl.triedTimes);
         // debug
         ar = Analytics.CustomEvent("solve_3L_Map");
-        Debug.Log("solve_3L_Map_Result = " + ar.ToString() + "Use_time = " + solveTime.ToString());
+        Debug.Log("solve_3L_Map_Result = " + ar.ToString() + "Use_time = " + solveTime.ToString() + "tried_time=" + mapControl.triedTimes);
         PlayerControl.Instance.StopFocusOnObject();
         mapControl.enabled = false;
     }
@@ -49,11 +49,12 @@ public class MapInteractable : Interactable
         PlayerControl.Instance.StopFocusOnObject();
         mapControl.enabled = false;
     }
-    public void ReportSolve3LMap(float sTime){
+    public void ReportSolve3LMap(float sTime, int triedTime){
         // custom event, report the time used to solve the lock
         AnalyticsEvent.Custom("solve_3L_Map", new Dictionary<string, object>
         {
-            { "solve_time", sTime }
+            { "solve_time", sTime },
+            { "tried_time", triedTime}
         });
     }
 }

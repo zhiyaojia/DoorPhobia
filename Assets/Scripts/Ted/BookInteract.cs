@@ -69,9 +69,10 @@ public class BookInteract : Interactable
             // ar = AnalyticsEvent.LevelComplete("3L_diary_lock");
             // Debug.Log("LCFinish = " + ar.ToString() + diaryControl.secondsElapsed.ToString() + "SolveTime=" + solveTime.ToString());
             // report custom event
-            ReportSolve3LDiaryLock(solveTime);
+            PlayerControl.Instance.solvePuzzles += 1;
+            ReportSolve3LDiaryLock(solveTime, ColorLock.GetComponent<LockController>().triedTimes);
             ar = Analytics.CustomEvent("solve_diary_lock");
-            Debug.Log("solve_3L_diarylock_Result = " + ar.ToString());
+            Debug.Log("solve_3L_diarylock_Result = " + ar.ToString() + "tried_time=" + ColorLock.GetComponent<LockController>().triedTimes);
 
             diaryControl.OpenBook();
             myCollider = openBookCollider;
@@ -93,11 +94,12 @@ public class BookInteract : Interactable
             // Debug.Log("LQResult = " + ar.ToString() + diaryControl.secondsElapsed.ToString());
         }
     }
-    public void ReportSolve3LDiaryLock(float sTime){
+    public void ReportSolve3LDiaryLock(float sTime, int triedTimes){
         // custom event, report the time used to solve the lock
         AnalyticsEvent.Custom("solve_diary_lock", new Dictionary<string, object>
         {
-            { "solve_time", sTime }
+            { "solve_time", sTime },
+            { "tried_time", triedTimes}
         });
     }
 }
