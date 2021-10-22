@@ -3,6 +3,7 @@ Shader "Unlit/HintMaterial"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _TargetColor("target color", Color) = (0,0,0,0)
     }
     SubShader
     {
@@ -47,9 +48,11 @@ Shader "Unlit/HintMaterial"
                     return o;
                 }
 
+                uniform fixed4 _TargetColor;
+
                 fixed4 frag(v2f i) : SV_Target
                 {
-                    return fixed4(0.7, 1, 0, 1);
+                    return _TargetColor;
                 }
                 ENDCG
             }

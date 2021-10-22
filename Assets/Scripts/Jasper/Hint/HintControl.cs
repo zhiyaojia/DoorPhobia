@@ -5,16 +5,28 @@ using UnityEngine;
 public class HintControl : MonoBehaviour
 {
     public Shader myShader;
-    private Material myMaterial;
-    private float intensity = 0.0f;
 
-    private bool isShowingHint = false;
+    [Header("Materials")]
+    public Material targetMaterial;
+    public Material highlightMaterial;
+    public Material hintMaterial;
+    private Material myMaterial;
+
+    public List<MeshRenderer> highlightObjects = new List<MeshRenderer>();
+    private List<Material> highlightObjectOriginalMaterials = new List<Material>();
+
+    private float intensity = 0.0f;
     private float paddingTime = 2.0f;
     private float currTimer = 0.0f;
 
-    void Start()
+    void Awake()
     {
         myMaterial = new Material(myShader);
+        myMaterial.SetColor("_HighlightColor", highlightMaterial.color);
+        myMaterial.SetColor("_TargetColor", targetMaterial.color);
+        myMaterial.SetFloat("_bwBlend", 1.0f);
+
+        hintMaterial.SetColor("_TargetColor", targetMaterial.color);
     }
 
     private void Update()
@@ -28,7 +40,27 @@ public class HintControl : MonoBehaviour
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        myMaterial.SetFloat("_bwBlend", intensity);
+        //myMaterial.SetFloat("_bwBlend", intensity);
         Graphics.Blit(source, destination, myMaterial);
+    }
+
+    private void OnEnable()
+    {
+        highlightObjectOriginalMaterials.Clear();
+        for (int i = 0; i < highlightObjects.Count; i++)
+        {
+            highlightObjectOriginalMaterials.Add(highlightObjects[i].material);
+            highlightObjects[i].material = hintMaterial;
+        }
+    }
+
+    private void OnDisable()
+    {
+        for(int i = 0; i < highlightObjects.Count; i++)
+        {
+            highlightObjects[i].material = highlightObjectOriginalMaterials[i];
+        }
+        highlightObjectOriginalMaterials.Clear();
+        highlightObjects.Clear();
     }
 }

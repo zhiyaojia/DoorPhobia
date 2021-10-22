@@ -4,6 +4,8 @@ Shader "Hidden/hint"
     {
         _MainTex ("Texture", 2D) = "white" {}
         _bwBlend("Black & White blend", Range(0, 1)) = 0
+        _HighlightColor("highlight color", Color) = (0,0,0,0)
+        _TargetColor("target color", Color) = (0,0,0,0)
     }
     SubShader
     {
@@ -39,12 +41,14 @@ Shader "Hidden/hint"
 
             sampler2D _MainTex;
             uniform float _bwBlend;
+            uniform fixed4 _HighlightColor;
+            uniform fixed4 _TargetColor;
 
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
                 fixed4 finalColor;
-                if (abs(col.x - 0.7) < 0.1 && abs(col.y - 1) < 0.1 && abs(col.z - 0) < 0.1)
+                if (abs(col.x - _TargetColor.x) < 0.01 && abs(col.y - _TargetColor.y) < 0.01 && abs(col.z - _TargetColor.z) < 0.01)
                 {
                     if (_bwBlend < 1.0)
                     {
@@ -53,7 +57,7 @@ Shader "Hidden/hint"
                     }
                     else
                     {
-                        finalColor = fixed4(0.6, 0.2, 0.1, 1);
+                        finalColor = _HighlightColor;
                     }
                 }
                 else
