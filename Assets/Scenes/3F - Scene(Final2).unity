@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -201,6 +201,11 @@ Transform:
   m_Father: {fileID: 830405255}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &98485556 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8763134528679732782, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &111170893 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6192723035865426709, guid: b244e6f31d5ffef45a964a786a28a4bd, type: 3}
@@ -237,6 +242,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.337434, y: 0.04, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &213689939 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5830476755371397706, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &218394580
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +373,11 @@ Transform:
   m_Father: {fileID: 4499573939783935161}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &250823498 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4360331106185381699, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &255978345
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +486,11 @@ MonoBehaviour:
   outlineShaderMaterial: {fileID: 0}
   renderTexture: {fileID: 0}
   extraRenderTexture: {fileID: 0}
+--- !u!4 &259032456 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3412458975396185861, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &274737936 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6192723035188265551, guid: b244e6f31d5ffef45a964a786a28a4bd, type: 3}
@@ -555,6 +575,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33743408, y: 0.04, z: 0.5000001}
   m_Center: {x: 0, y: -0.0000019073486, z: 0.0000076293945}
+--- !u!23 &288730975 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 995172087221261776, guid: 7c2e71dfdf26c644aaebd51cab91325c, type: 3}
+  m_PrefabInstance: {fileID: 5843565066146747311}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &316572890 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2734890275995130055, guid: 21e1d1639cc88c74d897b7e2aaad3b32, type: 3}
@@ -644,6 +669,7 @@ MonoBehaviour:
   camera: {fileID: 255978345}
   volume: {fileID: 283171352}
   light: {fileID: 416509677}
+  IsInspecting: 0
 --- !u!1 &411208661
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,6 +795,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!23 &422990878 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5830476754387806439, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &427795249 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5830476755337654178, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &440637750 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4014160213898819506, guid: 00ed059faca2eed4fa3965aeee43a449, type: 3}
+  m_PrefabInstance: {fileID: 529535906925949450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &497825970
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +840,11 @@ Transform:
   m_Father: {fileID: 820680551}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &510806642 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5830476754702880749, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &516475543 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6192723034657562113, guid: b244e6f31d5ffef45a964a786a28a4bd, type: 3}
@@ -841,7 +887,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 596580833}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1101720057}
@@ -868,6 +914,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33743408, y: 0.04, z: 0.5000001}
   m_Center: {x: 0.0000019073486, y: -0.0000019073486, z: 0.0000076293945}
+--- !u!4 &618569544 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8091874172649282141, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &650874681 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6192723036004378439, guid: b244e6f31d5ffef45a964a786a28a4bd, type: 3}
@@ -940,6 +991,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33743408, y: 0.04, z: 0.25000006}
   m_Center: {x: 0, y: 0, z: 0.0000076293945}
+--- !u!23 &736894088 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5830476755264002076, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &744683793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,6 +1451,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.271354, y: 0.04, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &866636921 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7688804180291421147, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &871285815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1577,6 +1638,16 @@ MonoBehaviour:
   player: {fileID: 0}
   playerControl: {fileID: 0}
   parent: {fileID: 0}
+--- !u!23 &1027495709 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7246794821396490964, guid: 7c2e71dfdf26c644aaebd51cab91325c, type: 3}
+  m_PrefabInstance: {fileID: 5843565066146747311}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1035476697 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4627697815763620954, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1036338130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1785,6 +1856,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1053955015 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5830476756115429090, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1101720056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1983,6 +2059,16 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!4 &1159289696 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8978797927905896928, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1173184765 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5830476754730603809, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1193099624 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6192723034233714737, guid: b244e6f31d5ffef45a964a786a28a4bd, type: 3}
@@ -2028,6 +2114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2370b248fb18aa6489dba1323c557509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!23 &1279358994 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5830476755095708496, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1290075579 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6192723036002524853, guid: b244e6f31d5ffef45a964a786a28a4bd, type: 3}
@@ -2099,6 +2190,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.337434, y: 0.04, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1303452191 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5830476755940818755, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1328419949 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6746311397527024126, guid: b244e6f31d5ffef45a964a786a28a4bd, type: 3}
@@ -2153,6 +2249,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.27135408, y: 0.04, z: 0.25000006}
   m_Center: {x: 0.0000019073486, y: 0, z: 0}
+--- !u!4 &1428399932 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3886062111965504985, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1499733676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2213,6 +2314,11 @@ MonoBehaviour:
   player: {fileID: 1258494533}
   playerControl: {fileID: 1258494535}
   parent: {fileID: 1006156588}
+--- !u!23 &1514183274 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5830476755236749032, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1516414046 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6192723036081444648, guid: b244e6f31d5ffef45a964a786a28a4bd, type: 3}
@@ -2248,7 +2354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7294760794503042815, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -32.27
+      value: -38.4
       objectReference: {fileID: 0}
     - target: {fileID: 7294760794503042815, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2256,7 +2362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7294760794503042815, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -24.2
       objectReference: {fileID: 0}
     - target: {fileID: 7294760794503042815, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2288,13 +2394,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+--- !u!4 &1530260632 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3079274721821214105, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1552242536 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2443959874709888863, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1553398841
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-30924
+  m_Name: pb_Mesh-179170
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2452,13 +2568,23 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &1633234330 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8339680644066243727, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1640902439 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7315744844369907962, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1643165063
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh45376
+  m_Name: pb_Mesh431494
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2647,6 +2773,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.27135405, y: 0.04, z: 0.25000006}
   m_Center: {x: 0, y: -0.0000019073486, z: 0.0000076293945}
+--- !u!4 &1656382433 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5391369602338705036, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1684320781 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6192723036064715753, guid: b244e6f31d5ffef45a964a786a28a4bd, type: 3}
@@ -2957,6 +3088,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1752268399 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5721747470223079647, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1754027327 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 56407276543279109, guid: 495b6d81620c779448a2b6edf0b171f5, type: 3}
@@ -3079,6 +3215,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4ef3adcaf56445b689bf99294a01eb6, type: 3}
+--- !u!23 &1798524316 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5830476754980328140, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1862833907 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4923614733091999749, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1898893951
 GameObject:
   m_ObjectHideFlags: 0
@@ -3145,6 +3291,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1900495794 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5830476755811823565, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1906335979 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 529535908828074721, guid: 00ed059faca2eed4fa3965aeee43a449, type: 3}
@@ -3168,6 +3319,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5000001, y: 0.04, z: 0.5000001}
   m_Center: {x: 0, y: -0.0000019073486, z: 0.0000076293945}
+--- !u!23 &1916779439 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5830476756391567914, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1943218517 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1627183838948269918, guid: 7c2e71dfdf26c644aaebd51cab91325c, type: 3}
+  m_PrefabInstance: {fileID: 5843565066146747311}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2029684744 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5830476755985049833, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2031266772 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6209015918783143670, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
@@ -3255,6 +3421,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5000001, y: 0.04, z: 0.5000001}
   m_Center: {x: 0.0000076293945, y: 0.0000019073486, z: -0.0000038146973}
+--- !u!23 &2048151630 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8443397210442390357, guid: 7c2e71dfdf26c644aaebd51cab91325c, type: 3}
+  m_PrefabInstance: {fileID: 5843565066146747311}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2054624404 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
@@ -3284,6 +3455,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.337434, y: 0.04, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!137 &2076932269 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3044615351771808415, guid: 23ffa287d50355e4b877c13f01fbb97c, type: 3}
+  m_PrefabInstance: {fileID: 1398288714911990981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2110838387 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5088061007210412308, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2136634940 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6185788637995299046, guid: fbd268c3a85a69342931e5d9294bbc46, type: 3}
@@ -3499,9 +3680,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1030255833953464261, guid: 495b6d81620c779448a2b6edf0b171f5, type: 3}
+      propertyPath: hasHint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030255833953464261, guid: 495b6d81620c779448a2b6edf0b171f5, type: 3}
+      propertyPath: hintObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030255833953464261, guid: 495b6d81620c779448a2b6edf0b171f5, type: 3}
       propertyPath: maxInteractableDistance
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 1030255833953464261, guid: 495b6d81620c779448a2b6edf0b171f5, type: 3}
+      propertyPath: hintObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 507164337588310623}
     - target: {fileID: 1192442776927528643, guid: 495b6d81620c779448a2b6edf0b171f5, type: 3}
       propertyPath: movableShelf
       value: 
@@ -3710,6 +3903,10 @@ PrefabInstance:
       propertyPath: m_Shadows.m_Type
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4232447433526367865, guid: 495b6d81620c779448a2b6edf0b171f5, type: 3}
+      propertyPath: m_Name
+      value: Newspaper
+      objectReference: {fileID: 0}
     - target: {fileID: 4232447433526594137, guid: 495b6d81620c779448a2b6edf0b171f5, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -3829,6 +4026,10 @@ MonoBehaviour:
   needDialogue: 1
   message: A bookshelf, the position is kind of weird.
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &507164337588310606
 MonoBehaviour:
@@ -3847,6 +4048,10 @@ MonoBehaviour:
   needDialogue: 1
   message: Another world globe, thanks it is not scary.
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &507164337588310607
 MonoBehaviour:
@@ -3865,6 +4070,10 @@ MonoBehaviour:
   needDialogue: 1
   message: A sofa, it must be comfortable...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &507164337588310608
 MonoBehaviour:
@@ -3883,6 +4092,10 @@ MonoBehaviour:
   needDialogue: 1
   message: A telescope!
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &507164337588310609
 MonoBehaviour:
@@ -3901,6 +4114,10 @@ MonoBehaviour:
   needDialogue: 1
   message: You don't want to open it...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &507164337588310610
 MonoBehaviour:
@@ -3919,6 +4136,10 @@ MonoBehaviour:
   needDialogue: 1
   message: You don't want to open it...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!1 &507164337588310611 stripped
 GameObject:
@@ -3974,6 +4195,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 2.2204466e-16, z: 10.000002}
   m_Center: {x: -0.0000076293945, y: 0, z: 0}
+--- !u!23 &507164337588310623 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4232447433528363193, guid: 495b6d81620c779448a2b6edf0b171f5, type: 3}
+  m_PrefabInstance: {fileID: 507164337588310596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &529535906925949450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4396,6 +4622,10 @@ MonoBehaviour:
   needDialogue: 1
   message: It looks like there has been a melee here...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!23 &1411027799808147957
 MeshRenderer:
@@ -5451,6 +5681,10 @@ PrefabInstance:
       value: -19.299927
       objectReference: {fileID: 0}
     - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hasHint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
       propertyPath: message
       value: Looks like a diary book . . .
       objectReference: {fileID: 0}
@@ -5475,9 +5709,69 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
       propertyPath: maxInteractableDistance
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1916779439}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1173184765}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 2029684744}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 427795249}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 1514183274}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.data[5]
+      value: 
+      objectReference: {fileID: 1053955015}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.data[6]
+      value: 
+      objectReference: {fileID: 1303452191}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.data[7]
+      value: 
+      objectReference: {fileID: 422990878}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.data[8]
+      value: 
+      objectReference: {fileID: 510806642}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.data[9]
+      value: 
+      objectReference: {fileID: 1279358994}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.data[10]
+      value: 
+      objectReference: {fileID: 213689939}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.data[11]
+      value: 
+      objectReference: {fileID: 1798524316}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.data[12]
+      value: 
+      objectReference: {fileID: 736894088}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.data[13]
+      value: 
+      objectReference: {fileID: 1900495794}
     - target: {fileID: 4106770205035286767, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
       propertyPath: m_Size.x
       value: 0.48
@@ -5485,6 +5779,10 @@ PrefabInstance:
     - target: {fileID: 4106770205035286767, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
       propertyPath: m_Center.x
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380001477470882738, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5589535453704255468, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5655,9 +5953,21 @@ PrefabInstance:
       value: -8.257753
       objectReference: {fileID: 0}
     - target: {fileID: 6209015918783143670, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hasHint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209015918783143670, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
       propertyPath: DoorLock
       value: 
       objectReference: {fileID: 2136634940}
+    - target: {fileID: 6209015918783143670, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209015918783143670, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: hintObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 5785279434543823008}
     - target: {fileID: 6296237658412656060, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
       propertyPath: m_LocalPosition.x
       value: -38.907
@@ -5672,7 +5982,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8554817074973758480, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.797
+      value: 4.799
       objectReference: {fileID: 0}
     - target: {fileID: 8554817074973758480, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5895,6 +6205,10 @@ MonoBehaviour:
   needDialogue: 1
   message: A strange picture...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822841
 MonoBehaviour:
@@ -5913,6 +6227,10 @@ MonoBehaviour:
   needDialogue: 1
   message: It looks empty...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822842
 MonoBehaviour:
@@ -5931,6 +6249,10 @@ MonoBehaviour:
   needDialogue: 1
   message: A human model...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822843
 MonoBehaviour:
@@ -5949,6 +6271,10 @@ MonoBehaviour:
   needDialogue: 1
   message: A cute pink pig~
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822844
 MonoBehaviour:
@@ -5967,6 +6293,10 @@ MonoBehaviour:
   needDialogue: 1
   message: Looks It is empty...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822845
 MonoBehaviour:
@@ -5985,6 +6315,10 @@ MonoBehaviour:
   needDialogue: 1
   message: Looks it is empty...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822846
 MonoBehaviour:
@@ -6003,6 +6337,10 @@ MonoBehaviour:
   needDialogue: 1
   message: Looks it is empty...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822847
 MonoBehaviour:
@@ -6021,6 +6359,10 @@ MonoBehaviour:
   needDialogue: 1
   message: Looks it is empty...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822848
 MonoBehaviour:
@@ -6039,6 +6381,10 @@ MonoBehaviour:
   needDialogue: 1
   message: Looks it is empty...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822849
 MonoBehaviour:
@@ -6057,6 +6403,10 @@ MonoBehaviour:
   needDialogue: 1
   message: Looks it is empty...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822850
 MonoBehaviour:
@@ -6075,6 +6425,10 @@ MonoBehaviour:
   needDialogue: 1
   message: A stack of books.
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822851
 MonoBehaviour:
@@ -6093,6 +6447,10 @@ MonoBehaviour:
   needDialogue: 1
   message: Some books here.
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822852
 MonoBehaviour:
@@ -6111,6 +6469,10 @@ MonoBehaviour:
   needDialogue: 1
   message: A blackboard, nothing on it...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822853
 MonoBehaviour:
@@ -6129,6 +6491,10 @@ MonoBehaviour:
   needDialogue: 1
   message: A cat toy, why it is on the chair?
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822854
 MonoBehaviour:
@@ -6147,6 +6513,10 @@ MonoBehaviour:
   needDialogue: 1
   message: A kid's bed. You wake up from here every morning.
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822855
 MonoBehaviour:
@@ -6165,6 +6535,10 @@ MonoBehaviour:
   needDialogue: 1
   message: A ball...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822856
 MonoBehaviour:
@@ -6183,6 +6557,10 @@ MonoBehaviour:
   needDialogue: 1
   message: Another ball.
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822857
 MonoBehaviour:
@@ -6201,6 +6579,10 @@ MonoBehaviour:
   needDialogue: 1
   message: What happened?!! Blood?
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!65 &5785279434543822858
 BoxCollider:
@@ -6232,6 +6614,10 @@ MonoBehaviour:
   needDialogue: 1
   message: A rabbit... Cute.
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822860
 MonoBehaviour:
@@ -6250,6 +6636,10 @@ MonoBehaviour:
   needDialogue: 1
   message: 'A huge teddy bear! '
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822861
 MonoBehaviour:
@@ -6268,6 +6658,10 @@ MonoBehaviour:
   needDialogue: 1
   message: Wow, Ambulance...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!114 &5785279434543822862
 MonoBehaviour:
@@ -6286,6 +6680,10 @@ MonoBehaviour:
   needDialogue: 1
   message: A red truck...
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!1 &5785279434543822863 stripped
 GameObject:
@@ -6444,6 +6842,96 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25081673, y: 0.315825, z: 0.27008697}
   m_Center: {x: -0.000000946516, y: 0.002394415, z: 0.1000076}
+--- !u!137 &5785279434543823008
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785279434543822812}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 92bac53f2f00d7d47ac0e20b2404f433, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 4300000, guid: c443edd6aacea2341ba586b076718a29, type: 2}
+  m_Bones:
+  - {fileID: 98485556}
+  - {fileID: 1656382433}
+  - {fileID: 250823498}
+  - {fileID: 1633234330}
+  - {fileID: 618569544}
+  - {fileID: 1159289696}
+  - {fileID: 1752268399}
+  - {fileID: 866636921}
+  - {fileID: 1035476697}
+  - {fileID: 1640902439}
+  - {fileID: 1428399932}
+  - {fileID: 1862833907}
+  - {fileID: 1530260632}
+  - {fileID: 1552242536}
+  - {fileID: 2110838387}
+  - {fileID: 259032456}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 0}
+  m_AABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_DirtyAABB: 0
+--- !u!114 &5785279434543823009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785279434543822816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3902821fa6218642a271f549b7a5c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noConditionNeed: 1
+  maxInteractableDistance: 15
+  needDialogue: 1
+  message: There are 4 red balls, and 7 green balls, 3 blue balls
+  onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
+  canQuit: 1
 --- !u!1001 &5843565066146747311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6481,7 +6969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4836561776206829771, guid: 7c2e71dfdf26c644aaebd51cab91325c, type: 3}
       propertyPath: m_Center.x
-      value: -1.3
+      value: -3.36
       objectReference: {fileID: 0}
     - target: {fileID: 5383452539584214898, guid: 7c2e71dfdf26c644aaebd51cab91325c, type: 3}
       propertyPath: m_IsActive
@@ -7242,6 +7730,11 @@ MonoBehaviour:
   needDialogue: 1
   message: I need a key to open it
   onlyShowWhenLocked: 1
+  hasHint: 1
+  hintObjects:
+  - {fileID: 2076932269}
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
   phoneControl: {fileID: 6977341023714066660}
   phoneInteractable: {fileID: 6977341023714066661}
@@ -7303,24 +7796,10 @@ MonoBehaviour:
   needDialogue: 0
   message: 
   onlyShowWhenLocked: 0
-  canQuit: 1
---- !u!114 &6977341023744871272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: There are 4 red balls, and 7 green balls, 3 blue balls
-  onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
 --- !u!65 &6977341023744871274
 BoxCollider:
@@ -7401,6 +7880,11 @@ MonoBehaviour:
   message: There seems to be something inside its body. Maybe I can use a knife to
     cut it.
   onlyShowWhenLocked: 0
+  hasHint: 1
+  hintObjects:
+  - {fileID: 440637750}
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
   BagIndex: 4
   TargetInteractObject: {fileID: 6977341023674658042}
@@ -7434,6 +7918,10 @@ MonoBehaviour:
   needDialogue: 0
   message: 
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
   BagIndex: 2
   TargetInteractObject: {fileID: 0}
@@ -7472,6 +7960,14 @@ MonoBehaviour:
   needDialogue: 0
   message: 
   onlyShowWhenLocked: 0
+  hasHint: 1
+  hintObjects:
+  - {fileID: 2048151630}
+  - {fileID: 288730975}
+  - {fileID: 1943218517}
+  - {fileID: 1027495709}
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
   DoorLock: {fileID: 5944295173682767768}
 --- !u!65 &6977341025278282272
@@ -7504,6 +8000,10 @@ MonoBehaviour:
   needDialogue: 1
   message: A hole here?
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
   zombieControl: {fileID: 6977341023595343492}
   focusPointTransform: {fileID: 5785279434543822810}
@@ -7537,6 +8037,10 @@ MonoBehaviour:
   needDialogue: 0
   message: 
   onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  alreadyInteracted: 0
+  alreadyHovered: 0
   canQuit: 1
   BagIndex: 3
   TargetInteractObject: {fileID: 0}

@@ -5,6 +5,7 @@ using UnityEngine.Analytics;
 
 public class LockedDoorIntearctable : Interactable
 {
+    [Header("LockedDoorIntearctable Setting")]
     //selectable doorlock
     public GameObject DoorLock;
 
@@ -17,6 +18,7 @@ public class LockedDoorIntearctable : Interactable
     private void Start()
     {
         base.Start();
+        solvedPreLock = false;
         doorControl = GetComponentInParent<DoorControl>();
     }
 

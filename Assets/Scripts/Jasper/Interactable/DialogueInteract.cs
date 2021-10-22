@@ -7,6 +7,12 @@ public class DialogueInteract : Interactable
     public override void Interact()
     {
         base.Interact();
-        PlayerControl.Instance.ShowDialogue(message);
+        StartCoroutine(FinishDialogue());
+    }
+
+    IEnumerator FinishDialogue()
+    {
+        yield return new WaitForSeconds(playerControl.DialogueTime());
+        alreadyInteracted = false;
     }
 }

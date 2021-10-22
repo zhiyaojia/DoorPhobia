@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HintControl : MonoBehaviour
 {
@@ -10,57 +11,104 @@ public class HintControl : MonoBehaviour
     public Material targetMaterial;
     public Material highlightMaterial;
     public Material hintMaterial;
+    public Material highlightStartMateial;
     private Material myMaterial;
 
-    public List<MeshRenderer> highlightObjects = new List<MeshRenderer>();
-    private List<Material> highlightObjectOriginalMaterials = new List<Material>();
+    [HideInInspector] public List<Renderer> hintObjects = new List<Renderer>();
+    [HideInInspector] public List<Material> hintObjectOriginalMaterials = new List<Material>();
 
-    private float intensity = 0.0f;
-    private float paddingTime = 2.0f;
+    [Header("Time Setting")]
+    public float paddingTime = 0.0f;
+    private float intensity = 1.0f;
     private float currTimer = 0.0f;
+
+    [Header("Mode Setting")]
+    public Text text;
+    private bool hintIsInBag = false;
 
     void Awake()
     {
         myMaterial = new Material(myShader);
         myMaterial.SetColor("_HighlightColor", highlightMaterial.color);
         myMaterial.SetColor("_TargetColor", targetMaterial.color);
-        myMaterial.SetFloat("_bwBlend", 1.0f);
-
-        hintMaterial.SetColor("_TargetColor", targetMaterial.color);
-    }
-
-    private void Update()
-    {
-        if (intensity < 1.0f)
-        {
-            currTimer += Time.deltaTime;
-            intensity = currTimer / paddingTime;
-        }
+        myMaterial.SetColor("_HighlightStartColor", highlightStartMateial.color);
     }
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        //myMaterial.SetFloat("_bwBlend", intensity);
+        if (intensity < 1.0f)
+        {
+            myMaterial.SetFloat("_bwBlend", intensity);
+        }
         Graphics.Blit(source, destination, myMaterial);
     }
 
     private void OnEnable()
     {
-        highlightObjectOriginalMaterials.Clear();
-        for (int i = 0; i < highlightObjects.Count; i++)
+        intensity = 0.0f;
+        currTimer = 0.0f;
+
+        if (hintObjects.Count > 0 && hintObjects[0].gameObject.activeInHierarchy == false)
         {
-            highlightObjectOriginalMaterials.Add(highlightObjects[i].material);
-            highlightObjects[i].material = hintMaterial;
+            hintIsInBag = true;
+            text.text = "Hint is the " + hintObjects[0].gameObject.name + " in the bag";
+            text.gameObject.SetActive(true);
         }
+        else
+        {
+            hintIsInBag = false ;
+            for (int i = 0; i < hintObjects.Count; i++)
+            {
+                hintObjects[i].material = hintMaterial;
+            }
+        }
+
+        StartCoroutine(TurnOnHint());
     }
 
     private void OnDisable()
     {
-        for(int i = 0; i < highlightObjects.Count; i++)
+        if (hintIsInBag)
         {
-            highlightObjects[i].material = highlightObjectOriginalMaterials[i];
+            text.gameObject.SetActive(false);
         }
-        highlightObjectOriginalMaterials.Clear();
-        highlightObjects.Clear();
+        else
+        {
+            for (int i = 0; i < hintObjects.Count; i++)
+            {
+                if (hintObjectOriginalMaterials[i] == null)
+                {
+                    Debug.LogError("Missing original materials");
+                }
+                hintObjects[i].material = hintObjectOriginalMaterials[i];
+            }
+        }
+    }
+
+    IEnumerator TurnOnHint()
+    {
+        while (currTimer < paddingTime)
+        {
+            currTimer += Time.deltaTime;
+            intensity = currTimer / paddingTime;
+            yield return null;
+        }
+    }
+
+    public void TurnOff()
+    {
+        currTimer = paddingTime;
+        StartCoroutine(TurnOffHint());
+    }
+
+    IEnumerator TurnOffHint()
+    {
+        while (currTimer > 0.0f)
+        {
+            currTimer -= Time.deltaTime;
+            intensity = currTimer / paddingTime;
+            yield return null;
+        }
+        enabled = false;
     }
 }

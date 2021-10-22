@@ -5,6 +5,8 @@ using UnityEngine.Analytics;
 
 public class BookInteract : Interactable
 {
+    [Header("Diary Interact Settings")]
+
     public GameObject ColorLock;
     public int InspectDiaryBookIndex;
 
@@ -20,6 +22,7 @@ public class BookInteract : Interactable
     private void Start()
     {
         base.Start();
+        solvedPreLock = false;
         myCollider = closeBookCollider;
         diaryControl = GetComponent<openNotebookAnimation>();
     }

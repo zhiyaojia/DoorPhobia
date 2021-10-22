@@ -5,6 +5,8 @@ using UnityEngine.Analytics;
 
 public class MapInteractable : Interactable
 {
+    [Header("MapInteractable Settings")]
+
     public Transform focusPointTransform;
 
     private MapControl mapControl;
@@ -15,6 +17,7 @@ public class MapInteractable : Interactable
     void Start()
     {
         base.Start();
+        solvedPreLock = false;
         mapControl = GetComponentInChildren<MapControl>();
     }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CollectableInteract : Interactable
 {
+    [Header("CollectableInteraction Settings")]
+
     public int BagIndex;
     [Tooltip("Interactable object that will be unlocked after you interact with this object")]
     public Interactable TargetInteractObject;

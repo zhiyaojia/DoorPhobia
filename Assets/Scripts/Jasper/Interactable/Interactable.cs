@@ -7,27 +7,41 @@ public class Interactable : MonoBehaviour
     [Tooltip("Check this box if you want this object to be directly interacted without any condition")]
     public bool noConditionNeed = false;
     //[Tooltip("Uncheck this box if this object needs to be unlocked before real interaction")]
-    protected bool solvedPreLock = false;
+    protected bool solvedPreLock = true;
 
     [Tooltip("Max distance that player can interact with this object")]
     public float maxInteractableDistance = 3.5f;
 
+    [Header("Dialogue Settings")]
     public bool needDialogue = false;
     [ConditionalHide("needDialogue", true)] [TextArea]
     public string message;
     [ConditionalHide("needDialogue", true)]
     public bool onlyShowWhenLocked = false;
 
-    protected Collider myCollider;
-    protected bool alreadyInteracted = false;
-    protected bool alreadyHovered = false;
-    protected bool meetInteractCondition = false;
-    protected Transform playerCameraTransform;
+    [Header("Hint Settings")]
+    public bool hasHint = false;
+    [ConditionalHide("hasHint", true)]
+    public List<Renderer> hintObjects;
+    protected int myID;
 
+    protected Collider myCollider;
+
+    [Header("Bool Variables")]
+    [SerializeField] protected bool alreadyInteracted = false;
+    [SerializeField]protected bool alreadyHovered = false;
+    protected bool meetInteractCondition = false;
+    protected bool alreadyAddedHintObjects = false;
+    protected bool currentlyMeetInteractionCondition = false;
     [HideInInspector]public bool canQuit = true;
+
+    protected PlayerControl playerControl;
 
     public virtual void Start()
     {
+        playerControl = PlayerControl.Instance;
+        myID = gameObject.GetInstanceID();
+
         myCollider = GetComponent<Collider>();
         if (myCollider == null)
         {
@@ -42,48 +56,63 @@ public class Interactable : MonoBehaviour
 
     public void Update()
     {
-        float distanceWithPlayer = Vector3.Distance(PlayerControl.Instance.transform.position, transform.position);
+        currentlyMeetInteractionCondition = meetInteractCondition & !playerControl.IsShowingHint;
+        alreadyHovered &= !(playerControl.shiftUp || playerControl.shiftDown);
+
+        float distanceWithPlayer = Vector3.Distance(playerControl.transform.position, transform.position);
         if (distanceWithPlayer < maxInteractableDistance)
         {
             RaycastHit hit;
-            if (myCollider.Raycast(PlayerControl.Instance.rayFromScreenCenter, out hit, maxInteractableDistance * 3.0f))
+            if (myCollider.Raycast(playerControl.rayFromScreenCenter, out hit, maxInteractableDistance * 3.0f))
             {
-                if (alreadyHovered == false)
+                if (alreadyHovered == false && alreadyInteracted == false)
                 {
                     alreadyHovered = true;
-                    if (meetInteractCondition)
+                    if (currentlyMeetInteractionCondition)
                     {
-                        PlayerControl.Instance.SetHandIcon(true);
+                        playerControl.SetHandIcon(true);
                     }
                     else
                     {
-                        PlayerControl.Instance.SetLockIcon(true);
+                        playerControl.SetLockIcon(true);
+                    }
+                    if (hasHint && playerControl.IsShowingHint == false && playerControl.currentHintID != myID && (meetInteractCondition == false || solvedPreLock == false))
+                    {
+                        playerControl.SetHintUI(true);
                     }
                 }
-                if (Input.GetMouseButtonDown(0) && alreadyInteracted == false && InspectionSystem.Instance.light.activeInHierarchy == false)
+
+                if (Input.GetMouseButtonDown(0) && alreadyInteracted == false && InspectionSystem.Instance.IsInspecting == false)
                 {
-                    if (meetInteractCondition)
+                    if (currentlyMeetInteractionCondition)
                     {
-                        PlayerControl.Instance.interactTimes += 1;
+                        playerControl.interactTimes += 1;
                         Interact();
-                    }
-                    if (needDialogue)
-                    {
-                        if ((onlyShowWhenLocked && meetInteractCondition == false) || onlyShowWhenLocked == false && solvedPreLock == false)
+                        if (needDialogue)
                         {
-                            PlayerControl.Instance.ShowDialogue(message);
+                            if ((onlyShowWhenLocked == true && (meetInteractCondition == false || solvedPreLock == false)) || (onlyShowWhenLocked == false))
+                            {
+                                playerControl.ShowDialogue(message);
+                            }
                         }
                     }
+                }
+
+                if (Input.GetMouseButtonDown(1) && hasHint == true && playerControl.currentHintID != myID && playerControl.IsShowingHint == false)
+                {
+                    playerControl.WriteHintObjects(hintObjects);
+                    alreadyAddedHintObjects = true;
+                    playerControl.SetHintUI(false);
+                    playerControl.currentHintID = myID;
                 }
             }
             else
             {
                 if (alreadyHovered == true)
                 {
-                    alreadyHovered = false;
-                    PlayerControl.Instance.SetHandIcon(false);
-                    PlayerControl.Instance.SetLockIcon(false);
+                    TurnOffAllHoverUI();
                 }
+                alreadyAddedHintObjects = false;
             }
 
             if (Input.GetKeyDown(KeyCode.Space) && alreadyInteracted == true && canQuit == true)
@@ -95,11 +124,18 @@ public class Interactable : MonoBehaviour
         {
             if (alreadyHovered == true)
             {
-                alreadyHovered = false;
-                PlayerControl.Instance.SetHandIcon(false);
-                PlayerControl.Instance.SetLockIcon(false);
+                TurnOffAllHoverUI();
             }
+            alreadyAddedHintObjects = false;
         }
+    }
+
+    private void TurnOffAllHoverUI()
+    {
+        alreadyHovered = false;
+        playerControl.SetHandIcon(false);
+        playerControl.SetLockIcon(false);
+        playerControl.SetHintUI(false);
     }
 
     public void Unlock()
@@ -110,27 +146,38 @@ public class Interactable : MonoBehaviour
     public virtual void Interact()
     {
         alreadyInteracted = true;
+        playerControl.isInteractingWithObjects = true;
+    }
+
+    private void OnDisable()
+    {
+        playerControl.isInteractingWithObjects = false;
     }
 
     public virtual void FinishInteracting() // This is called when finish puzzle
     {
-        alreadyInteracted = false;
-        alreadyHovered = false;
+        ShutDown();
     }
 
     public virtual void QuitInteracting() // This is called when press space
     {
+        ShutDown();
+    }
+
+    public void ShutDown()
+    {
         alreadyInteracted = false;
         alreadyHovered = false;
+        playerControl.isInteractingWithObjects = false;
     }
 
     public void DisablePlayerMovement()
     {
-        PlayerControl.Instance.playerMovement.StopMove();
+        playerControl.playerMovement.StopMove();
     }
 
     public void EnablePlayerMovement()
     {
-        PlayerControl.Instance.playerMovement.StartMove();
+        playerControl.playerMovement.StartMove();
     }
 }

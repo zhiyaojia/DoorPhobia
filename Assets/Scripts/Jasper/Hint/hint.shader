@@ -6,6 +6,7 @@ Shader "Hidden/hint"
         _bwBlend("Black & White blend", Range(0, 1)) = 0
         _HighlightColor("highlight color", Color) = (0,0,0,0)
         _TargetColor("target color", Color) = (0,0,0,0)
+        _HighlightStartColor("highlight original color", Color) = (0,0,0,0)
     }
     SubShader
     {
@@ -43,17 +44,18 @@ Shader "Hidden/hint"
             uniform float _bwBlend;
             uniform fixed4 _HighlightColor;
             uniform fixed4 _TargetColor;
+            uniform fixed4 _HighlightStartColor;
 
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
                 fixed4 finalColor;
-                if (abs(col.x - _TargetColor.x) < 0.01 && abs(col.y - _TargetColor.y) < 0.01 && abs(col.z - _TargetColor.z) < 0.01)
+                if (abs(col.x - _TargetColor.x) < 0.1 && abs(col.y - _TargetColor.y) < 0.1 && abs(col.z - _TargetColor.z) < 0.1)
                 {
                     if (_bwBlend < 1.0)
                     {
-                        finalColor.rgb = lerp(float3(0.3, 0.3, 0.3), float3(0.6, 0.2, 0.1), _bwBlend);
-                        finalColor.w = 1;
+                        finalColor = _HighlightColor;
+                        finalColor.x = lerp(_HighlightStartColor.x, _HighlightColor.x, _bwBlend);
                     }
                     else
                     {

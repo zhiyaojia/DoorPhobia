@@ -6,9 +6,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
 
-
 public class PlayerControl : MonoBehaviour
 {
+    public static PlayerControl Instance { get; set; }
+
     [Header("Cameras")]
     public GameObject focusCamera;
     public GameObject playerCamera;
@@ -17,13 +18,23 @@ public class PlayerControl : MonoBehaviour
     public GameObject CrossHair;
     public GameObject HandIcon;
     public GameObject LockIcon;
+    public GameObject HintUI;
 
     [HideInInspector] public Ray rayFromScreenCenter;
     [HideInInspector] public MovementControl playerMovement;
+    [HideInInspector] public HintControl hintControl;
+    [HideInInspector] public bool isInteractingWithObjects = false;
 
     private PlayerUIControl UIControl;
 
-    public static PlayerControl Instance { get; set; }
+    [Header("Interactable HoverUI Track")]
+    private bool handIconActive = false;
+    private bool lockIconActive = false;
+    private bool hintUIActive = false;
+    [HideInInspector] public bool IsShowingHint = false;
+    [HideInInspector] public int currentHintID = -1;
+    [HideInInspector] public bool shiftDown = false;
+    [HideInInspector] public bool shiftUp = false;
 
     [Header("Analytics")]
     public float secondsElapsed = 0;
@@ -53,8 +64,176 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         playerMovement = GetComponent<MovementControl>();
+        hintControl = GetComponentInChildren<HintControl>();
         rayFromScreenCenter = new Ray(Vector3.zero, Vector3.up);
         UIControl = GetComponent<PlayerUIControl>();
+
+        AnalyticsInitialization();
+    }
+
+    void Update()
+    {
+        UpdateHint();
+
+        UpdateRay();
+
+        UpdateAnalytics();
+    }
+
+    #region Interactable Related
+    private void UpdateRay()
+    {
+        if (playerCamera.activeInHierarchy == true)
+        {
+            rayFromScreenCenter.origin = playerCamera.transform.position;
+            rayFromScreenCenter.direction = playerCamera.transform.forward;
+        }
+        else
+        {
+            rayFromScreenCenter.origin = focusCamera.transform.position;
+            rayFromScreenCenter.direction = focusCamera.transform.forward;
+        }
+    }
+
+    public void UpdateHint()
+    {
+        shiftDown = Input.GetKeyDown(KeyCode.LeftShift);
+        shiftUp = Input.GetKeyUp(KeyCode.LeftShift);
+        if (shiftDown && isInteractingWithObjects == false && InspectionSystem.Instance.IsInspecting == false)
+        {
+            hintControl.enabled = true;
+            IsShowingHint = true;
+            TurnOffInteractableHoverUI();
+        }
+        if (shiftUp)
+        {
+            TurnOffHint(false);
+        }
+    }
+
+    public void WriteHintObjects(List<Renderer> hintObjects)
+    {
+        hintControl.hintObjects.Clear();
+        hintControl.hintObjectOriginalMaterials.Clear();
+        for (int i = 0; i < hintObjects.Count; i++)
+        {
+            hintControl.hintObjects.Add(hintObjects[i]);
+            hintControl.hintObjectOriginalMaterials.Add(hintObjects[i].material);
+        }
+    }
+
+    public void TurnOffHint(bool immediately)
+    {
+        IsShowingHint = false;
+        if (immediately == true)
+        {
+            hintControl.enabled = false;
+        }
+        else
+        {
+            hintControl.TurnOff();
+        }
+        TurnOffInteractableHoverUI();
+    }
+
+    public void SetHandIcon(bool active)
+    {
+        HandIcon.SetActive(active);
+    }
+
+    public bool IsHandIconActive()
+    {
+        return HandIcon.activeInHierarchy;
+    }
+
+    public void SetHintUI(bool active)
+    {
+        HintUI.SetActive(active);
+    }
+
+    public bool IsHintUIActive()
+    {
+        return HintUI.activeInHierarchy;
+    }
+
+    public void SetLockIcon(bool active)
+    {
+        LockIcon.SetActive(active);
+    }
+
+    public bool IsLockIconActive()
+    {
+        return LockIcon.activeInHierarchy;
+    }
+
+    public void SetCrossHair(bool active)
+    {
+        CrossHair.SetActive(active);
+    }
+
+    public void ShowDialogue(string mes)
+    {
+        UIControl.ShowDialogue(mes);
+    }
+
+    public void ShowBagInfo(string mes, bool afterDialogue)
+    {
+        UIControl.ShowBagInfo(mes, afterDialogue ? UIControl.DialogueMessageLifeTime : 0.0f);
+    }
+
+    public float DialogueTime()
+    {
+        return UIControl.DialogueMessageLifeTime;
+    }
+
+    // This function can make camera focus on the interacting object
+    public void FocusOnObject(Transform focusTransform, bool canRotateView)
+    {
+        playerCamera.SetActive(false);
+        playerMovement.enabled = false;
+
+        focusCamera.SetActive(true);
+        focusCamera.transform.position = focusTransform.position;
+        focusCamera.transform.rotation = focusTransform.rotation;
+        focusCamera.GetComponent<CameraRotate>().enabled = canRotateView;
+
+        SetCrossHair(canRotateView);
+        SetHandIcon(false);
+        hintUIActive = HintUI.activeInHierarchy;
+        SetHintUI(false);
+    }
+
+    public void StopFocusOnObject()
+    {
+        playerCamera.SetActive(true);
+        playerMovement.enabled = true;
+        focusCamera.SetActive(false);
+        SetCrossHair(true);
+        SetHandIcon(true);
+        SetHintUI(hintUIActive);
+    }
+
+    public void TurnOnInteractableHoverUI()
+    {
+        SetHandIcon(handIconActive);
+        SetLockIcon(lockIconActive);
+        SetHintUI(hintUIActive);
+    }
+
+    public void TurnOffInteractableHoverUI()
+    {
+        handIconActive = HandIcon.activeInHierarchy;
+        lockIconActive = LockIcon.activeInHierarchy;
+        hintUIActive = HintUI.activeInHierarchy;
+        SetHandIcon(false);
+        SetLockIcon(false);
+        SetHintUI(false);
+    }
+    #endregion
+
+    #region Analytics
+    void AnalyticsInitialization()
+    {
         // initialize custom event params and current room        
         currentRoom = "BoyLivingRoom";
         customParams = new Dictionary<string, object>();
@@ -66,7 +245,7 @@ public class PlayerControl : MonoBehaviour
         eachRoomStayTime.Add("SecretRoom", secondsElapsed);
         eachRoomStayTime.Add("StudyRoom", secondsElapsed);
         eachRoomStayTime.Add("BathRoom", secondsElapsed);
-        
+
         int times = 0;
         eachRoomEnterTime = new Dictionary<string, object>();
         eachRoomEnterTime.Add("BoyLivingRoom", times);
@@ -76,16 +255,15 @@ public class PlayerControl : MonoBehaviour
         eachRoomEnterTime.Add("BathRoom", times);
     }
 
-    void Update()
+    private void UpdateAnalytics()
     {
-        secondsElapsed += Time.deltaTime;        
-        UpdateRay();
-        if (Input.GetMouseButtonDown(0)) 
+        secondsElapsed += Time.deltaTime;
+        if (Input.GetMouseButtonDown(0))
         {
             clickTimes += 1;
             customParams.Add("click" + clickTimes.ToString(), secondsElapsed);
         }
-        
+
         // If user press Esc the game is ended.
         if (Input.GetKey("escape"))
         {
@@ -94,7 +272,7 @@ public class PlayerControl : MonoBehaviour
             #if DEBUG
                 ar = Analytics.CustomEvent("each_click_time");
                 Debug.Log("each_click_time = " + ar.ToString());
-            #endif     
+            #endif
             // report check bag times
             ReportCheckBagTimes(checkBagTimes);
             #if DEBUG
@@ -114,14 +292,14 @@ public class PlayerControl : MonoBehaviour
                 Debug.Log("interactable_times = " + ar.ToString());
             #endif
             //report game time
-            customParams = new Dictionary<string, object>(); 
+            customParams = new Dictionary<string, object>();
             customParams.Add("user_id", AnalyticsSessionInfo.userId);
             customParams.Add("seconds_played", secondsElapsed);
-            AnalyticsEvent.LevelQuit("Quit_Game", customParams); 
+            AnalyticsEvent.LevelQuit("Quit_Game", customParams);
             #if DEBUG
                 ar = AnalyticsEvent.LevelQuit("Quit_Game");
                 Debug.Log("Quit_Result = " + ar.ToString() + "Quit_time = " + secondsElapsed);
-            #endif  
+            #endif
             // report each room stay time and enter times
             ReportEachRoomStayTime(eachRoomStayTime);
             ReportEachRoomEnterTime(eachRoomEnterTime);
@@ -134,74 +312,6 @@ public class PlayerControl : MonoBehaviour
             // quit game
             Application.Quit();
         }
-    }
-
-    private void UpdateRay()
-    {
-        if (playerCamera.activeInHierarchy == true)
-        {
-            rayFromScreenCenter.origin = playerCamera.transform.position;
-            rayFromScreenCenter.direction = playerCamera.transform.forward;
-        }
-        else
-        {
-            rayFromScreenCenter.origin = focusCamera.transform.position;
-            rayFromScreenCenter.direction = focusCamera.transform.forward;
-        }
-    }
-
-    public void SetHandIcon(bool active)
-    {
-        HandIcon.SetActive(active);
-    }
-
-    public bool IsHandIconActive()
-    {
-        return HandIcon.activeInHierarchy;
-    }
-
-    public void SetLockIcon(bool active)
-    {
-        LockIcon.SetActive(active);
-    }
-
-    public void SetCrossHair(bool active)
-    {
-        CrossHair.SetActive(active);
-    }
-
-    public void ShowDialogue(string mes)
-    {
-        UIControl.ShowDialogue(mes);
-    }
-
-    public void ShowBagInfo(string mes, bool afterDialogue)
-    {
-        UIControl.ShowBagInfo(mes, afterDialogue? UIControl.DialogueMessageLifeTime:0.0f);
-    }
-
-    // This function can make camera focus on the interacting object
-    public void FocusOnObject(Transform focusTransform, bool canRotateView)
-    {
-        playerCamera.SetActive(false);
-        playerMovement.enabled = false;
-
-        focusCamera.SetActive(true);
-        focusCamera.transform.position = focusTransform.position;
-        focusCamera.transform.rotation = focusTransform.rotation;
-        focusCamera.GetComponent<CameraRotate>().enabled = canRotateView;
-
-        CrossHair.SetActive(canRotateView);
-        HandIcon.SetActive(false);
-    }
-
-    public void StopFocusOnObject()
-    {
-        playerCamera.SetActive(true);
-        playerMovement.enabled = true;
-        focusCamera.SetActive(false);
-        CrossHair.SetActive(true);
-        HandIcon.SetActive(true);
     }
 
     // custom analytic events
@@ -243,4 +353,5 @@ public class PlayerControl : MonoBehaviour
         // custom event, report the time used to solve the lock
         AnalyticsEvent.Custom("each_click_time", dict);
     }
+    #endregion
 }
