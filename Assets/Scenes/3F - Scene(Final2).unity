@@ -5705,6 +5705,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5785279434543822811}
     - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+      propertyPath: onlyShowWhenLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106770205035286766, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
       propertyPath: InspectDiaryBookIndex
       value: 1
       objectReference: {fileID: 0}
