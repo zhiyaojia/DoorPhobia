@@ -28,8 +28,8 @@ public class Interactable : MonoBehaviour
     protected Collider myCollider;
 
     [Header("Bool Variables")]
-    [SerializeField] protected bool alreadyInteracted = false;
-    [SerializeField]protected bool alreadyHovered = false;
+    protected bool alreadyInteracted = false;
+    protected bool alreadyHovered = false;
     protected bool meetInteractCondition = false;
     protected bool alreadyAddedHintObjects = false;
     protected bool currentlyMeetInteractionCondition = false;

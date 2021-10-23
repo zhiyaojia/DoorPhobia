@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,6 +135,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438055a16d3b93c44a8d6b75bae31327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &16970287 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2050541128262972085, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &16970289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16970287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3902821fa6218642a271f549b7a5c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noConditionNeed: 1
+  maxInteractableDistance: 15
+  needDialogue: 1
+  message: Why there is blood on it?
+  onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  canQuit: 1
+--- !u!65 &16970290
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16970287}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 16.4, y: 2.62, z: 13.3}
+  m_Center: {x: 0, y: 0.14, z: 0}
 --- !u!1 &72425538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,6 +1395,11 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5830476756115429090, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
   m_PrefabInstance: {fileID: 5785279434543822809}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1056078223 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3293285543765121960, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1132844589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,6 +1537,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2370b248fb18aa6489dba1323c557509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1275514119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7294760794340078697, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+  m_PrefabInstance: {fileID: 1522565350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1275514120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275514119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 1275514125}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
+--- !u!4 &1275514125 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7294760794340078612, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+  m_PrefabInstance: {fileID: 1522565350}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &1279358994 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5830476755095708496, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
@@ -1682,7 +1795,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-58466
+  m_Name: pb_Mesh-106620
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1925,7 +2038,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh88210
+  m_Name: pb_Mesh214172
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2443,6 +2556,31 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1627183838948269918, guid: 7c2e71dfdf26c644aaebd51cab91325c, type: 3}
   m_PrefabInstance: {fileID: 5843565066146747311}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1980831810 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 835457088865174914, guid: 00ed059faca2eed4fa3965aeee43a449, type: 3}
+  m_PrefabInstance: {fileID: 529535906925949450}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1980831812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980831810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3902821fa6218642a271f549b7a5c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noConditionNeed: 1
+  maxInteractableDistance: 20
+  needDialogue: 1
+  message: Someone asked for help!
+  onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  canQuit: 1
 --- !u!23 &2029684744 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5830476755985049833, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
@@ -3044,32 +3182,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4232447433526367865, guid: 495b6d81620c779448a2b6edf0b171f5, type: 3}
   m_PrefabInstance: {fileID: 507164337588310596}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &507164337588310600 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1180608810724727751, guid: 495b6d81620c779448a2b6edf0b171f5, type: 3}
-  m_PrefabInstance: {fileID: 507164337588310596}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &507164337588310601 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5152577858099527669, guid: 495b6d81620c779448a2b6edf0b171f5, type: 3}
-  m_PrefabInstance: {fileID: 507164337588310596}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &507164337588310602 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9192975253763839952, guid: 495b6d81620c779448a2b6edf0b171f5, type: 3}
-  m_PrefabInstance: {fileID: 507164337588310596}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &507164337588310603 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6883719691398582415, guid: 495b6d81620c779448a2b6edf0b171f5, type: 3}
-  m_PrefabInstance: {fileID: 507164337588310596}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &507164337588310604 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5238519465614985890, guid: 495b6d81620c779448a2b6edf0b171f5, type: 3}
-  m_PrefabInstance: {fileID: 507164337588310596}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &507164337588310605
+--- !u!114 &507164337588310600
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3078,7 +3191,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 507164337588310598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
+  m_Script: {fileID: 11500000, guid: e3902821fa6218642a271f549b7a5c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   noConditionNeed: 1
@@ -3088,118 +3201,6 @@ MonoBehaviour:
   onlyShowWhenLocked: 0
   hasHint: 0
   hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &507164337588310606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507164337588310600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: Another world globe, thanks it is not scary.
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &507164337588310607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507164337588310601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: A sofa, it must be comfortable...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &507164337588310608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507164337588310602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: A telescope!
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &507164337588310609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507164337588310603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: You don't want to open it...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &507164337588310610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507164337588310604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: You don't want to open it...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
   canQuit: 1
 --- !u!1 &507164337588310611 stripped
 GameObject:
@@ -3674,7 +3675,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1398288714911990987}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
+  m_Script: {fileID: 11500000, guid: e3902821fa6218642a271f549b7a5c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   noConditionNeed: 1
@@ -3684,8 +3685,6 @@ MonoBehaviour:
   onlyShowWhenLocked: 0
   hasHint: 0
   hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
   canQuit: 1
 --- !u!23 &1411027799808147957
 MeshRenderer:
@@ -5129,626 +5128,44 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5830476755341699055, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
   m_PrefabInstance: {fileID: 5785279434543822809}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822817 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4357903241280678702, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
+--- !u!114 &5785279434543822818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822818 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476755048948380, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822819 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476754695092889, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822820 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476754961611457, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822821 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476755445549677, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822822 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476755445644873, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822823 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476755445578075, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822824 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476755445548693, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476755445608195, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822826 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476755445582181, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822827 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476756059452755, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822828 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476756074390934, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822829 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476754835744579, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822830 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476754828625522, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822831 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476755403457047, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822832 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476754353113170, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822833 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476755701270935, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822834 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476755382245030, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822835 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476755155635405, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822836 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476756213919358, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822837 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476755388944578, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5785279434543822838 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830476755008009732, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
-  m_PrefabInstance: {fileID: 5785279434543822809}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &5785279434543822839
+  m_GameObject: {fileID: 1056078223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3902821fa6218642a271f549b7a5c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noConditionNeed: 1
+  maxInteractableDistance: 20
+  needDialogue: 1
+  message: Why his face is twisted?
+  onlyShowWhenLocked: 0
+  hasHint: 0
+  hintObjects: []
+  canQuit: 1
+--- !u!65 &5785279434543822819
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822817}
+  m_GameObject: {fileID: 1056078223}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.5145125, y: 0.03, z: 0.5145125}
-  m_Center: {x: 0.000000029802322, y: 0, z: 0.24999999}
---- !u!114 &5785279434543822840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_Center: {x: 0.000000029802322, y: 0, z: 0}
+--- !u!1 &5785279434543822820 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5830476754961611457, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
+  m_PrefabInstance: {fileID: 5785279434543822809}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: A strange picture...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: It looks empty...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: A human model...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: A cute pink pig~
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: Looks It is empty...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: Looks it is empty...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: Looks it is empty...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: Looks it is empty...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: Looks it is empty...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: Looks it is empty...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 3.5
-  needDialogue: 1
-  message: A stack of books.
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: Some books here.
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: A blackboard, nothing on it...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: A cat toy, why it is on the chair?
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: A kid's bed. You wake up from here every morning.
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: A ball...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: Another ball.
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: What happened?!! Blood?
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!65 &5785279434543822858
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822834}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 42.029366, y: 25.603548, z: 8.267126}
-  m_Center: {x: -62.819977, y: 9.083039, z: 32.780807}
---- !u!114 &5785279434543822859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: A rabbit... Cute.
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: 'A huge teddy bear! '
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: Wow, Ambulance...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
---- !u!114 &5785279434543822862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785279434543822838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15263fc6ee0bfb646b45670d729f7cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 15
-  needDialogue: 1
-  message: A red truck...
-  onlyShowWhenLocked: 0
-  hasHint: 0
-  hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
-  canQuit: 1
 --- !u!1 &5785279434543822863 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5830476754297811242, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
@@ -5993,8 +5410,6 @@ MonoBehaviour:
   onlyShowWhenLocked: 0
   hasHint: 0
   hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
   canQuit: 1
 --- !u!1001 &5843565066146747311
 PrefabInstance:
@@ -6797,8 +6212,6 @@ MonoBehaviour:
   hasHint: 1
   hintObjects:
   - {fileID: 2076932269}
-  alreadyInteracted: 0
-  alreadyHovered: 0
   canQuit: 1
   phoneControl: {fileID: 6977341023714066660}
   phoneInteractable: {fileID: 6977341023714066661}
@@ -6862,8 +6275,6 @@ MonoBehaviour:
   onlyShowWhenLocked: 0
   hasHint: 0
   hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
   canQuit: 1
 --- !u!65 &6977341023744871274
 BoxCollider:
@@ -6947,8 +6358,6 @@ MonoBehaviour:
   hasHint: 1
   hintObjects:
   - {fileID: 440637750}
-  alreadyInteracted: 0
-  alreadyHovered: 0
   canQuit: 1
   BagIndex: 4
   TargetInteractObject: {fileID: 6977341023674658042}
@@ -6984,8 +6393,6 @@ MonoBehaviour:
   onlyShowWhenLocked: 0
   hasHint: 0
   hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
   canQuit: 1
   BagIndex: 2
   TargetInteractObject: {fileID: 0}
@@ -7000,8 +6407,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.52, y: 4.74, z: 2.8}
-  m_Center: {x: 0, y: -1.29, z: -0.15}
+  m_Size: {x: 0.52, y: 3.79, z: 2.8}
+  m_Center: {x: 0, y: -0.88, z: -0.15}
 --- !u!4 &6977341024663675433 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5830476755075957275, guid: 0eae8811fe166114fa4ae98a6d40c599, type: 3}
@@ -7030,8 +6437,6 @@ MonoBehaviour:
   - {fileID: 288730975}
   - {fileID: 1943218517}
   - {fileID: 1027495709}
-  alreadyInteracted: 0
-  alreadyHovered: 0
   canQuit: 1
   DoorLock: {fileID: 5944295173682767768}
 --- !u!65 &6977341025278282272
@@ -7066,8 +6471,6 @@ MonoBehaviour:
   onlyShowWhenLocked: 0
   hasHint: 0
   hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
   canQuit: 1
   zombieControl: {fileID: 6977341023595343492}
   focusPointTransform: {fileID: 5785279434543822810}
@@ -7103,8 +6506,6 @@ MonoBehaviour:
   onlyShowWhenLocked: 0
   hasHint: 0
   hintObjects: []
-  alreadyInteracted: 0
-  alreadyHovered: 0
   canQuit: 1
   BagIndex: 3
   TargetInteractObject: {fileID: 0}

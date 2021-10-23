@@ -274,7 +274,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 48849c1dcd5674c6292b712ef4073bbf, type: 2}
+  - {fileID: 2100000, guid: de4eeeb2f99961d43bf8f5f7c732f485, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -696,7 +696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 4fc0f55d4cfcb8547976a00f1bd2d352, type: 2}
+  sharedProfile: {fileID: 0}
   isGlobal: 1
   blendDistance: 0
   weight: 1
@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ffee16c08233d141977f9e0be0f1a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noConditionNeed: 1
+  noConditionNeed: 0
   maxInteractableDistance: 15
   needDialogue: 0
   message: 
@@ -1300,6 +1300,62 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1453757370, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453757370, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: hintShader
+      value: 
+      objectReference: {fileID: 4800000, guid: 588b151d05cb9b647863e7be8ba7588e, type: 3}
+    - target: {fileID: 1453757370, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: iterations
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453757370, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: bloomShader
+      value: 
+      objectReference: {fileID: 4800000, guid: 951379baca463164c8185313b5eb0b23, type: 3}
+    - target: {fileID: 1453757370, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: paddingTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453757370, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: BlurIntensity
+      value: 0.146
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453757370, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: additiveShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f1e8e6ace4b958f4cbaa7337df72a11c, type: 3}
+    - target: {fileID: 7294760794340078612, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.0439878
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294760794340078612, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1425171
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294760794340078612, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.21791983
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294760794340078612, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.9055725
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294760794340078612, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.15429856
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294760794340078612, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.38953197
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294760794340078612, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.06629666
+      objectReference: {fileID: 0}
     - target: {fileID: 7294760794503042801, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
       propertyPath: m_Name
       value: Player

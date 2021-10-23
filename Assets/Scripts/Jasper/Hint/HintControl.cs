@@ -5,14 +5,19 @@ using UnityEngine.UI;
 
 public class HintControl : MonoBehaviour
 {
-    public Shader myShader;
+    [Header("Shaders")]
+    public Shader hintShader;
+    public Shader bloomShader;
+    public Shader additiveShader;
 
     [Header("Materials")]
     public Material targetMaterial;
     public Material highlightMaterial;
     public Material hintMaterial;
     public Material highlightStartMateial;
-    private Material myMaterial;
+    private Material grayScaleMaterial;
+    private Material bloomMaterial;
+    private Material additiveMaterial;
 
     [HideInInspector] public List<Renderer> hintObjects = new List<Renderer>();
     [HideInInspector] public List<Material> hintObjectOriginalMaterials = new List<Material>();
@@ -26,21 +31,63 @@ public class HintControl : MonoBehaviour
     public Text text;
     private bool hintIsInBag = false;
 
+    [Header("Bloom Setting")]
+    [Range(0.0f, 0.2f)] public float BlurIntensity = 0.0f;
+    private int bloomMaskPass = 0;
+    private int yAxisGuassianBlurPass = 1;
+    private int xAxisGuassianBlurPass = 2;
+
+    [Header("Colors")]
+    private Color currHighlightColor;
+    private float startHighlightRedValue;
+    private float endHighlightRedValue;
+
     void Awake()
     {
-        myMaterial = new Material(myShader);
-        myMaterial.SetColor("_HighlightColor", highlightMaterial.color);
-        myMaterial.SetColor("_TargetColor", targetMaterial.color);
-        myMaterial.SetColor("_HighlightStartColor", highlightStartMateial.color);
+        grayScaleMaterial = new Material(hintShader);
+        grayScaleMaterial.SetColor("_TargetColor", targetMaterial.color);
+
+        bloomMaterial = new Material(bloomShader);
+
+        additiveMaterial = new Material(additiveShader);
+
+        currHighlightColor = highlightMaterial.color;
+        startHighlightRedValue = highlightStartMateial.color.r;
+        endHighlightRedValue = currHighlightColor.r;
     }
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        if (intensity < 1.0f)
+        int width = source.width;
+        int height = source.height;
+        RenderTexture grayScaleTexture = RenderTexture.GetTemporary(width, height);
+        RenderTexture bloomMaskTexture = RenderTexture.GetTemporary(width, height);
+        RenderTexture yAxisGaussianBlurTexture = RenderTexture.GetTemporary(width, height);
+        RenderTexture finalAxisGaussianBlurTexture = RenderTexture.GetTemporary(width, height);
+
+        if (intensity <= 1.0f)
         {
-            myMaterial.SetFloat("_bwBlend", intensity);
+            grayScaleMaterial.SetFloat("_bwBlend", intensity);
+            currHighlightColor.r = Mathf.Lerp(startHighlightRedValue, endHighlightRedValue, intensity);
+            grayScaleMaterial.SetColor("_HighlightColor", currHighlightColor);
+            bloomMaterial.SetColor("_HighlightColor", currHighlightColor);
+            additiveMaterial.SetColor("_HighlightColor", currHighlightColor);
         }
-        Graphics.Blit(source, destination, myMaterial);
+
+        Graphics.Blit(source, grayScaleTexture, grayScaleMaterial);
+
+        bloomMaterial.SetFloat("_BlurSize", BlurIntensity);
+        Graphics.Blit(grayScaleTexture, bloomMaskTexture, bloomMaterial, bloomMaskPass);
+        Graphics.Blit(bloomMaskTexture, yAxisGaussianBlurTexture, bloomMaterial, yAxisGuassianBlurPass);
+        Graphics.Blit(yAxisGaussianBlurTexture, finalAxisGaussianBlurTexture, bloomMaterial, xAxisGuassianBlurPass);
+
+        additiveMaterial.SetTexture("_BloomTex", finalAxisGaussianBlurTexture);
+        Graphics.Blit(grayScaleTexture, destination, additiveMaterial);
+
+        RenderTexture.ReleaseTemporary(grayScaleTexture);
+        RenderTexture.ReleaseTemporary(bloomMaskTexture);
+        RenderTexture.ReleaseTemporary(yAxisGaussianBlurTexture);
+        RenderTexture.ReleaseTemporary(finalAxisGaussianBlurTexture);
     }
 
     private void OnEnable()
