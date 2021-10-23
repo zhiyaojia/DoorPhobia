@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
 using BigBlit.ActivePack;
+using UnityEngine.UI;
 
 namespace BigBlit.Keypads
 {
@@ -13,6 +14,7 @@ namespace BigBlit.Keypads
 
         #region FIELDS AND PROPERTIES
 
+        public Text passwordText;
 
         [SerializeField] bool _showPrompt;
         [SerializeField] float _blinkInterval;
@@ -46,6 +48,7 @@ namespace BigBlit.Keypads
         public void UpdatePassword(string text)
         {
             _numPadText.Text = text;
+            //passwordText.text = text;
         }
 
         #endregion
@@ -88,7 +91,9 @@ namespace BigBlit.Keypads
             if (_numPad != null)
                 _numPad.RemoveValueChangedListener(onNumPadValueChanged);
         }
-        protected void Update() {
+
+        protected void Update() 
+        {
             updatePrompt();
         }
         #endregion
@@ -109,20 +114,28 @@ namespace BigBlit.Keypads
             _numPadText.CellsNum = padControl.passwordLimit;
             _numPadText.Text = padControl.passwordText;
 
-            //if (_showPassword) {
-            //    _numPadText.Text = _numPad.Value;
+            //passwordText.text = padControl.passwordText;
+
+            //if (_showPassword)
+            //{
+            //    passwordText.text = _numPad.Value;
+            //    //_numPadText.Text = _numPad.Value;
             //}
-            //else {
-            //    if (string.IsNullOrEmpty(_maskChar)) {
+            //else
+            //{
+            //    if (string.IsNullOrEmpty(_maskChar))
+            //    {
             //        _maskChar = "*";
             //    }
-            //    _numPadText.Text = new string(_maskChar[0], _numPad.Value.Length);
+            //    passwordText.text = new string(_maskChar[0], _numPad.Value.Length);
+            //    //_numPadText.Text = new string(_maskChar[0], _numPad.Value.Length);
             //}
 
 
-            if (_isPrompt && _showPrompt && 4 > _numPadText.Text.Length) 
+            if (_isPrompt && _showPrompt && 4 > _numPadText.Text.Length)
             {
                 _numPadText.Text += _promptChar;
+                //passwordText.text += _promptChar;
             }
         }
 
