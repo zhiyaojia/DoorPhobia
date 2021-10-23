@@ -27,6 +27,7 @@ public class LockController : MonoBehaviour
     private LockInteract lockInteract;
 
     public BookInteract DiaryInteract;
+    private AudioSource audio;
 
     private bool solved = false;
     private Animation anim;
@@ -40,6 +41,7 @@ public class LockController : MonoBehaviour
     void Start()
     {
         lockInteract = GetComponent<LockInteract>();
+        audio = GetComponent<AudioSource>();
         anim = GetComponent<Animation>();
         // 开始时关闭Outline
         TurnOffOutline();
@@ -151,6 +153,7 @@ public class LockController : MonoBehaviour
     // 控制开锁动画，将metalpiece上移并旋转
     IEnumerator TranslateAndRotateMetal()
     {
+        audio.Play();
         anim.Play();
         DiaryInteract.canQuit = false;
 

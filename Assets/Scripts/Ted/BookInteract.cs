@@ -13,11 +13,12 @@ public class BookInteract : Interactable
     public Collider closeBookCollider;
     public Collider openBookCollider;
 
-
     private openNotebookAnimation diaryControl;
     AnalyticsResult ar;
     private float startTime = 0;
     private float solveTime;
+
+    private AudioSource audio;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class BookInteract : Interactable
         solvedPreLock = false;
         myCollider = closeBookCollider;
         diaryControl = GetComponent<openNotebookAnimation>();
+        audio = GetComponent<AudioSource>();
     }
 
     public override void Interact()
@@ -68,6 +70,7 @@ public class BookInteract : Interactable
             Debug.Log("solve_3L_diarylock_Result = " + ar.ToString() + "tried_time=" + ColorLock.GetComponent<LockController>().triedTimes);
 
             diaryControl.OpenBook();
+            audio.Play();
             myCollider = openBookCollider;
         }
     }

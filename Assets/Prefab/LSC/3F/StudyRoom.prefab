@@ -441,6 +441,31 @@ Transform:
   m_Father: {fileID: 507164338074032947}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6977341025200621191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013051612701435411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3126ea3662a54542b46739f66d31f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noConditionNeed: 1
+  maxInteractableDistance: 25
+  needDialogue: 0
+  message: 
+  onlyShowWhenLocked: 0
+  hasHint: 1
+  hintObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  canQuit: 1
+  DoorLock: {fileID: 0}
 --- !u!1 &1064484935546391677
 GameObject:
   m_ObjectHideFlags: 0
@@ -4662,7 +4687,6 @@ GameObject:
   - component: {fileID: 4495740958143933828}
   - component: {fileID: 3205740205748852533}
   - component: {fileID: 7171820428892014231}
-  - component: {fileID: 7231578102844783353}
   - component: {fileID: 699340500362291941}
   - component: {fileID: 6977341024084239846}
   - component: {fileID: 507164337588310600}
@@ -4736,20 +4760,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7231578102844783353
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5702660137644608613}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 87a0df10c5336a74e97b6ff0c1780878, type: 3}
 --- !u!65 &699340500362291941
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6747,31 +6757,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6977341025200621191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013051612701435411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3126ea3662a54542b46739f66d31f53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noConditionNeed: 1
-  maxInteractableDistance: 25
-  needDialogue: 0
-  message: 
-  onlyShowWhenLocked: 0
-  hasHint: 1
-  hintObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  canQuit: 1
-  DoorLock: {fileID: 0}
 --- !u!1 &8539551705710701378
 GameObject:
   m_ObjectHideFlags: 0

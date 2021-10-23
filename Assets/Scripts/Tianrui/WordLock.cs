@@ -28,9 +28,12 @@ public class WordLock : MonoBehaviour
     private Animation anim;
     private bool solved = false;
 
+    private AudioSource audio;
+
     private void Start()
     {
         anim = GetComponent<Animation>();
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -128,6 +131,7 @@ public class WordLock : MonoBehaviour
 
     IEnumerator TranslateAndRotateMetal()
     {
+        audio.Play();
         anim.Play();
         solved = true;
         doorInteract.canQuit = false;

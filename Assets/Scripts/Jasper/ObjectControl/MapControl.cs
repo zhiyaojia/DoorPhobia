@@ -24,8 +24,11 @@ public class MapControl : MonoBehaviour
     private bool isHovering = false;
 
     private MapInteractable mapInteractable;
-
+    
+    [Header("Moving Shelf")]
     public Animation movableShelf;
+    public AudioSource shelfAudio;
+
     public float secondsElapsed = 0;
     public int triedTimes = 0;
 
@@ -91,6 +94,7 @@ public class MapControl : MonoBehaviour
                 if (currentCandidateNumber == correctCandidateNumber)
                 {
                     movableShelf.Play();
+                    shelfAudio.Play();
                     mapInteractable.FinishInteracting();
                 }
 

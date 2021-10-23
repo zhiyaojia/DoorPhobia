@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class DoorControl : MonoBehaviour
 {
+    public AudioClip openDoorSound;
+    public AudioClip closeDoorSound;
+
+    private AudioSource audio;
+
     private new Animation animation;
     private Interactable doorInteractable;
     private bool isOpen = false;
@@ -13,6 +18,7 @@ public class DoorControl : MonoBehaviour
     void Start()
     {
         animation = GetComponent<Animation>();
+        audio = GetComponent<AudioSource>();
         doorInteractable = GetComponentInChildren<Interactable>();
     }
 
@@ -38,6 +44,8 @@ public class DoorControl : MonoBehaviour
                 animation.Play("RightOpen");
                 isRight = true;
             }
+            audio.clip = openDoorSound;
+            audio.Play();
         }
         else
         {
@@ -49,6 +57,8 @@ public class DoorControl : MonoBehaviour
             {
                 animation.Play("LeftClose");
             }
+            audio.clip = closeDoorSound;
+            audio.Play();
         }
         isOpen = !isOpen;
     }

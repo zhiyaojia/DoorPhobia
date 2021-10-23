@@ -3510,6 +3510,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: InteractableDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 803682129231968922, guid: 45f53098b722c3543bee720163252a98, type: 3}
+      propertyPath: openDoorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: acda6780185f3470f896a47779740bc3, type: 3}
+    - target: {fileID: 803682129231968922, guid: 45f53098b722c3543bee720163252a98, type: 3}
+      propertyPath: closeDoorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5b51681fb631f49a59068638dc36476b, type: 3}
     - target: {fileID: 913661031565106542, guid: 45f53098b722c3543bee720163252a98, type: 3}
       propertyPath: m_RootOrder
       value: 10

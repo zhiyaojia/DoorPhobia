@@ -25,12 +25,16 @@ public class ZombieHeadControl : MonoBehaviour
     [Header("Hole Interact")]
     public HoleInteract holeInteract;
 
+    private AudioSource audio;
+
     void Start()
     {
         neckStartQuat = Quaternion.Euler(neckStartRotation);
         neckTargetQuat = Quaternion.Euler(neckTargetRotation);
         headStartQuat = Quaternion.Euler(headStartRotation);
         headTargetQuat = Quaternion.Euler(headTargetRotation);
+
+        audio = GetComponent<AudioSource>();
     }
 
     public void TurnHead()
@@ -44,7 +48,8 @@ public class ZombieHeadControl : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
 
-        holeInteract.canQuit = true;
+        audio.Play();
+        print("Play audio");
         if (animationTime <= 0.0f)
         {
             neckTransform.localRotation = neckTargetQuat;
@@ -61,5 +66,8 @@ public class ZombieHeadControl : MonoBehaviour
                 yield return null;
             }
         }
+
+        yield return new WaitForSeconds(audio.clip.length / 2.0f);
+        holeInteract.canQuit = true;
     }
 }
