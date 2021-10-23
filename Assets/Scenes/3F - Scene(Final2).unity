@@ -749,7 +749,7 @@ MonoBehaviour:
 
     Left Mouse - Interact
 
-    Shift - Show Hint
+    Hold Shift to Show Hint
 
     Space
     - Turn off interaction
@@ -2177,9 +2177,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "W, A, S, D - Move\nLeft Mouse - Interact\nShift - Show Hint\nSpace - Turn
-    off interaction\n\nB - turn on/off bag\nA, D - change object in bag\nDrag Mouse
-    to rotate object \n\nPress Space to Contine"
+  m_Text: "W, A, S, D - Move\nLeft Mouse - Interact\nHold Shift to Show Hint\nSpace
+    - Turn off interaction\n\nB - turn on/off bag\nA, D - change object in bag\nDrag
+    Mouse to rotate object \n\nPress Space to Contine"
 --- !u!222 &900038818
 CanvasRenderer:
   m_ObjectHideFlags: 0

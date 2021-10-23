@@ -42,6 +42,9 @@ public class HintControl : MonoBehaviour
     private float startHighlightRedValue;
     private float endHighlightRedValue;
 
+    private IEnumerator enableCouroutine = null;
+    private IEnumerator disableCouroutine = null;
+
     void Awake()
     {
         grayScaleMaterial = new Material(hintShader);
@@ -110,7 +113,12 @@ public class HintControl : MonoBehaviour
             }
         }
 
-        StartCoroutine(TurnOnHint());
+        if (disableCouroutine != null)
+        {
+            StopCoroutine(disableCouroutine);
+        }
+        enableCouroutine = TurnOnHint();
+        StartCoroutine(enableCouroutine);
     }
 
     private void OnDisable()
@@ -145,7 +153,13 @@ public class HintControl : MonoBehaviour
     public void TurnOff()
     {
         currTimer = paddingTime;
-        StartCoroutine(TurnOffHint());
+
+        if (enableCouroutine != null)
+        {
+            StopCoroutine(enableCouroutine);
+        }
+        disableCouroutine = TurnOffHint();
+        StartCoroutine(disableCouroutine);
     }
 
     IEnumerator TurnOffHint()
