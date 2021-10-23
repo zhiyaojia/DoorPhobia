@@ -118,6 +118,7 @@ public class Interactable : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && alreadyInteracted == true && canQuit == true)
             {
                 QuitInteracting();
+                print("interact with " + gameObject.name);
             }
         }
         else

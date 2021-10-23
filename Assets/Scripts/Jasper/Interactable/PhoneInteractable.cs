@@ -16,5 +16,12 @@ public class PhoneInteractable : Interactable
     {
         base.Interact();
         phoneControl.Interact();
+        StartCoroutine(GameEnd());
+    }
+
+    IEnumerator GameEnd()
+    {
+        yield return new WaitForSeconds(10);
+        GameControl.Instance.GameEnds();
     }
 }

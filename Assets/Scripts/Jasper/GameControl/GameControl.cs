@@ -4,12 +4,28 @@ using UnityEngine;
 
 public class GameControl : MonoBehaviour
 {
+    public static GameControl Instance { get; set; }
+
     public GameObject Menu;
+    public GameObject Tutorial;
+    public GameObject GameEnd;
     private bool isPaused = false;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
-        
+        Tutorial.SetActive(true);
     }
 
     void Update()
@@ -36,5 +52,10 @@ public class GameControl : MonoBehaviour
         Menu.SetActive(true);
         Time.timeScale = 0;
         isPaused = true;
+    }
+
+    public void GameEnds()
+    {
+        GameEnd.SetActive(true);
     }
 }
