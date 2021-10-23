@@ -255,6 +255,56 @@ public class PlayerControl : MonoBehaviour
         eachRoomEnterTime.Add("BathRoom", times);
     }
 
+    public void ShutDownGame()
+    {
+        print("QUIT GAME");
+
+        // report every click times
+        ReportEachClickTime(customParams);
+        #if DEBUG
+                ar = Analytics.CustomEvent("each_click_time");
+                Debug.Log("each_click_time = " + ar.ToString());
+        #endif
+        // report check bag times
+        ReportCheckBagTimes(checkBagTimes);
+        #if DEBUG
+                ar = Analytics.CustomEvent("check_bag_times");
+                Debug.Log("check_bag_times = " + ar.ToString());
+        #endif
+        //report total solved puzzles
+        ReportSolvePuzzles(solvePuzzles);
+        #if DEBUG
+                ar = Analytics.CustomEvent("solve_puzzle_num");
+                Debug.Log("solve_puzzle_num = " + ar.ToString());
+        #endif
+        //report total interact times
+        ReportInteractableTimes(interactTimes);
+        #if DEBUG
+                ar = Analytics.CustomEvent("interactable_times");
+                Debug.Log("interactable_times = " + ar.ToString());
+        #endif
+        //report game time
+        customParams = new Dictionary<string, object>();
+        customParams.Add("user_id", AnalyticsSessionInfo.userId);
+        customParams.Add("seconds_played", secondsElapsed);
+        AnalyticsEvent.LevelQuit("Quit_Game", customParams);
+        #if DEBUG
+                ar = AnalyticsEvent.LevelQuit("Quit_Game");
+                Debug.Log("Quit_Result = " + ar.ToString() + "Quit_time = " + secondsElapsed);
+        #endif
+        // report each room stay time and enter times
+        ReportEachRoomStayTime(eachRoomStayTime);
+        ReportEachRoomEnterTime(eachRoomEnterTime);
+        #if DEBUG
+                ar = Analytics.CustomEvent("each_room_stay_time");
+                Debug.Log("each_room_stay_time = " + ar.ToString());
+                ar = Analytics.CustomEvent("each_room_enter_time");
+                Debug.Log("each_room_enter_time = " + ar.ToString());
+        #endif
+        // quit game
+        Application.Quit();
+    }
+
     private void UpdateAnalytics()
     {
         secondsElapsed += Time.deltaTime;
@@ -262,55 +312,6 @@ public class PlayerControl : MonoBehaviour
         {
             clickTimes += 1;
             customParams.Add("click" + clickTimes.ToString(), secondsElapsed);
-        }
-
-        // If user press Esc the game is ended.
-        if (Input.GetKey("escape"))
-        {
-            // report every click times
-            ReportEachClickTime(customParams);
-            #if DEBUG
-                ar = Analytics.CustomEvent("each_click_time");
-                Debug.Log("each_click_time = " + ar.ToString());
-            #endif
-            // report check bag times
-            ReportCheckBagTimes(checkBagTimes);
-            #if DEBUG
-                ar = Analytics.CustomEvent("check_bag_times");
-                Debug.Log("check_bag_times = " + ar.ToString());
-            #endif
-            //report total solved puzzles
-            ReportSolvePuzzles(solvePuzzles);
-            #if DEBUG
-                ar = Analytics.CustomEvent("solve_puzzle_num");
-                Debug.Log("solve_puzzle_num = " + ar.ToString());
-            #endif
-            //report total interact times
-            ReportInteractableTimes(interactTimes);
-            #if DEBUG
-                ar = Analytics.CustomEvent("interactable_times");
-                Debug.Log("interactable_times = " + ar.ToString());
-            #endif
-            //report game time
-            customParams = new Dictionary<string, object>();
-            customParams.Add("user_id", AnalyticsSessionInfo.userId);
-            customParams.Add("seconds_played", secondsElapsed);
-            AnalyticsEvent.LevelQuit("Quit_Game", customParams);
-            #if DEBUG
-                ar = AnalyticsEvent.LevelQuit("Quit_Game");
-                Debug.Log("Quit_Result = " + ar.ToString() + "Quit_time = " + secondsElapsed);
-            #endif
-            // report each room stay time and enter times
-            ReportEachRoomStayTime(eachRoomStayTime);
-            ReportEachRoomEnterTime(eachRoomEnterTime);
-            #if DEBUG
-                ar = Analytics.CustomEvent("each_room_stay_time");
-                Debug.Log("each_room_stay_time = " + ar.ToString());
-                ar = Analytics.CustomEvent("each_room_enter_time");
-                Debug.Log("each_room_enter_time = " + ar.ToString());
-            #endif
-            // quit game
-            Application.Quit();
         }
     }
 
