@@ -23,7 +23,7 @@ public class PlayerControl : MonoBehaviour
     [HideInInspector] public Ray rayFromScreenCenter;
     [HideInInspector] public MovementControl playerMovement;
     [HideInInspector] public HintControl hintControl;
-    [HideInInspector] public bool isInteractingWithObjects = false;
+    public bool isInteractingWithObjects = false;
 
     private PlayerUIControl UIControl;
 
@@ -176,9 +176,9 @@ public class PlayerControl : MonoBehaviour
         UIControl.ShowDialogue(mes);
     }
 
-    public void ShowBagInfo(string mes, bool afterDialogue)
+    public void ShowBagInfo(string mes, bool afterDialogue, bool immediate)
     {
-        UIControl.ShowBagInfo(mes, afterDialogue ? UIControl.DialogueMessageLifeTime : 0.0f);
+        UIControl.ShowBagInfo(mes, immediate, afterDialogue ? UIControl.DialogueMessageLifeTime : 0.0f);
     }
 
     public float DialogueTime()

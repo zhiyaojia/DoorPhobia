@@ -67,21 +67,24 @@ public class PlayerUIControl : MonoBehaviour
         Dialogue.SetActive(false);
     }
 
-    public void ShowBagInfo(string mes, float ExtraTime = 0.0f)
+    public void ShowBagInfo(string mes, bool immediate, float ExtraTime = 0.0f)
     {
         if (showBagInfoCouroutine != null)
         {
             StopCoroutine(showBagInfoCouroutine);
         }
-        showBagInfoCouroutine = TurnOnBagInfo(mes, ExtraTime);
+        showBagInfoCouroutine = TurnOnBagInfo(mes, ExtraTime, immediate);
         StartCoroutine(showBagInfoCouroutine);
     }
 
-    IEnumerator TurnOnBagInfo(string mes, float ExtraTime)
+    IEnumerator TurnOnBagInfo(string mes, float ExtraTime, bool immediate)
     {
-        yield return new WaitForSeconds(BagInfoShowTime + ExtraTime);
+        if (immediate == false)
+        {
+            yield return new WaitForSeconds(BagInfoShowTime + ExtraTime);
+        }
 
-        BagInfoText.text = mes + " is added to bag";
+        BagInfoText.text = mes;
         BagInfoTextColor.a = 1;
         BagInfoBoxColor.a = 1;
         BagInfoText.color = BagInfoTextColor;

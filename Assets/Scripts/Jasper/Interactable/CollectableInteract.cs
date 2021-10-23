@@ -19,5 +19,6 @@ public class CollectableInteract : Interactable
         {
             TargetInteractObject.Unlock();
         }
+        FinishInteracting();
     }
 }

@@ -13,6 +13,6 @@ public class DialogueInteract : Interactable
     IEnumerator FinishDialogue()
     {
         yield return new WaitForSeconds(playerControl.DialogueTime());
-        alreadyInteracted = false;
+        FinishInteracting();
     }
 }

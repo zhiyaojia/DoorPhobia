@@ -5,6 +5,8 @@ using UnityEngine.Analytics;
 
 public class GlobeInteract : Interactable
 {
+    [Header("GlobeInteract Settings")]
+    public AnimationClip RotateAnimClip;
     private RotateController rotateControl;
     private Animation anim;
     
@@ -28,8 +30,16 @@ public class GlobeInteract : Interactable
         ReportRotateGlobe();
         //for debug use, test if custom event works
         Debug.Log("rotate_globe_Result = " + ar.ToString());
-        base.QuitInteracting();
+
+        StartCoroutine(Rotating());
     }
+
+    IEnumerator Rotating()
+    {
+        yield return new WaitForSeconds(RotateAnimClip.length);
+        base.FinishInteracting();
+    }
+
     public void ReportRotateGlobe(){
     AnalyticsEvent.Custom("rotate_globe", new Dictionary<string, object>
     {

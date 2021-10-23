@@ -29,17 +29,24 @@ public class BagSystemControl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B) && PlayerControl.Instance.IsShowingHint == false)
+        if (Input.GetKeyDown(KeyCode.B))
         {
-            if (bagIsOpening == false)
+            if (PlayerControl.Instance.isInteractingWithObjects == true)
             {
-                PlayerControl.Instance.checkBagTimes += 1;
-                // Debug.Log(PlayerControl.Instance.checkBagTimes);
-                openBag();
+                PlayerControl.Instance.ShowBagInfo("Cannot open bag while interacting", false, true);
             }
-            else
+            else if (PlayerControl.Instance.IsShowingHint == false)
             {
-                closeBag();
+                if (bagIsOpening == false)
+                {
+                    PlayerControl.Instance.checkBagTimes += 1;
+                    // Debug.Log(PlayerControl.Instance.checkBagTimes);
+                    openBag();
+                }
+                else
+                {
+                    closeBag();
+                }
             }
         }
 
@@ -52,7 +59,6 @@ public class BagSystemControl : MonoBehaviour
     private void openBag()
     {
         InspectionSystem.Instance.TurnOn();
-        //PlayerControl.Instance.SetCrossHair(false);
 
         bagIsOpening = true;
         if (CurrentObjectIndexList.Count > 0)
@@ -65,7 +71,6 @@ public class BagSystemControl : MonoBehaviour
     private void closeBag()
     {
         InspectionSystem.Instance.TurnOff();
-        //PlayerControl.Instance.SetCrossHair(true);
 
         bagIsOpening = false;
         if (currentInspectionObjectIndex >= 0)
@@ -102,6 +107,6 @@ public class BagSystemControl : MonoBehaviour
     public void AddObject(int index, bool dialoguePadding = false)
     {
         CurrentObjectIndexList.Add(index);
-        PlayerControl.Instance.ShowBagInfo(AllObjectsList[index].name, dialoguePadding);
+        PlayerControl.Instance.ShowBagInfo(AllObjectsList[index].name + " is added to bag", dialoguePadding, false);
     }
 }
