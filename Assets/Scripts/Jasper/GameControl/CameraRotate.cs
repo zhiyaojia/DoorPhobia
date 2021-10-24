@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraRotate : MonoBehaviour
 {
-    public float horizontalSpeed = 1f;
-    public float verticalSpeed = 1f;
-    public float moveDeltaLimit = 20.0f;
+    private float horizontalSpeed = 1f;
+    private float verticalSpeed = 1f;
+    private float moveDeltaLimit = 7.5f;
     private float xRotation = 0.0f;
     private float yRotation = 0.0f;
 
