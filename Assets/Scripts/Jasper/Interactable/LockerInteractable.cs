@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LockerInteractable : Interactable
 { 
-    private AnimationControl lockerControl;
+    private Animation lockerControl;
+    private AudioSource audio;
 
     [Header("Locker Settings")]
     public PhoneControl phoneControl;
@@ -13,13 +14,15 @@ public class LockerInteractable : Interactable
     void Start()
     {
         base.Start();
-        lockerControl = GetComponent<AnimationControl>();
+        lockerControl = GetComponent<Animation>();
+        audio = GetComponent<AudioSource>();
     }
 
     public override void Interact()
     {
         base.Interact();
-        lockerControl.PlayAnimation();
+        lockerControl.Play();
+        audio.Play();
         StartCoroutine("PhoneRing");
     }
 
