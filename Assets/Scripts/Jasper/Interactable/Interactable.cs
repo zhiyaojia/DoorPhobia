@@ -98,7 +98,7 @@ public class Interactable : MonoBehaviour
                     }
                 }
 
-                if (Input.GetMouseButtonDown(1) && hasHint == true && playerControl.currentHintID != myID && playerControl.IsShowingHint == false)
+                if (Input.GetKeyDown(KeyCode.H) && hasHint == true && playerControl.currentHintID != myID && playerControl.IsShowingHint == false)
                 {
                     playerControl.WriteHintObjects(hintObjects);
                     alreadyAddedHintObjects = true;

@@ -370,7 +370,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9111021843235575033, guid: 23ffa287d50355e4b877c13f01fbb97c, type: 3}
   m_PrefabInstance: {fileID: 1398288714911990981}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &208342867
+--- !u!82 &208342868
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2280,7 +2280,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "W, A, S, D - Move\nLeft Mouse - Interact\nHold Shift to Show Hint\nSpace
     - Turn off interaction\n\nB - turn on/off bag\nA, D - change object in bag\nDrag
-    Mouse to rotate object \n\nPress Space to Contine"
+    Mouse to rotate object \n\nPress Space to Continue"
 --- !u!222 &900038818
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2725,6 +2725,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 906133206, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: m_Text
+      value: Press H to Select This Object's Hint
+      objectReference: {fileID: 0}
     - target: {fileID: 1522565357, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2821,7 +2825,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-61940
+  m_Name: pb_Mesh155684
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2985,7 +2989,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-61884
+  m_Name: pb_Mesh153366
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
