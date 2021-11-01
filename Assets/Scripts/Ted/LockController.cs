@@ -26,7 +26,7 @@ public class LockController : MonoBehaviour
     float TranslateDistance = 0;
     private LockInteract lockInteract;
 
-    public BookInteract DiaryInteract;
+    public Interactable myInteract;
     private AudioSource audio;
 
     private bool solved = false;
@@ -155,12 +155,12 @@ public class LockController : MonoBehaviour
     {
         audio.Play();
         anim.Play();
-        DiaryInteract.canQuit = false;
+        myInteract.canQuit = false;
 
         yield return new WaitForSeconds(anim.GetClip("unlock").length + 0.5f);
 
-        DiaryInteract.canQuit = true;
-        DiaryInteract.FinishInteracting();
+        myInteract.canQuit = true;
+        myInteract.FinishInteracting();
     }
     // 控制显示当前选中密码盘的outline
     void OutlineCurrentWheel()

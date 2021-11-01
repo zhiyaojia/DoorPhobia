@@ -59,15 +59,23 @@ public class ZombieHeadControl : MonoBehaviour
         {
             float startTimer = Time.realtimeSinceStartup;
             float timer = 0.0f;
-            while (true)
+            // Only for Webgl Build
+            //while (true)
+            //{
+            //    neckTransform.localRotation = Quaternion.Slerp(neckStartQuat, neckTargetQuat, Mathf.Clamp01(timer / animationTime));
+            //    headTransform.localRotation = Quaternion.Slerp(headStartQuat, headTargetQuat, Mathf.Clamp01(timer / animationTime));
+            //    timer += Time.realtimeSinceStartup - startTimer;
+            //    if (timer >= animationTime)
+            //    {
+            //        break;
+            //    }
+            //    yield return null;
+            //}
+            while (timer < animationTime)
             {
-                neckTransform.localRotation = Quaternion.Slerp(neckStartQuat, neckTargetQuat, Mathf.Clamp01(timer / animationTime));
-                headTransform.localRotation = Quaternion.Slerp(headStartQuat, headTargetQuat, Mathf.Clamp01(timer / animationTime));
-                timer += Time.realtimeSinceStartup - startTimer;
-                if (timer >= animationTime)
-                {
-                    break;
-                }
+                neckTransform.localRotation = Quaternion.Slerp(neckStartQuat, neckTargetQuat, timer / animationTime);
+                headTransform.localRotation = Quaternion.Slerp(headStartQuat, headTargetQuat, timer / animationTime);
+                timer += Time.deltaTime;
                 yield return null;
             }
         }

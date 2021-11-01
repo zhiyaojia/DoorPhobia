@@ -25,7 +25,7 @@ public class GameControl : MonoBehaviour
 
     void Start()
     {
-        Tutorial.SetActive(true);
+        //Tutorial.SetActive(true);
     }
 
     void Update()
