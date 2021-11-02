@@ -29,6 +29,7 @@ public class BathRoomClosetInteract : Interactable
     {
         base.FinishInteracting();
         InspectionSystem.Instance.TurnOff();
+        playerControl.SetHandIcon(false);
         Lock.SetActive(false);
         audioSource.Play();
         myAnimation.Play();

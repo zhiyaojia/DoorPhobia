@@ -70,7 +70,6 @@ public class Interactable : MonoBehaviour
                     alreadyHovered = true;
                     if (currentlyMeetInteractionCondition)
                     {
-                        print(gameObject.name);
                         playerControl.SetHandIcon(true);
                     }
                     else
@@ -137,6 +136,11 @@ public class Interactable : MonoBehaviour
         playerControl.SetHandIcon(false);
         playerControl.SetLockIcon(false);
         playerControl.SetHintUI(false);
+    }
+
+    public void Lock()
+    {
+        meetInteractCondition = false;
     }
 
     public void Unlock()

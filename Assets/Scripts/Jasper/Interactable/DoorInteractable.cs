@@ -6,7 +6,7 @@ public class DoorInteractable : Interactable
 {
     private DoorControl doorControl;
 
-    private void Start()
+    public override void Start()
     {
         base.Start();
         doorControl = GetComponentInParent<DoorControl>();

@@ -22,7 +22,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 694367406836216900}
-  - component: {fileID: 2745981063740317943}
   m_Layer: 0
   m_Name: Candel3
   m_TagString: Untagged
@@ -43,30 +42,10 @@ Transform:
   m_Children:
   - {fileID: 694367406370399737}
   - {fileID: 694367407561493497}
-  - {fileID: 1542559783261363946}
-  - {fileID: 1542559783261363936}
+  - {fileID: 154864746850332265}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2745981063740317943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694367406836216901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14e1ccb9bc5e66e46b9ebc20caf6db2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TorchLight: {fileID: 1542559783261782720}
-  MainFlame: {fileID: 1542559783261782730}
-  BaseFlame: {fileID: 1542559783261782724}
-  Etincelles: {fileID: 1542559783261782728}
-  Fumee: {fileID: 1542559783261782726}
-  MaxLightIntensity: 3
-  IntensityLight: 0
 --- !u!65 &694367407561101690
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -108,8 +87,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.4800033, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 694367406836216900}
-  m_RootOrder: 3
+  m_Father: {fileID: 154864746850332265}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1542559783271927788
 Light:
@@ -14522,13 +14501,13 @@ Transform:
   m_GameObject: {fileID: 1542559783261782730}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.4350026, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 2.196596}
+  m_LocalScale: {x: 1, y: 1, z: 2.1965957}
   m_Children:
   - {fileID: 1542559783261363940}
   - {fileID: 1542559783261363944}
   - {fileID: 1542559783261363942}
-  m_Father: {fileID: 694367406836216900}
-  m_RootOrder: 2
+  m_Father: {fileID: 154864746850332265}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1542559783279713198
 ParticleSystem:
@@ -19272,6 +19251,38 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &8076159570436581437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 154864746850332265}
+  m_Layer: 0
+  m_Name: TorchEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &154864746850332265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8076159570436581437}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1542559783261363936}
+  - {fileID: 1542559783261363946}
+  m_Father: {fileID: 694367406836216900}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &694367406370799481
 PrefabInstance:
   m_ObjectHideFlags: 0
