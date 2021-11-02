@@ -56,6 +56,18 @@ public class BagSystemControl : MonoBehaviour
         }
     }
 
+    public void ShowObject(int index)
+    {
+        InspectionSystem.Instance.TurnOn();
+        AllObjectsList[index].SetActive(true);
+    }
+
+    public void HideObject(int index)
+    {
+        InspectionSystem.Instance.TurnOff();
+        AllObjectsList[index].SetActive(false);
+    }
+
     private void openBag()
     {
         InspectionSystem.Instance.TurnOn();

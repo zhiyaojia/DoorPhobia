@@ -70,6 +70,7 @@ public class Interactable : MonoBehaviour
                     alreadyHovered = true;
                     if (currentlyMeetInteractionCondition)
                     {
+                        print(gameObject.name);
                         playerControl.SetHandIcon(true);
                     }
                     else

@@ -5,32 +5,25 @@ using UnityEngine;
 public class LockerInteractable : Interactable
 { 
     private Animation lockerControl;
-    private AudioSource audio;
+    private AudioSource audioSource;
 
     [Header("Locker Settings")]
-    public PhoneControl phoneControl;
-    public PhoneInteractable phoneInteractable;
+    public GameObject loveLetter;
 
     void Start()
     {
         base.Start();
         lockerControl = GetComponent<Animation>();
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public override void Interact()
     {
         base.Interact();
         lockerControl.Play();
-        audio.Play();
-        StartCoroutine("PhoneRing");
-    }
-
-    IEnumerator PhoneRing()
-    {
-        yield return new WaitForSeconds(3);
-
-        phoneInteractable.Unlock();
-        phoneControl.PlayMusic();
+        audioSource.Play();
+        loveLetter.SetActive(true);
+        enabled = false;
+        FinishInteracting();
     }
 }

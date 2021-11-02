@@ -14,9 +14,15 @@ public class PhoneControl : MonoBehaviour
         phoneInteractable = GetComponent<PhoneInteractable>();
     }
 
-    public void PlayMusic()
+    IEnumerator PlayMusic()
     {
+        yield return new WaitForSeconds(3);
         source.Play();
+    }
+
+    public void PhoneRing()
+    {
+        StartCoroutine(PlayMusic());
     }
 
     public void Interact()

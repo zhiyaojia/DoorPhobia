@@ -10,13 +10,21 @@ public class CollectableInteract : Interactable
 
     public override void Interact()
     {
-        gameObject.SetActive(false);
-        BagSystemControl.Instance.AddObject(BagIndex, needDialogue);
-        PlayerControl.Instance.SetHandIcon(false);
+        base.Interact();
+        BagSystemControl.Instance.ShowObject(BagIndex);
         if (TargetInteractObject != null)
         {
             TargetInteractObject.Unlock();
         }
-        FinishInteracting();
+    }
+
+    public override void QuitInteracting()
+    { 
+        base.QuitInteracting();
+        BagSystemControl.Instance.HideObject(BagIndex);
+        //BagSystemControl.Instance.AddObject(BagIndex, needDialogue);
+        BagSystemControl.Instance.AddObject(BagIndex, false);
+        PlayerControl.Instance.SetHandIcon(false);
+        gameObject.SetActive(false);
     }
 }
