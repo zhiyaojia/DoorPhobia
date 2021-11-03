@@ -9,6 +9,13 @@ using UnityEngine.Analytics;
 public class PlayerControl : MonoBehaviour
 {
     public static PlayerControl Instance { get; set; }
+    public Vector3 forward 
+    { 
+        get
+        {
+            return playerCamera.transform.forward; 
+        }
+    }
 
     [Header("Cameras")]
     public GameObject focusCamera;

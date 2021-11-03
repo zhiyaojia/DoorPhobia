@@ -140,11 +140,21 @@ public class Interactable : MonoBehaviour
 
     public void Lock()
     {
+        if (alreadyHovered)
+        {
+            playerControl.SetHandIcon(false);
+            playerControl.SetLockIcon(true);
+        }
         meetInteractCondition = false;
     }
 
     public void Unlock()
     {
+        if (alreadyHovered)
+        {
+            playerControl.SetHandIcon(true);
+            playerControl.SetLockIcon(false);
+        }
         meetInteractCondition = true;
     }
 

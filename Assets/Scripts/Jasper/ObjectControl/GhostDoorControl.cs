@@ -6,13 +6,14 @@ public class GhostDoorControl : MonoBehaviour
 
     private Animation doorAnimation;
     private AudioSource doorAudioSource;
+    private DoorControl doorControl;
     public SingleOpenDoorInteract doorInteract;
 
     void Start()
     {
+        doorControl = GetComponentInParent<DoorControl>();
         doorAnimation = GetComponentInParent<Animation>();
         doorAudioSource = GetComponentInParent<AudioSource>();
-        //doorInteract = transform.parent.gameObject.GetComponentInChildren<SingleOpenDoorInteract>();
     }
 
     private void OnTriggerExit(Collider other)
@@ -25,6 +26,7 @@ public class GhostDoorControl : MonoBehaviour
             gameObject.SetActive(false);
             doorInteract.enabled = true;
             doorInteract.Lock();
+            doorControl.Close();
         }
     }
 }

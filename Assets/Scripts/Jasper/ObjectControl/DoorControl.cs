@@ -63,6 +63,11 @@ public class DoorControl : MonoBehaviour
         isOpen = !isOpen;
     }
 
+    public void Close()
+    {
+        isOpen = false;
+    }
+
     public void StopAnimation()
     {
         doorInteractable.FinishInteracting();

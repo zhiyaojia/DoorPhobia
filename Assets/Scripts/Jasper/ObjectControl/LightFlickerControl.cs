@@ -36,4 +36,15 @@ public class LightFlickerControl : MonoBehaviour
         myLight.enabled = true;
         isFlickering = false;
     }
+
+    private void OnDisable()
+    {
+        isFlickering = true;
+        if (flickerCoroutine != null)
+        {
+            StopCoroutine(flickerCoroutine);
+        }
+        myLight.enabled = true;
+        myLight.intensity = originalLightIntensity;
+    }
 }

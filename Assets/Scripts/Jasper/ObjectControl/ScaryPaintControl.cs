@@ -11,7 +11,7 @@ public class ScaryPaintControl : MonoBehaviour
 
     void Update()
     {
-        Vector3 playerForward = PlayerControl.Instance.playerCamera.transform.forward;
+        Vector3 playerForward = PlayerControl.Instance.forward;
         playerForward.y = 0.0f;
         Vector3 paintForward = transform.up;
         paintForward.y = 0.0f;
