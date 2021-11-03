@@ -1,25 +1,54 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ScaryPaintControl : MonoBehaviour
 {
-    private AudioSource audio;
+    public List<GameObject> disappearObjects;
+    public AudioClip scaryClip;
 
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        StartCoroutine(StartScary());
     }
 
-    void Update()
+    IEnumerator StartScary()
     {
-        Vector3 playerForward = PlayerControl.Instance.forward;
-        playerForward.y = 0.0f;
+        Vector3 playerForward;
         Vector3 paintForward = transform.up;
         paintForward.y = 0.0f;
-        float dot = Vector3.Dot(playerForward, paintForward);
-        if (dot >= 0.5f)
+        float dot;
+        while (true)
         {
-            audio.Play();
-            enabled = false;
+            playerForward = PlayerControl.Instance.forward;
+            playerForward.y = 0.0f;
+            dot = Vector3.Dot(playerForward, paintForward);
+            if (dot >= 0.5f)
+            {
+                PlayerControl.Instance.playerAudio.clip = scaryClip;
+                PlayerControl.Instance.playerAudio.Play();
+                foreach (GameObject obj in disappearObjects)
+                {
+                    obj.SetActive(false);
+                }
+                break;
+            }
+
+            yield return null;
+        }
+
+        while (true)
+        {
+            playerForward = PlayerControl.Instance.forward;
+            playerForward.y = 0.0f;
+            dot = Vector3.Dot(playerForward, paintForward);
+            if (dot <= -0.5f)
+            {
+                gameObject.SetActive(false);
+                break;
+            }
+
+            yield return null;
         }
     }
 }

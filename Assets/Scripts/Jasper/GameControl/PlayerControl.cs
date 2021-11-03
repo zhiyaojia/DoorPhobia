@@ -33,6 +33,7 @@ public class PlayerControl : MonoBehaviour
     public bool isInteractingWithObjects = false;
 
     private PlayerUIControl UIControl;
+    [HideInInspector]public AudioSource playerAudio;
 
     [Header("Interactable HoverUI Track")]
     private bool handIconActive = false;
@@ -74,6 +75,7 @@ public class PlayerControl : MonoBehaviour
         hintControl = GetComponentInChildren<HintControl>();
         rayFromScreenCenter = new Ray(Vector3.zero, Vector3.up);
         UIControl = GetComponent<PlayerUIControl>();
+        playerAudio = GetComponentInChildren<AudioSource>();
 
         AnalyticsInitialization();
     }

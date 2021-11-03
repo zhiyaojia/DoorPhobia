@@ -18,6 +18,16 @@ public class ElevatorControl : MonoBehaviour
     public Collider airWall;
     public int currentFloorIndex = 3;
 
+    [Header("Sound Settings")]
+    public AudioSource elevatorAudio;
+    public AudioClip doorSound;
+    public AudioClip moveSound;
+    public AudioClip ringSound;
+
+    [Header("Button Interact")]
+    public FunctionalInteractable upButton;
+    public FunctionalInteractable downbutton;
+
     private HashSet<int> accessableFloors;
     private int direction;
     private IEnumerator movingCoroutine;
@@ -35,6 +45,7 @@ public class ElevatorControl : MonoBehaviour
         accessableFloors = new HashSet<int>();
         accessableFloors.Add(3);
         accessableFloors.Add(2);
+        accessableFloors.Add(1);
     }
 
     void Start()
@@ -68,13 +79,28 @@ public class ElevatorControl : MonoBehaviour
         {
             return;
         }
+        elevatorAudio.clip = doorSound;
+        elevatorAudio.Play();
         gateAnimations[currentFloorIndex - 1].Play("Close");
         currentFloorIndex = targetFloor;
         airWall.enabled = true;
+
+        upButton.Lock();
+        downbutton.Lock();
     }
 
-    public void StartMove()
+    public void Move()
     {
+        StartCoroutine(StartMove());
+    }
+
+    IEnumerator StartMove()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        elevatorAudio.clip = moveSound;
+        elevatorAudio.Play();
+
         if (direction > 0)
         {
             if (currentFloorIndex == 2)
@@ -98,6 +124,8 @@ public class ElevatorControl : MonoBehaviour
             }
         }
 
+        Floors[currentFloorIndex - 1].SetActive(true);
+
         movingCoroutine = UpdatePlayerPosition();
         StartCoroutine(movingCoroutine);
     }
@@ -117,24 +145,50 @@ public class ElevatorControl : MonoBehaviour
             playerY += diffY;
             playerPos.y = playerY;
             player.position = playerPos;
-            print(Time.realtimeSinceStartup + ", " + diffY + ", " + elevatorModel.position.y + ", " + playerPos.y);
             yield return null;
 
             lastY = currentY;
         }
     }
 
-    public void OpenDoor()
+    public void arriveFloor()
     {
+        StartCoroutine(OpenDoor());
+    }
+
+    IEnumerator OpenDoor()
+    {
+        elevatorAudio.clip = ringSound;
+        elevatorAudio.Play();
+
+        yield return new WaitForSeconds(1.5f);
+
+        elevatorAudio.clip = doorSound;
+        elevatorAudio.Play();
+
         gateAnimations[currentFloorIndex - 1].Play("Open");
         if (movingCoroutine != null)
         {
             StopCoroutine(movingCoroutine);
+        }
+
+        int lastFloor = currentFloorIndex + direction * -1;
+ 
+        if (accessableFloors.Contains(lastFloor))
+        {
+            Floors[lastFloor - 1].SetActive(false);
+        }
+        else
+        {
+            Debug.LogError(lastFloor + " is not accessable");
         }
     }
 
     public void FinishOpenDoor()
     {
         airWall.enabled = false;
+
+        upButton.Unlock();
+        downbutton.Unlock();
     }
 }

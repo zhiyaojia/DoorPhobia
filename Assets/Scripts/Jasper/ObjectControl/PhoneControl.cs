@@ -6,12 +6,15 @@ public class PhoneControl : MonoBehaviour
 {
     public GameObject TwistedPainting;
     private AudioSource source;
-    private PhoneInteractable phoneInteractable;
 
     void Start()
     {
         source = GetComponent<AudioSource>();
-        phoneInteractable = GetComponent<PhoneInteractable>();
+    }
+
+    public void PhoneRing()
+    {
+        StartCoroutine(PlayMusic());
     }
 
     IEnumerator PlayMusic()
@@ -20,12 +23,7 @@ public class PhoneControl : MonoBehaviour
         source.Play();
     }
 
-    public void PhoneRing()
-    {
-        StartCoroutine(PlayMusic());
-    }
-
-    public void Interact()
+    public void PickUpPhone()
     {
         TwistedPainting.SetActive(true);
         source.Stop();
