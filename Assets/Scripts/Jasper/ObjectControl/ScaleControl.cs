@@ -8,6 +8,7 @@ public class ScaleControl : MonoBehaviour
     public Transform indicator;
     public float indicatorRotationSpeed;
     public float maxWeight = 5.0f;
+    public float correctWeight;
     public float currentWeight;
     private float currentRotation;
     private bool indiacatorIsRotating;
@@ -15,9 +16,13 @@ public class ScaleControl : MonoBehaviour
     [Header("Scale Object")]
     public List<Collider> ScaleObjects;
 
+    [Header("Scale Interactable")]
+    public ScaleInteractable scaleInteractable;
+
     private Camera cam;
     private int currentHoverIndex;
     private bool isHovering;
+    private IEnumerator hoverCoroutine;
 
     void Start()
     {
@@ -29,8 +34,24 @@ public class ScaleControl : MonoBehaviour
         isHovering = false;
 
         cam = PlayerControl.Instance.focusCamera.GetComponent<Camera>();
+    }
 
-        StartCoroutine(Hover());
+    private void OnEnable()
+    {
+        hoverCoroutine = Hover();
+        StartCoroutine(hoverCoroutine);
+    }
+
+    private void OnDisable()
+    {
+        if (currentHoverIndex >= 0)
+        {
+            ScaleObjects[currentHoverIndex].GetComponent<cakeslice.Outline>().enabled = false;
+        }
+        if (hoverCoroutine != null)
+        {
+            StopCoroutine(hoverCoroutine);
+        }
     }
 
     void Update()
@@ -95,23 +116,34 @@ public class ScaleControl : MonoBehaviour
     void WeightChange(float deltaWeight)
     {
         float targetWeight = currentWeight + deltaWeight;
-        if (targetWeight > maxWeight || targetWeight < 0.0f)
+        if (targetWeight >= maxWeight && currentWeight <= maxWeight)
         {
-            return;
+            deltaWeight = maxWeight - currentWeight;
+        }
+        else if (targetWeight <= maxWeight && currentWeight >= maxWeight)
+        {
+            deltaWeight = targetWeight - maxWeight;
+        }
+        else if (targetWeight >= maxWeight && currentWeight >= maxWeight)
+        {
+            deltaWeight = 0.0f;
         }
 
-        StartCoroutine(StartWeightChange(deltaWeight));
+        currentWeight = targetWeight;
+        if (deltaWeight != 0.0f)
+        {
+            StartCoroutine(StartWeightChange(deltaWeight));
+        }
     }
 
     IEnumerator StartWeightChange(float deltaWeight)
     {
-        currentWeight += deltaWeight;
-
         indiacatorIsRotating = true;
 
         float rotSpeed = (deltaWeight > 0.0f ? 1.0f : -1.0f) * indicatorRotationSpeed;
-        float targetRot = currentWeight / maxWeight * 360.0f;
-        float rotDiff = Mathf.Abs(deltaWeight) / maxWeight * 360.0f;
+        float rotDiff = deltaWeight / maxWeight * 360.0f;
+        float targetRot = rotDiff + currentRotation;
+        rotDiff = Mathf.Abs(rotDiff);
         Vector3 rot = indicator.localRotation.eulerAngles;
         float deltaRot;
         while (rotDiff > 0.0f)
@@ -135,5 +167,12 @@ public class ScaleControl : MonoBehaviour
         }
 
         indiacatorIsRotating = false;
+
+        if (currentWeight == correctWeight)
+        {
+            yield return new WaitForSeconds(1);
+
+            scaleInteractable.FinishInteracting();
+        }
     }
 }
