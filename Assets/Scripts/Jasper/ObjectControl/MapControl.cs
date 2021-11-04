@@ -62,7 +62,6 @@ public class MapControl : MonoBehaviour
 
     private void OnEnable()
     {
-
         StartCoroutine("Hover");
     }
 
@@ -116,18 +115,30 @@ public class MapControl : MonoBehaviour
             {
                 for (int i = 0; i < StateList.Count; i++)
                 {
-                    if (Vector3.Distance(hit.point, StateList[i].transform.position) < validStateDistance)
+                    if (Vector3.Distance(hit.point, StateList[i].transform.position) < validStateDistance || i == currHoverIndex)
                     {
                         if (ColliderList[i].Raycast(PlayerControl.Instance.rayFromScreenCenter, out innerHit, Mathf.Infinity))
                         {
                             isHovering = true;
                             if (i != currHoverIndex)
                             {
-                                StateList[currHoverIndex].GetComponent<cakeslice.Outline>().enabled = false;
+                                if (currHoverIndex >= 0)
+                                {
+                                    StateList[currHoverIndex].GetComponent<cakeslice.Outline>().enabled = false;
+                                }
                                 StateList[i].GetComponent<cakeslice.Outline>().enabled = true;
                                 currHoverIndex = i;
                             }
                             break;
+                        }
+                        else
+                        {
+                            if (i == currHoverIndex)
+                            {
+                                StateList[currHoverIndex].GetComponent<cakeslice.Outline>().enabled = false;
+                                currHoverIndex = -1;
+                                isHovering = false;
+                            }
                         }
                     }
                 }
