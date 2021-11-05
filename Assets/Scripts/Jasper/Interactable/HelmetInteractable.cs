@@ -8,6 +8,7 @@ public class HelmetInteractable : Interactable
     public GameObject myCamera;
     private HelmetControl helmetControl;
 
+
     void Start()
     {
         base.Start();

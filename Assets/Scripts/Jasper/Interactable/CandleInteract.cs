@@ -16,6 +16,8 @@ public class CandleInteract : Interactable
     public override void Interact()
     {
         base.Interact();
+        BagSystemControl.Instance.RemoveObject(3);
+        FinishInteracting();
         StartCoroutine(LightUp());
     }
 

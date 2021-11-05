@@ -6,7 +6,7 @@ public class BathRoomClosetInteract : Interactable
 {
     [Header("BathRoom Closet Interact Settings")]
     public GameObject Lock;
-    public GameObject Sword;
+    public GameObject Helmet;
 
     private AudioSource audioSource;
     private Animation myAnimation;
@@ -33,7 +33,7 @@ public class BathRoomClosetInteract : Interactable
         Lock.SetActive(false);
         audioSource.Play();
         myAnimation.Play();
-        Sword.SetActive(true);
+        Helmet.SetActive(true);
         enabled = false;
     }
 

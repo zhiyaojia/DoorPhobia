@@ -5,6 +5,7 @@ public class FunctionalInteractable : Interactable
 {
     [Header("Function")]
     public UnityEvent action;
+    public bool singleUse = false;
 
     void Start()
     {
@@ -15,5 +16,18 @@ public class FunctionalInteractable : Interactable
     {
         base.Interact();
         action.Invoke();
+
+        FinishInteracting();
+    }
+
+    public override void FinishInteracting()
+    {
+        base.FinishInteracting();
+
+        if (singleUse == true)
+        {
+            enabled = false;
+            playerControl.SetHandIcon(false);
+        }
     }
 }

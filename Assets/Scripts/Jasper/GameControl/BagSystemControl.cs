@@ -121,4 +121,13 @@ public class BagSystemControl : MonoBehaviour
         CurrentObjectIndexList.Add(index);
         PlayerControl.Instance.ShowBagInfo(AllObjectsList[index].name + " is added to bag", dialoguePadding, false);
     }
+
+    public void RemoveObject(int index)
+    {
+        CurrentObjectIndexList.Remove(index);
+        if (index == currentInspectionObjectIndex)
+        {
+            currentInspectionObjectIndex = 0;
+        }
+    }
 }

@@ -27,6 +27,23 @@ public class HelmetControl : MonoBehaviour
     private float onTargetTimer;
     private bool alreadyIgnited;
 
+    [Header("Morse Code Settings")]
+    public AudioClip shortClip;
+    public AudioClip longClip;
+    public string keyWord;
+    private float letterPadding = 0.2f;
+    private AudioSource morseAudioSource;
+    private List<string> currentMorseCode;
+    private Dictionary<char, string> morseCodeTable;
+    private IEnumerator morseCoroutine;
+
+    void Awake()
+    {
+        InitializeMorseCode();
+        morseAudioSource = GetComponent<AudioSource>();
+        morseCoroutine = null;
+    }
+
     void Start()
     {
         currentRotation = transform.localRotation.eulerAngles;
@@ -43,6 +60,20 @@ public class HelmetControl : MonoBehaviour
         ControlHelmet();
         DrawLine();
         CheckTargetCollider();
+    }
+
+    private void OnEnable()
+    {
+        morseCoroutine = PlayMorseCode();
+        StartCoroutine(morseCoroutine);
+    }
+
+    private void OnDisable()
+    {
+        if (morseCoroutine != null)
+        {
+            StopCoroutine(morseCoroutine);
+        }
     }
 
     void ControlHelmet()
@@ -90,6 +121,10 @@ public class HelmetControl : MonoBehaviour
     {
         alreadyIgnited = true;
         fireAudio.Play();
+        if (morseCoroutine != null)
+        {
+            StopCoroutine(morseCoroutine);
+        }
 
         yield return new WaitForSeconds(0.7f);
 
@@ -99,5 +134,71 @@ public class HelmetControl : MonoBehaviour
 
         lineRender.enabled = false;
         helmetInteractable.FinishInteracting();
+    }
+
+    IEnumerator PlayMorseCode()
+    {
+        float shortPadding = shortClip.length + letterPadding;
+        float longPaddding = longClip.length + letterPadding;
+        while (true)
+        {
+            foreach (string word in currentMorseCode)
+            {
+                foreach (char ch in word)
+                {
+                    if (ch == '.')
+                    {
+                        morseAudioSource.clip = shortClip;
+                        morseAudioSource.Play();
+                        yield return new WaitForSeconds(shortPadding);
+                    }
+                    else
+                    {
+                        morseAudioSource.clip = longClip;
+                        morseAudioSource.Play();
+                        yield return new WaitForSeconds(longPaddding);
+                    }
+                }
+                yield return new WaitForSeconds(1.0f);
+            }
+            yield return new WaitForSeconds(2.0f);
+        }
+    }
+
+    void InitializeMorseCode()
+    {
+        morseCodeTable = new Dictionary<char, string>();
+        morseCodeTable.Add('a', "._");
+        morseCodeTable.Add('b', "_...");
+        morseCodeTable.Add('c', "_._.");
+        morseCodeTable.Add('d', "_..");
+        morseCodeTable.Add('e', ".");
+        morseCodeTable.Add('f', ".._.");
+        morseCodeTable.Add('g', "__.");
+        morseCodeTable.Add('h', "....");
+        morseCodeTable.Add('i', "..");
+        morseCodeTable.Add('j', ".___");
+        morseCodeTable.Add('k', "_._");
+        morseCodeTable.Add('l', "._..");
+        morseCodeTable.Add('m', "__");
+        morseCodeTable.Add('n', "_.");
+        morseCodeTable.Add('o', "___");
+        morseCodeTable.Add('p', ".__.");
+        morseCodeTable.Add('q', "__._");
+        morseCodeTable.Add('r', "._.");
+        morseCodeTable.Add('s', "...");
+        morseCodeTable.Add('t', "_");
+        morseCodeTable.Add('u', ".._");
+        morseCodeTable.Add('v', "..._");
+        morseCodeTable.Add('w', ".__");
+        morseCodeTable.Add('x', "_.._");
+        morseCodeTable.Add('y', "_.__");
+        morseCodeTable.Add('z', "__..");
+
+        currentMorseCode = new List<string>();
+        foreach (char ch in keyWord)
+        {
+            currentMorseCode.Add(morseCodeTable[ch]);
+        }
     }
 }
