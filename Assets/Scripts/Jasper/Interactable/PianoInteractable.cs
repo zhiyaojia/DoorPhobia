@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PianoInteractable : Interactable
@@ -23,7 +21,17 @@ public class PianoInteractable : Interactable
     public override void FinishInteracting()
     {
         base.FinishInteracting();
+        playerControl.StopFocusOnObject();
+        myPianoControl.enabled = false;
+        enabled = false;
+        playerControl.SetHandIcon(false);
+    }
+
+    public override void QuitInteracting()
+    {
+        base.QuitInteracting();
         PlayerControl.Instance.StopFocusOnObject();
         myPianoControl.enabled = false;
+        myPianoControl.Reset();
     }
 }

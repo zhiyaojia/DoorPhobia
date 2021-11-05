@@ -8,8 +8,6 @@ public class PianoControl : MonoBehaviour
     public List<int> LyricSequence;
     public List<KeyCode> KeycodeSequence;
 
-    public Text text; // temporal debug
-
     private int CurrentIndex;
     private PianoInteractable pianoInteract;
 
@@ -46,5 +44,10 @@ public class PianoControl : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         pianoInteract.FinishInteracting();
+    }
+
+    public void Reset()
+    {
+        CurrentIndex = 0;
     }
 }

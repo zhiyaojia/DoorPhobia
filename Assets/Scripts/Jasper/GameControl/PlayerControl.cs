@@ -9,11 +9,11 @@ using UnityEngine.Analytics;
 public class PlayerControl : MonoBehaviour
 {
     public static PlayerControl Instance { get; set; }
-    public Vector3 forward 
-    { 
+    public Vector3 forward
+    {
         get
         {
-            return playerCamera.transform.forward; 
+            return playerCamera.transform.forward;
         }
     }
 
@@ -33,7 +33,7 @@ public class PlayerControl : MonoBehaviour
     public bool isInteractingWithObjects = false;
 
     private PlayerUIControl UIControl;
-    [HideInInspector]public AudioSource playerAudio;
+    [HideInInspector] public AudioSource playerAudio;
 
     [Header("Interactable HoverUI Track")]
     private bool handIconActive = false;
@@ -106,9 +106,14 @@ public class PlayerControl : MonoBehaviour
 
     public void UpdateHint()
     {
+        if (isInteractingWithObjects == true || InspectionSystem.Instance.IsInspecting == true || playerCamera.activeInHierarchy == false)
+        {
+            return;
+        }
+
         shiftDown = Input.GetKeyDown(KeyCode.LeftShift);
         shiftUp = Input.GetKeyUp(KeyCode.LeftShift);
-        if (shiftDown && isInteractingWithObjects == false && InspectionSystem.Instance.IsInspecting == false)
+        if (shiftDown)
         {
             hintControl.enabled = true;
             IsShowingHint = true;

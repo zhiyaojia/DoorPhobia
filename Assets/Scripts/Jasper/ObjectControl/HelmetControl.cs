@@ -88,6 +88,7 @@ public class HelmetControl : MonoBehaviour
     void DrawLine()
     {
         RaycastHit hit;
+        Debug.DrawRay(lineStartPosition, transform.forward * 10);
         if (Physics.Raycast(lineStartPosition, transform.forward, out hit, Mathf.Infinity, layerMask))
         {
             lineRender.SetPosition(1, transform.InverseTransformPoint(hit.point));
