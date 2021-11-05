@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class FireLightControl : MonoBehaviour
 {
+    public float fireFlickerMultipler = 10.0f;
     private Light myLight;
     private float lightIntensity;
     private float lightRange;
@@ -15,7 +16,7 @@ public class FireLightControl : MonoBehaviour
 
     private void Update()
     {
-        myLight.intensity = lightIntensity / 2f + Mathf.Lerp(lightIntensity - 0.1f, lightIntensity + 0.1f, Mathf.Cos(Time.time * 30));
-        myLight.range = lightRange / 2f + Mathf.Lerp(lightRange - 0.1f, lightRange + 0.1f, Mathf.Cos(Time.time * 30));
+        myLight.intensity = Mathf.Lerp(lightIntensity - 0.1f, lightIntensity + 0.1f, Mathf.Cos(Time.time * fireFlickerMultipler));
+        myLight.range = Mathf.Lerp(lightRange - 0.1f, lightRange + 0.1f, Mathf.Cos(Time.time * fireFlickerMultipler));
     }
 }

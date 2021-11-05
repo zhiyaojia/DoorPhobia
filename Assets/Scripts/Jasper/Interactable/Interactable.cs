@@ -88,12 +88,12 @@ public class Interactable : MonoBehaviour
                     {
                         playerControl.interactTimes += 1;
                         Interact();
-                        if (needDialogue)
+                    }
+                    if (needDialogue)
+                    {
+                        if ((onlyShowWhenLocked == true && (meetInteractCondition == false || solvedPreLock == false)) || (onlyShowWhenLocked == false))
                         {
-                            if ((onlyShowWhenLocked == true && (meetInteractCondition == false || solvedPreLock == false)) || (onlyShowWhenLocked == false))
-                            {
-                                playerControl.ShowDialogue(message);
-                            }
+                            playerControl.ShowDialogue(message);
                         }
                     }
                 }

@@ -54,18 +54,6 @@ public class ElevatorControl : MonoBehaviour
         movingCoroutine = null;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            PressButton(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.K))
-        {
-            PressButton(false);
-        }
-    }
-
     public void MakeFloorAccessable(int index)
     {
         accessableFloors.Add(index);

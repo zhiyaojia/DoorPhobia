@@ -583,6 +583,8 @@ MonoBehaviour:
   canQuit: 1
   focusPointTransform: {fileID: 9143955281221515278}
   scaleControl: {fileID: 9143955281436492197}
+  fridgeAnimation: {fileID: 0}
+  fireWood: {fileID: 0}
 --- !u!1 &7602846300808933442
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,7 +596,6 @@ GameObject:
   - component: {fileID: 7602846300808965218}
   - component: {fileID: 7602846300809735234}
   - component: {fileID: 7602846300810866306}
-  - component: {fileID: 647812457165210476}
   m_Layer: 0
   m_Name: 'Indicator '
   m_TagString: Untagged
@@ -665,19 +666,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &647812457165210476
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7602846300808933442}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.01908393, y: 0.05675586, z: 0.0005000062}
-  m_Center: {x: -0.0000000121071935, y: 0.012936542, z: 0.00024997207}
 --- !u!1 &7602846300808933444
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,7 +677,6 @@ GameObject:
   - component: {fileID: 7602846300808965220}
   - component: {fileID: 7602846300809735238}
   - component: {fileID: 7602846300810866310}
-  - component: {fileID: 4713375423286130060}
   m_Layer: 0
   m_Name: scales_main
   m_TagString: Untagged
@@ -761,19 +748,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4713375423286130060
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7602846300808933444}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.12599999, y: 0.1355207, z: 0.12097926}
-  m_Center: {x: 0, y: 0.06776035, z: 0.0042281337}
 --- !u!1 &7602846300808933446
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,7 +759,6 @@ GameObject:
   - component: {fileID: 7602846300808965222}
   - component: {fileID: 7602846300809735232}
   - component: {fileID: 7602846300810866304}
-  - component: {fileID: 5399227222812205520}
   m_Layer: 0
   m_Name: plate
   m_TagString: Untagged
@@ -856,19 +829,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5399227222812205520
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7602846300808933446}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.19907562, y: 0.08157952, z: 0.19907562}
-  m_Center: {x: 0, y: -0.019694343, z: 0}
 --- !u!1 &8074662903176963078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,6 +1799,7 @@ MonoBehaviour:
   indicatorRotationSpeed: 144
   maxWeight: 5
   correctWeight: 1
+  currentWeight: 0
   ScaleObjects:
   - {fileID: 9004875514236407179}
   - {fileID: 9143955281244404552}

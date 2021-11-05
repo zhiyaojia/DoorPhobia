@@ -167,8 +167,8 @@ public class ScaleControl : MonoBehaviour
         }
 
         indiacatorIsRotating = false;
-
-        if (currentWeight == correctWeight)
+        
+        if (Mathf.Abs(correctWeight - currentWeight) < 0.01f)
         {
             yield return new WaitForSeconds(1);
 
