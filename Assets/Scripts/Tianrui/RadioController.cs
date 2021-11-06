@@ -22,6 +22,7 @@ public class RadioController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float BeforePosition = TuningKnob.transform.localEulerAngles.z;
         if (Input.GetKey(KeyCode.D))
         {
             if (Indicator.transform.localPosition.x >= -0.1f)
@@ -40,18 +41,50 @@ public class RadioController : MonoBehaviour
                 Indicator.transform.localPosition = new Vector3(vector.x + 0.0001f, vector.y, vector.z);
             }
         }
-        Debug.Log("1");
-        if (TuningKnob.transform.localEulerAngles.z>=0&& TuningKnob.transform.localEulerAngles.z < 120)
+        float AfterPosition = TuningKnob.transform.localEulerAngles.z;
+        CheckPosition(BeforePosition, AfterPosition);
+
+    }
+    void CheckPosition(float before, float after)
+    {
+        if (before < 120 && after < 120)
         {
-            Debug.Log("play Audio1");
+            //start audio1 if not started
+            if (!Audio1.isPlaying)
+            {
+                Audio1.Play();
+                Debug.Log("Play Audio1");
+            }
         }
-        else if(TuningKnob.transform.localEulerAngles.z>=120 && TuningKnob.transform.localEulerAngles.z < 240)
+        else if(before < 120 && after >= 120)
         {
-            Debug.Log("play Audio2");
+            //switch from audio1 to audio2
+            if (!Audio1.isPlaying)
+            {
+                Audio2.Play();
+                Debug.Log("Play Audio2");
+            }
+            else
+            {
+                Audio1.Stop();
+                Audio2.Play();
+                Debug.Log("Stop Audio1 and Play Audio2");
+            }
         }
-        else if(TuningKnob.transform.localEulerAngles.z>=240&& TuningKnob.transform.localEulerAngles.z < 360)
+        else if(before < 240 && after >= 240)
         {
-            Debug.Log("play Audio3");
+            //switch from audio2 to audio3
+            if (!Audio2.isPlaying)
+            {
+                Audio3.Play();
+                Debug.Log("Play Audio3");
+            }
+            else
+            {
+                Audio2.Stop();
+                Audio3.Play();
+                Debug.Log("Stop Audio2 and Play Audio3");
+            }
         }
     }
 }
