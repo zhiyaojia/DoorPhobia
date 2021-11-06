@@ -14,7 +14,6 @@ public class keypadScript : MonoBehaviour
     void Start()
     {
         //passwordText = "";
-        Debug.Log("loaded");
         passwordText = "";
         passwordLength = 0;
         passwordLimit = 4;
