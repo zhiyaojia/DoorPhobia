@@ -89,6 +89,20 @@ public class PlayerControl : MonoBehaviour
         UpdateAnalytics();
     }
 
+    #region Utility
+    public void TurnOffControl()
+    {
+        playerMovement.enabled = false;
+        playerCamera.GetComponent<CameraRotate>().enabled = false;
+    }
+
+    public void TurnOnControl()
+    {
+        playerMovement.enabled = true;
+        playerCamera.GetComponent<CameraRotate>().enabled = true;
+    }
+    #endregion
+
     #region Interactable Related
     private void UpdateRay()
     {

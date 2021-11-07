@@ -6,12 +6,16 @@ public class GameControl : MonoBehaviour
 {
     public static GameControl Instance { get; set; }
 
+    [Header("Basic Settings")]
     public GameObject Menu;
     public GameObject Tutorial;
-    public GameObject GameEnd;
     private bool isPaused = false;
 
-    public AudioSource playingAudio;
+    [Header("Blink Settings")]
+    public bool hasBlink = true;
+    private BlinkControl blinkControl;
+
+    private AudioSource playingAudio;
 
     void Awake()
     {
@@ -27,7 +31,22 @@ public class GameControl : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         //Tutorial.SetActive(true);
+
+        blinkControl = PlayerControl.Instance.playerCamera.GetComponent<BlinkControl>();
+        if (hasBlink == true)
+        { 
+            blinkControl.enabled = true;
+            blinkControl.OpenEye();
+        }
+        else
+        {
+            PlayerControl.Instance.SetCrossHair(true);
+            PlayerControl.Instance.TurnOnControl();
+        }
     }
 
     void Update()
@@ -72,8 +91,16 @@ public class GameControl : MonoBehaviour
         isPaused = true;
     }
 
-    public void GameEnds()
+    public void GameEnd()
     {
-        GameEnd.SetActive(true);
+        StartCoroutine(StartEndGame());
+    }
+
+    IEnumerator StartEndGame()
+    {
+        PlayerControl.Instance.TurnOffControl();
+        yield return new WaitForSeconds(2.0f);
+        blinkControl.enabled = true;
+        blinkControl.CloseEye();
     }
 }

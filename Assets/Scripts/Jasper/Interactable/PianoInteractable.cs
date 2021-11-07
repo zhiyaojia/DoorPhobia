@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PianoInteractable : Interactable
@@ -25,6 +26,7 @@ public class PianoInteractable : Interactable
         myPianoControl.enabled = false;
         enabled = false;
         playerControl.SetHandIcon(false);
+        GameControl.Instance.GameEnd();
     }
 
     public override void QuitInteracting()

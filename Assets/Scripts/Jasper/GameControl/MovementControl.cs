@@ -12,8 +12,6 @@ public class MovementControl : MonoBehaviour
 
 	void Start()
 	{
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         characterController = GetComponent<CharacterController>();
 		currentSpeed = MovementSpeed;
 	}
