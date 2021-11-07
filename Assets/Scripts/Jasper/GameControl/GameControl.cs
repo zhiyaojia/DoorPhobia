@@ -11,6 +11,8 @@ public class GameControl : MonoBehaviour
     public GameObject GameEnd;
     private bool isPaused = false;
 
+    public AudioSource playingAudio;
+
     void Awake()
     {
         if (Instance == null)
@@ -33,6 +35,17 @@ public class GameControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && isPaused == false)
         {
             PauseGame();
+
+            playingAudio = null;
+            AudioSource[] sources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+            foreach (AudioSource audio in sources)
+            {
+                if (audio.isPlaying == true)
+                {
+                    playingAudio = audio;
+                    audio.Pause();
+                }
+            }
         }
     }
 
@@ -43,6 +56,11 @@ public class GameControl : MonoBehaviour
         Menu.SetActive(false);
         Time.timeScale = 1;
         isPaused = false;
+
+        if (playingAudio != null)
+        {
+            playingAudio.UnPause();
+        }
     }
 
     public void PauseGame()

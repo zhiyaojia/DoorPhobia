@@ -24,6 +24,7 @@ public class LockerInteractable : Interactable
         audioSource.Play();
         loveLetter.SetActive(true);
         enabled = false;
+        playerControl.SetHandIcon(false);
         BagSystemControl.Instance.RemoveObject(4);
         FinishInteracting();
     }

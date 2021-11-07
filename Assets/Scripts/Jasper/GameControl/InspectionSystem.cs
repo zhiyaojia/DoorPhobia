@@ -31,6 +31,8 @@ public class InspectionSystem : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         canvas.SetActive(true);
         camera.SetActive(true);
+        camera.GetComponent<AudioListener>().enabled = true;
+        PlayerControl.Instance.playerCamera.GetComponent<AudioListener>().enabled = false;
         volume.SetActive(true);
         light.SetActive(true);
         PlayerControl.Instance.TurnOffInteractableHoverUI();
@@ -42,7 +44,11 @@ public class InspectionSystem : MonoBehaviour
         PlayerControl.Instance.playerMovement.StartMove();
         Cursor.lockState = CursorLockMode.Locked;
         canvas.SetActive(false);
+
         camera.SetActive(false);
+        camera.GetComponent<AudioListener>().enabled = false;
+        PlayerControl.Instance.playerCamera.GetComponent<AudioListener>().enabled = true;
+
         volume.SetActive(false);
         light.SetActive(false);
         PlayerControl.Instance.TurnOnInteractableHoverUI();

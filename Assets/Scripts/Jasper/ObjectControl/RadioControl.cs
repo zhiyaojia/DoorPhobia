@@ -23,8 +23,9 @@ public class RadioControl : MonoBehaviour
     private int currentIndex = 0;
     private float paddingLength;
     private int unitRotation;
-    private IEnumerator audioCoroutine = null;
+    private IEnumerator switchCoroutine = null;
     private bool alreadySwitched = false;
+    private IEnumerator audioCoroutine = null;
 
     private void Awake()
     {
@@ -32,23 +33,29 @@ public class RadioControl : MonoBehaviour
         {
             Debug.LogError("Empty Clip List");
         }
-
+        
         turningButtonRot = turningButton.localRotation.eulerAngles;
         indicatorPosition = indicator.localPosition;
 
         audioSource = GetComponent<AudioSource>();
         paddingLength = paddingClip.length;
         unitRotation = 360 / audioClipList.Count;
+
+        audioSource.clip = audioClipList[0];
     }
 
     private void OnEnable()
     {
-        audioSource.clip = audioClipList[0];
-        audioSource.Play();
+        audioCoroutine = PlayMusic();
+        StartCoroutine(audioCoroutine);
     }
 
     private void OnDisable()
     {
+        if (switchCoroutine != null)
+        {
+            StopCoroutine(switchCoroutine);
+        }
         if (audioCoroutine != null)
         {
             StopCoroutine(audioCoroutine);
@@ -74,8 +81,8 @@ public class RadioControl : MonoBehaviour
         if (Mathf.Abs(currentRemainder - targetRemainder) > 20.0f && alreadySwitched == false)
         {
             currentIndex += currentRemainder > targetRemainder ? 1 : -1;
-            audioCoroutine = SwitchMusic();
-            StartCoroutine(audioCoroutine);
+            switchCoroutine = SwitchMusic();
+            StartCoroutine(switchCoroutine);
         }
 
         currentRotation = targetRotation;
@@ -94,8 +101,23 @@ public class RadioControl : MonoBehaviour
 
         yield return new WaitForSeconds(paddingLength);
 
-        audioSource.clip = audioClipList[currentIndex];
-        audioSource.Play();
+        if (audioCoroutine != null)
+        {
+            StopCoroutine(audioCoroutine);
+        }
+        audioCoroutine = PlayMusic();
+        StartCoroutine(audioCoroutine);
         alreadySwitched = false;
+    }
+
+    IEnumerator PlayMusic()
+    {
+        audioSource.clip = audioClipList[currentIndex];
+        float musicTime = audioClipList[currentIndex].length;
+        while (true)
+        {
+            audioSource.Play();
+            yield return new WaitForSeconds(musicTime + 1.0f);
+        }
     }
 }

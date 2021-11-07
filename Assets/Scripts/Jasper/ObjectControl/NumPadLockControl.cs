@@ -42,6 +42,12 @@ public class NumPadLockControl : MonoBehaviour
                     releaseKey(i);
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.Backspace) && passwordText != "")
+            {
+                passwordText = passwordText.Substring(0, passwordText.Length - 1);
+                textController.UpdatePassword(passwordText);
+            }
         }
     }
 

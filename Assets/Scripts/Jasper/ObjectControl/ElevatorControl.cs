@@ -45,7 +45,6 @@ public class ElevatorControl : MonoBehaviour
         accessableFloors = new HashSet<int>();
         accessableFloors.Add(3);
         accessableFloors.Add(2);
-        accessableFloors.Add(1);
     }
 
     void Start()
