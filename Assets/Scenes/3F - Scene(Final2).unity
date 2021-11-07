@@ -2640,6 +2640,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1783099813}
+        m_TargetAssemblyTypeName: ElevatorControl, Assembly-CSharp
+        m_MethodName: MakeFloorAccessable
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   BagIndex: 7
   TargetInteractObject: {fileID: 1329306795}
 --- !u!65 &159038333
@@ -12414,7 +12426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &588482362
 RectTransform:
   m_ObjectHideFlags: 0
@@ -41461,7 +41473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2c9db845d2234d47b8a49181ba8c486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noConditionNeed: 1
+  noConditionNeed: 0
   maxInteractableDistance: 15
   needDialogue: 1
   message: Maybe I can light it up
