@@ -29,7 +29,7 @@ public class BagSystemControl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B) && Time.timeScale != 0.0f)
         {
             if (PlayerControl.Instance.isInteractingWithObjects == true)
             {

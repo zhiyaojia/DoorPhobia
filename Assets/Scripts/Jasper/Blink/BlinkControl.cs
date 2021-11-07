@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BlinkControl : MonoBehaviour
 {
+    public static BlinkControl Instance { get; set; }
+
     public Shader blinkShader;
     private Material blinkMaterial;
 
@@ -11,12 +13,18 @@ public class BlinkControl : MonoBehaviour
     private bool useMaterial = false;
 
     public GameObject postProcessVolume;
-
-    public AudioSource audioSource;
-    public AudioClip pianoMusic;
+    public GameObject tutorial;
 
     void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         blinkMaterial = new Material(blinkShader);
     }
 
@@ -45,8 +53,7 @@ public class BlinkControl : MonoBehaviour
         height = 0.0f;
 
         yield return new WaitForSeconds(2.0f);
-        audioSource.clip = pianoMusic;
-        audioSource.Play();
+        GameControl.Instance.PlayPiano();
         yield return new WaitForSeconds(6.0f);
 
         float openEyeTime, closeEyeTime, openStayTime, closeStayTime, targetHeight, currTimer;
@@ -131,6 +138,7 @@ public class BlinkControl : MonoBehaviour
 
         PlayerControl.Instance.SetCrossHair(true);
         PlayerControl.Instance.TurnOnControl();
+        tutorial.SetActive(true);
         useMaterial = false;
         enabled = false;
     }
@@ -142,6 +150,9 @@ public class BlinkControl : MonoBehaviour
 
     IEnumerator StartCloseEye()
     {
+        PlayerControl.Instance.TurnOffControl();
+        yield return new WaitForSeconds(2.0f);
+
         PlayerControl.Instance.SetCrossHair(false);
 
         float closeEyeTime = 2.0f;
@@ -162,10 +173,6 @@ public class BlinkControl : MonoBehaviour
             height = currTimer / closeEyeTime * targetHeight;
             yield return null;
         }
-
-        yield return new WaitForSeconds(2.0f);
-
-        audioSource.clip = pianoMusic;
-        audioSource.Play();
+        GameControl.Instance.GameEnd();
     }
 }

@@ -26,7 +26,8 @@ public class PianoInteractable : Interactable
         myPianoControl.enabled = false;
         enabled = false;
         playerControl.SetHandIcon(false);
-        GameControl.Instance.GameEnd();
+        BlinkControl.Instance.enabled = true;
+        BlinkControl.Instance.CloseEye();
     }
 
     public override void QuitInteracting()

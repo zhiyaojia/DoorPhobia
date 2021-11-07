@@ -115,7 +115,7 @@ public class Interactable : MonoBehaviour
                 alreadyAddedHintObjects = false;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && alreadyInteracted == true && canQuit == true)
+            if (Input.GetKeyDown(KeyCode.Space) && alreadyInteracted == true && canQuit == true && Time.timeScale != 0.0f)
             {
                 QuitInteracting();
             }

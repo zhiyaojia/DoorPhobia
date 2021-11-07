@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour
 {
@@ -8,12 +9,21 @@ public class GameControl : MonoBehaviour
 
     [Header("Basic Settings")]
     public GameObject Menu;
-    public GameObject Tutorial;
-    private bool isPaused = false;
+    public GameObject gameStartEffect;
+    public bool hasGameStartEffect = true;
 
-    [Header("Blink Settings")]
-    public bool hasBlink = true;
-    private BlinkControl blinkControl;
+    [Header("Pause Settings")]
+    private bool hasMouse = false;
+    private bool isPaused = false;
+    [HideInInspector]public bool canPause = true;
+
+    [Header("Piano Music")]
+    public AudioSource audioSource;
+    public AudioClip pianoMusic;
+
+    [Header("Game End Settings")]
+    public GameObject gameEndUI;
+    public Text gameEndText;
 
     private AudioSource playingAudio;
 
@@ -34,13 +44,10 @@ public class GameControl : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        //Tutorial.SetActive(true);
-
-        blinkControl = PlayerControl.Instance.playerCamera.GetComponent<BlinkControl>();
-        if (hasBlink == true)
-        { 
-            blinkControl.enabled = true;
-            blinkControl.OpenEye();
+        if (hasGameStartEffect == true)
+        {
+            gameStartEffect.SetActive(true);
+            canPause = false;
         }
         else
         {
@@ -51,7 +58,7 @@ public class GameControl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && isPaused == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && isPaused == false && canPause == true)
         {
             PauseGame();
 
@@ -68,10 +75,20 @@ public class GameControl : MonoBehaviour
         }
     }
 
+    public void PlayPiano()
+    {
+        audioSource.clip = pianoMusic;
+        audioSource.Play();
+    }
+
     public void ResumeGame()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (hasMouse == false)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        
         Menu.SetActive(false);
         Time.timeScale = 1;
         isPaused = false;
@@ -84,8 +101,17 @@ public class GameControl : MonoBehaviour
 
     public void PauseGame()
     {
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            hasMouse = false;
+        }
+        else
+        {
+            hasMouse = true;
+        }
+        
         Menu.SetActive(true);
         Time.timeScale = 0;
         isPaused = true;
@@ -98,9 +124,40 @@ public class GameControl : MonoBehaviour
 
     IEnumerator StartEndGame()
     {
-        PlayerControl.Instance.TurnOffControl();
+        canPause = false;
+        yield return new WaitForSeconds(1.0f);
+
+        gameEndUI.SetActive(true);
+        float phase_1 = 2.0f;
+        float phase_2 = 2.0f;
+        float phase_3 = 2.0f;
+        float currentTimer = 0.0f;
+        Color textColor = gameEndText.color;
+        while (currentTimer <= phase_1)
+        {
+            currentTimer += Time.deltaTime;
+            textColor.a = currentTimer / phase_1;
+            gameEndText.color = textColor;
+            yield return null;
+        }
+        yield return new WaitForSeconds(phase_2);
+        currentTimer = phase_3;
+        while (currentTimer >= 0)
+        {
+            currentTimer -= Time.deltaTime;
+            currentTimer -= Time.deltaTime;
+            textColor.a = currentTimer / phase_3;
+            gameEndText.color = textColor;
+            yield return null;
+        }
+
         yield return new WaitForSeconds(2.0f);
-        blinkControl.enabled = true;
-        blinkControl.CloseEye();
+        PlayPiano();
+        yield return new WaitForSeconds(6.0f);
+
+        textColor.a = 1;
+        gameEndText.color = textColor;
+        gameEndText.text = "Game Ends";
+        canPause = true; 
     }
 }
