@@ -63,6 +63,8 @@ public class BookInteract : Interactable
             InspectionSystem.Instance.TurnOff();
             ColorLock.SetActive(false);
             solvedPreLock = true;
+            playerControl.SetHintUI(false);
+
             // report custom event
             PlayerControl.Instance.solvePuzzles += 1;
             ReportSolve3LDiaryLock(solveTime, ColorLock.GetComponent<LockController>().triedTimes);

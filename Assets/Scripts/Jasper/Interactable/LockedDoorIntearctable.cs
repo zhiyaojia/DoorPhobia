@@ -52,6 +52,7 @@ public class LockedDoorIntearctable : Interactable
         {
             InspectionSystem.Instance.TurnOff();            
             DoorLock.SetActive(false);
+            playerControl.SetHintUI(false);
             solvedPreLock = true;
             
             // report custom event

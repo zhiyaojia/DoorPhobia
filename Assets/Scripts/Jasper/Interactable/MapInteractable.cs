@@ -35,6 +35,7 @@ public class MapInteractable : Interactable
     {
         base.FinishInteracting();
         solvedPreLock = true;
+        playerControl.SetHintUI(false);
 
         // report custom event
         solveTime = mapControl.secondsElapsed - startTime;
