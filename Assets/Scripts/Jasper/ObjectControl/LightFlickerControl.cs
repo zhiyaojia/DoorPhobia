@@ -47,4 +47,9 @@ public class LightFlickerControl : MonoBehaviour
         myLight.enabled = true;
         myLight.intensity = originalLightIntensity;
     }
+
+    private void OnEnable()
+    {
+        isFlickering = false;
+    }
 }

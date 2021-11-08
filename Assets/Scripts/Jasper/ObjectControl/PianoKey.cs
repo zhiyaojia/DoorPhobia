@@ -30,7 +30,7 @@ public class PianoKey : MonoBehaviour
                 rot.x = pressedRotation;
                 transform.localRotation = Quaternion.Euler(rot);
             }
-            else if (Input.GetKeyUp(myKeyCode))
+            else if (Input.GetKey(myKeyCode) == false)
             {
                 transform.localRotation = Quaternion.Euler(Vector3.zero);
             }

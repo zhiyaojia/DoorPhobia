@@ -34,6 +34,8 @@ public class MapInteractable : Interactable
     public override void FinishInteracting()
     {
         base.FinishInteracting();
+        solvedPreLock = true;
+
         // report custom event
         solveTime = mapControl.secondsElapsed - startTime;
         PlayerControl.Instance.solvePuzzles += 1;

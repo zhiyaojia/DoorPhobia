@@ -25520,7 +25520,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5824201182136996753}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97b6bc340abbd63418a8254e38c00e6b, type: 3}
   m_Name: 
@@ -26181,7 +26181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Menu: {fileID: 833104320}
   gameStartEffect: {fileID: 731085085}
-  hasGameStartEffect: 1
+  hasGameStartEffect: 0
   canPause: 1
   audioSource: {fileID: 762000201}
   pianoMusic: {fileID: 8300000, guid: 70c5c84f8fbd2a04581a18d218b03536, type: 3}
@@ -32268,7 +32268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1505390950
 Transform:
   m_ObjectHideFlags: 0
@@ -97881,7 +97881,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  singleUse: 0
+  singleUse: 1
 --- !u!4 &6058596502004620911
 Transform:
   m_ObjectHideFlags: 0
@@ -133791,6 +133791,8 @@ MonoBehaviour:
   - {fileID: 4118292981072201306}
   canQuit: 1
   loveLetter: {fileID: 5824201182136996753}
+  lockerLight: {fileID: 1505390949}
+  lockerAnimation: {fileID: 7400000, guid: bb511e6b53f2dbc4085ba1d5c0f5779c, type: 2}
 --- !u!4 &8337225709132526716
 Transform:
   m_ObjectHideFlags: 0

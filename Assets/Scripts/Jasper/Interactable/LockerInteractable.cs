@@ -9,6 +9,8 @@ public class LockerInteractable : Interactable
 
     [Header("Locker Settings")]
     public GameObject loveLetter;
+    public GameObject lockerLight;
+    public AnimationClip lockerAnimation;
 
     void Start()
     {
@@ -23,9 +25,17 @@ public class LockerInteractable : Interactable
         lockerControl.Play();
         audioSource.Play();
         loveLetter.SetActive(true);
+        lockerLight.SetActive(true);
         enabled = false;
         playerControl.SetHandIcon(false);
         BagSystemControl.Instance.RemoveObject(4);
+        StartCoroutine(EnableLoveLetter());
         FinishInteracting();
+    }
+
+    IEnumerator EnableLoveLetter()
+    {
+        yield return new WaitForSeconds(lockerAnimation.length);
+        loveLetter.GetComponent<CollectableInteract>().enabled = true;
     }
 }
