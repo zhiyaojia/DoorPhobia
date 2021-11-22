@@ -49,7 +49,6 @@ public class ZombieHeadControl : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         audio.Play();
-        print("Play audio");
         if (animationTime <= 0.0f)
         {
             neckTransform.localRotation = neckTargetQuat;

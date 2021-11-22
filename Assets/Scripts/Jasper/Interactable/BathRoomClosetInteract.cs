@@ -14,6 +14,7 @@ public class BathRoomClosetInteract : Interactable
     void Start()
     {
         base.Start();
+        solvedPreLock = false;
         audioSource = GetComponent<AudioSource>();
         myAnimation = GetComponent<Animation>();
     }
@@ -29,6 +30,7 @@ public class BathRoomClosetInteract : Interactable
     {
         base.FinishInteracting();
         InspectionSystem.Instance.TurnOff();
+        solvedPreLock = true;
         playerControl.SetHandIcon(false);
         Lock.SetActive(false);
         audioSource.Play();
