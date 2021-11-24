@@ -5,6 +5,7 @@ public class CandleInteract : Interactable
 {
     [Header("CollectableInteraction Settings")]
     public GameObject candleEffect;
+    public GameObject pianoKeys;
     private AudioSource audioSource;
 
     void Start() 
@@ -26,5 +27,6 @@ public class CandleInteract : Interactable
         audioSource.Play();
         yield return new WaitForSeconds(0.8f);
         candleEffect.SetActive(true);
+        pianoKeys.SetActive(true);
     }
 }
