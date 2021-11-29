@@ -9,6 +9,8 @@ public class ElevatorControl : MonoBehaviour
     [Header("Animation")]
     public Animation elevatorAnimation;
     public List<Animation> gateAnimations;
+    private float doorAnimationTime = 2.0f;
+    private float moveAnimationTime = 3.0f; 
 
     [Header("Three Floors")]
     public List<GameObject> Floors;
@@ -74,6 +76,20 @@ public class ElevatorControl : MonoBehaviour
 
         upButton.Lock();
         downbutton.Lock();
+
+        StartCoroutine(StartClose());
+    }
+
+    IEnumerator StartClose()
+    {
+        yield return new WaitForSeconds(doorAnimationTime);
+        Move();
+
+        yield return new WaitForSeconds(moveAnimationTime);
+        arriveFloor();
+
+        yield return new WaitForSeconds(doorAnimationTime);
+        FinishOpenDoor();
     }
 
     public void Move()

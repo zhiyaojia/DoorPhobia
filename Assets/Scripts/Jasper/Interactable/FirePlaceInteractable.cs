@@ -27,6 +27,10 @@ public class FirePlaceInteractable : Interactable
             BagSystemControl.Instance.RemoveObject(8);
             ignited = true;
             FinishInteracting();
+            playerControl.SetHandIcon(false);
+            playerControl.SetLockIcon(true);
+            Lock();
+            message = "Maybe I can light it up...";
         }
         else
         {

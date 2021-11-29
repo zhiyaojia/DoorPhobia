@@ -1504,10 +1504,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -8916,7 +8916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &272481922
 Transform:
   m_ObjectHideFlags: 0
@@ -10373,10 +10373,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -11108,7 +11108,7 @@ MonoBehaviour:
   noConditionNeed: 0
   maxInteractableDistance: 15
   needDialogue: 1
-  message: Maybe I can use some firewood to light it up
+  message: I need some firewood...
   onlyShowWhenLocked: 1
   hasHint: 0
   hintObjects: []
@@ -12009,6 +12009,34 @@ PrefabInstance:
       propertyPath: maxInteractableDistance
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 616152003259988479, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1201855727}
+    - target: {fileID: 616152003418771192, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1201855727}
+    - target: {fileID: 616152003613467540, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1201855727}
+    - target: {fileID: 616152004121928734, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1201855727}
+    - target: {fileID: 616152004687547130, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1201855727}
+    - target: {fileID: 616152004703985123, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1201855727}
+    - target: {fileID: 616152004946583331, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1201855727}
     - target: {fileID: 8377913653774573058, guid: 98281fba84c7b4948bb84d4592293843, type: 3}
       propertyPath: m_Name
       value: Piano
@@ -16200,6 +16228,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2146988586}
     m_Modifications:
+    - target: {fileID: 1585156175, guid: 36f269e63d36bd74ca6a7b02d9d54233, type: 3}
+      propertyPath: audioClipList.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0e28849b6b800ff4ebc05b8d5b6e79fe, type: 3}
     - target: {fileID: 1585156186, guid: 36f269e63d36bd74ca6a7b02d9d54233, type: 3}
       propertyPath: m_Volume
       value: 0.521
@@ -17601,7 +17633,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22310
+  m_Name: pb_Mesh507988
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26931,7 +26963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Menu: {fileID: 833104320}
   gameStartEffect: {fileID: 731085085}
-  hasGameStartEffect: 0
+  hasGameStartEffect: 1
   canPause: 1
   audioSource: {fileID: 762000201}
   pianoMusic: {fileID: 8300000, guid: 70c5c84f8fbd2a04581a18d218b03536, type: 3}
@@ -33209,9 +33241,25 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1522565357, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: verticalSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522565357, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: horizontalSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1678505399, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998786101604961826, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: verticalSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998786101604961826, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
+      propertyPath: horizontalSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7294760794251474471, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
       propertyPath: m_IsActive
@@ -33279,15 +33327,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7294760794503042815, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 48.89
+      value: -42.36
       objectReference: {fileID: 0}
     - target: {fileID: 7294760794503042815, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -62.52
+      value: 1.24
       objectReference: {fileID: 0}
     - target: {fileID: 7294760794503042815, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 46.14
+      value: -25.73
       objectReference: {fileID: 0}
     - target: {fileID: 7294760794503042815, guid: 972ed8ce3d75a1e489f0fc79a7c3dcaa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -33530,7 +33578,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21336
+  m_Name: pb_Mesh507014
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -42138,6 +42186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   helmetInteractable: {fileID: 711045616}
+  firePlaceInteractable: {fileID: 449200888}
   rotateSpeed: 20
   horizontalLimit: 90
   verticalLimit: 30
@@ -43248,7 +43297,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1959900024}
-  - component: {fileID: 1959900025}
   m_Layer: 0
   m_Name: FirePlace
   m_TagString: Untagged
@@ -43275,25 +43323,6 @@ Transform:
   m_Father: {fileID: 1635432525}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1959900025
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959900023}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 30c52dfb5e03c2b43968ea01dc7bb85a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1982249043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87858,7 +87887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fixPivot: 0
   pivotTransform: {fileID: 0}
-  LightIntensity: 1.6
+  LightIntensity: 1
 --- !u!23 &4056165745582200232
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -98482,7 +98511,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192760081696596330}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: -1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.218}
+  m_LocalPosition: {x: 0, y: 0, z: 0.213}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2095770117418688006}

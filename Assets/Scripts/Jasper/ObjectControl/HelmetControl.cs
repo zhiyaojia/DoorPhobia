@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class HelmetControl : MonoBehaviour
 {
-    [Header("Helmet Interactable")]
+    [Header("Interactable")]
     public HelmetInteractable helmetInteractable;
+    public FirePlaceInteractable firePlaceInteractable;
 
     [Header("Helmet Move Settings")]
     public float rotateSpeed;
@@ -121,6 +122,7 @@ public class HelmetControl : MonoBehaviour
     IEnumerator Ignite()
     {
         alreadyIgnited = true;
+        firePlaceInteractable.Unlock();
         fireAudio.Play();
         if (morseCoroutine != null)
         {

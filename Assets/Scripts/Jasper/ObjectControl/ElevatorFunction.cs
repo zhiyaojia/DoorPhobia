@@ -4,16 +4,16 @@ public class ElevatorFunction : MonoBehaviour
 {
     public void StartMove()
     {
-        ElevatorControl.Instance.Move();
+        //ElevatorControl.Instance.Move();
     }
 
     public void OpenDoor()
     {
-        ElevatorControl.Instance.arriveFloor();
+        //ElevatorControl.Instance.arriveFloor();
     }
 
     public void FinishOpenDoor()
     {
-        ElevatorControl.Instance.FinishOpenDoor();
+        //ElevatorControl.Instance.FinishOpenDoor();
     }
 }
